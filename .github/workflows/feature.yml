@@ -37,8 +37,8 @@ jobs:
         run: |
           pwd
           echo ${{ github.workspace }}
-      # - uses: actions/upload-artifact@v3
-      #   with:
-      #     name: unit-tests-results
-      #     path: /Users/raphael/dev/countries/app/build/reports/tests/testDebugUnitTest
-      #     retention-days: 5
+      - uses: actions/upload-artifact@v3
+        with:
+          name: unit-tests-results
+          path: ${{ github.workspace }}/app/build/reports/tests/testDebugUnitTest
+          retention-days: 5
