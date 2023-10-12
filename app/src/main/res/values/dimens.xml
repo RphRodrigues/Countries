@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="app_dimen_1">1dp</dimen>
+    <dimen name="app_dimen_2">2dp</dimen>
+    <dimen name="app_dimen_3">4dp</dimen>
+    <dimen name="app_dimen_4">6dp</dimen>
+    <dimen name="app_dimen_5">8dp</dimen>
+    <dimen name="app_dimen_6">10dp</dimen>
+    <dimen name="app_dimen_7">12dp</dimen>
+    <dimen name="app_dimen_8">16dp</dimen>
+    <dimen name="app_dimen_9">20dp</dimen>
+    <dimen name="app_dimen_10">24dp</dimen>
+    <dimen name="app_dimen_11">28dp</dimen>
+    <dimen name="app_dimen_12">32dp</dimen>
+    <dimen name="app_dimen_13">36dp</dimen>
+    <dimen name="app_dimen_14">40dp</dimen>
+    <dimen name="app_dimen_15">44dp</dimen>
+    <dimen name="app_dimen_16">48dp</dimen>
+
+    <dimen name="app_text_size_1">10sp</dimen>
+    <dimen name="app_text_size_2">12sp</dimen>
+    <dimen name="app_text_size_3">14sp</dimen>
+    <dimen name="app_text_size_4">16sp</dimen>
+    <dimen name="app_text_size_5">18sp</dimen>
+    <dimen name="app_text_size_6">20sp</dimen>
+    <dimen name="app_text_size_7">22sp</dimen>
+    <dimen name="app_text_size_8">24sp</dimen>
+
+    <dimen name="header_list_view_height">200dp</dimen>
+
+    <dimen name="details_country_card_width">110dp</dimen>
+    <dimen name="details_country_card_height">150dp</dimen>
+
+    <dimen name="details_country_image_size">85dp</dimen>
+</resources>
