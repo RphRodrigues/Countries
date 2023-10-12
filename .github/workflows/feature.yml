@@ -1,0 +1,30 @@
+name: feature
+
+on:
+  pull_request:
+    types: 
+      - opened
+      - edited
+      - reopened
+      - synchronize
+      - ready_for_review
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Run build
+      run: ./gradlew assembleDebug
+
+  unit-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Run unit tests
+        run: ./gradlew testDebugUnitTest
+      - uses: actions/upload-artifact@v3
+        with:
+          name: unit-tests-results
+          path: ${{ github.workspace }}/app/build/reports/tests/testDebugUnitTest
+          retention-days: 5
