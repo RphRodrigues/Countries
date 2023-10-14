@@ -45,7 +45,7 @@ class FeedbackView @JvmOverloads constructor(
     setOnClickListener { onClick() }
   }
 
-  fun setOnClickListener(onClick:() -> Unit) {
+  fun setOnClickListener(onClick: () -> Unit) {
     button.setOnClickListener { onClick() }
   }
 }

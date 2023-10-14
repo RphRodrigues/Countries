@@ -1,14 +1,14 @@
 package br.com.rstudio.countries.presentation
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import br.com.rstudio.countries.R
 import br.com.rstudio.countries.arch.base.BaseActivityView
+import br.com.rstudio.countries.arch.extension.replaceFragment
 import br.com.rstudio.countries.arch.model.ErrorModel
 import br.com.rstudio.countries.arch.widget.FeedbackView
 import br.com.rstudio.countries.arch.widget.ProgressView
-import br.com.rstudio.countries.arch.extension.replaceFragment
 import br.com.rstudio.countries.presentation.listscreen.ListFragment
 
 class MainActivity : AppCompatActivity(), BaseActivityView {

@@ -8,7 +8,7 @@ import org.koin.core.context.startKoin
 import org.koin.core.context.stopKoin
 import timber.log.Timber
 
-class AppApplication: Application() {
+class AppApplication : Application() {
 
   override fun onCreate() {
     super.onCreate()

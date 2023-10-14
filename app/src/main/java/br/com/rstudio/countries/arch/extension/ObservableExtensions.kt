@@ -5,9 +5,9 @@ import br.com.rstudio.countries.arch.model.ErrorModel
 import br.com.rstudio.countries.arch.model.ErrorType
 import io.reactivex.Observable
 import io.reactivex.disposables.Disposable
-import java.net.UnknownHostException
 import retrofit2.HttpException
 import timber.log.Timber
+import java.net.UnknownHostException
 
 fun <T> Observable<T>.doOnSuccess(invoke: (T) -> Unit): Disposable {
   return this.subscribe({ invoke(it) }, {})

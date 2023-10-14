@@ -4,8 +4,6 @@ import android.annotation.SuppressLint
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import br.com.rstudio.countries.presentation.listscreen.model.ContinentVO
-import okhttp3.internal.notify
-import okhttp3.internal.notifyAll
 
 private const val VIEW_TYPE_1 = 1
 private const val VIEW_TYPE_2 = 2
@@ -32,7 +30,7 @@ class MainAdapter : RecyclerView.Adapter<ListViewHolder>() {
 
   override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
     if (holder is MainViewHolder) {
-      holder.bindData(continentList[position -1])
+      holder.bindData(continentList[position - 1])
     }
   }
 
