@@ -20,5 +20,3 @@ interface ListContract {
     fun onDestroy()
   }
 }
-
-

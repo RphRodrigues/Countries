@@ -4,8 +4,8 @@ import android.app.Activity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import br.com.rstudio.countries.R
-import br.com.rstudio.countries.arch.model.ErrorModel
 import br.com.rstudio.countries.arch.base.BaseActivityView
+import br.com.rstudio.countries.arch.model.ErrorModel
 
 fun Activity?.showError(err: ErrorModel, errAction: () -> Unit) {
   (this as? BaseActivityView)?.showError(err, errAction)

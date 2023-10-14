@@ -4,100 +4,15 @@
   <CurrentIssues>
     <ID>ClassOrdering:RetrofitClient.kt$RetrofitClient$Companion</ID>
     <ID>ClassOrdering:RetrofitClient.kt$RetrofitClient$private fun cacheSize(): Cache</ID>
-    <ID>FinalNewline:br.com.rstudio.countries.AppApplication.kt:1</ID>
-    <ID>FinalNewline:br.com.rstudio.countries.RxJavaSchedulerRule.kt:1</ID>
-    <ID>FinalNewline:br.com.rstudio.countries.arch.ImageLoader.kt:1</ID>
-    <ID>FinalNewline:br.com.rstudio.countries.arch.base.BaseActivityView.kt:1</ID>
-    <ID>FinalNewline:br.com.rstudio.countries.arch.extension.ObservableExtensions.kt:1</ID>
-    <ID>FinalNewline:br.com.rstudio.countries.arch.model.ErrorModel.kt:1</ID>
-    <ID>FinalNewline:br.com.rstudio.countries.arch.network.NetworkPresenter.kt:1</ID>
-    <ID>FinalNewline:br.com.rstudio.countries.arch.network.NetworkView.kt:1</ID>
-    <ID>FinalNewline:br.com.rstudio.countries.arch.widget.FeedbackView.kt:1</ID>
-    <ID>FinalNewline:br.com.rstudio.countries.arch.widget.LoadImageView.kt:1</ID>
-    <ID>FinalNewline:br.com.rstudio.countries.arch.widget.ProgressView.kt:1</ID>
-    <ID>FinalNewline:br.com.rstudio.countries.data.CountryApi.kt:1</ID>
-    <ID>FinalNewline:br.com.rstudio.countries.data.model.CountryDTO.kt:1</ID>
-    <ID>FinalNewline:br.com.rstudio.countries.data.model.CountryMapper.kt:1</ID>
-    <ID>FinalNewline:br.com.rstudio.countries.data.repository.CountryRepository.kt:1</ID>
-    <ID>FinalNewline:br.com.rstudio.countries.data.repository.CountryRepositoryImpl.kt:1</ID>
-    <ID>FinalNewline:br.com.rstudio.countries.di.ApplicationModule.kt:1</ID>
-    <ID>FinalNewline:br.com.rstudio.countries.presentation.MainActivity.kt:1</ID>
-    <ID>FinalNewline:br.com.rstudio.countries.presentation.details.screen.DetailsContract.kt:1</ID>
-    <ID>FinalNewline:br.com.rstudio.countries.presentation.details.screen.DetailsFragment.kt:1</ID>
-    <ID>FinalNewline:br.com.rstudio.countries.presentation.details.screen.adapter.DetailsItemListAdapter.kt:1</ID>
-    <ID>FinalNewline:br.com.rstudio.countries.presentation.details.screen.adapter.DetailsItemListViewHolder.kt:1</ID>
-    <ID>FinalNewline:br.com.rstudio.countries.presentation.details.screen.view.DetailsItemView.kt:1</ID>
-    <ID>FinalNewline:br.com.rstudio.countries.presentation.listscreen.ListFragment.kt:1</ID>
-    <ID>FinalNewline:br.com.rstudio.countries.presentation.listscreen.adapter.HeaderViewHolder.kt:1</ID>
-    <ID>FinalNewline:br.com.rstudio.countries.presentation.listscreen.adapter.ListViewHolder.kt:1</ID>
-    <ID>FinalNewline:br.com.rstudio.countries.presentation.listscreen.adapter.country.adapter.CountryViewHolder.kt:1</ID>
-    <ID>FinalNewline:br.com.rstudio.countries.presentation.listscreen.model.ContinentVO.kt:1</ID>
-    <ID>ImportOrdering:br.com.rstudio.countries.arch.extension.ActivityExtensions.kt:3</ID>
-    <ID>ImportOrdering:br.com.rstudio.countries.arch.extension.ObservableExtensions.kt:3</ID>
-    <ID>ImportOrdering:br.com.rstudio.countries.presentation.MainActivity.kt:3</ID>
-    <ID>Indentation:br.com.rstudio.countries.arch.widget.ProgressView.kt:19</ID>
-    <ID>Indentation:br.com.rstudio.countries.arch.widget.ProgressView.kt:20</ID>
-    <ID>Indentation:br.com.rstudio.countries.arch.widget.ProgressView.kt:21</ID>
-    <ID>Indentation:br.com.rstudio.countries.arch.widget.ProgressView.kt:26</ID>
-    <ID>Indentation:br.com.rstudio.countries.presentation.listscreen.model.ContinentVO.kt:12</ID>
-    <ID>Indentation:br.com.rstudio.countries.presentation.listscreen.model.ContinentVO.kt:13</ID>
-    <ID>Indentation:br.com.rstudio.countries.presentation.listscreen.model.ContinentVO.kt:6</ID>
-    <ID>Indentation:br.com.rstudio.countries.presentation.listscreen.model.ContinentVO.kt:7</ID>
-    <ID>Indentation:br.com.rstudio.countries.presentation.listscreen.model.ContinentVO.kt:8</ID>
     <ID>LongParameterList:Country.kt$Country$( val countryName: CountryName, val capital: List&lt;String&gt;?, val borders: List&lt;String&gt;?, val timezones: List&lt;String&gt;, val continents: List&lt;String&gt;, val languages: CountryLanguage?, val littleFlag: String, val code: String, val independent: Boolean, val population: Int, val flags: CountryFlag, )</ID>
     <ID>LongParameterList:Country.kt$CountryLanguage$( val ara: String? = null, val bre: String? = null, val ces: String? = null, val cym: String? = null, val deu: String? = null, val est: String? = null, val fin: String? = null, val fra: String? = null, val hrv: String? = null, val hun: String? = null, val ita: String? = null, val jpn: String? = null, val kor: String? = null, val nld: String? = null, val per: String? = null, val pol: String? = null, val portuguese: String? = null, val rus: String? = null, val slk: String? = null, val spa: String? = null, val srp: String? = null, val swe: String? = null, val tur: String? = null, val urd: String? = null, val zho: String? = null )</ID>
     <ID>LongParameterList:CountryDTO.kt$CountryDTO$( @SerializedName("name") val name: CountryNameDTO, @SerializedName("capital") val capital: List&lt;String&gt;?, @SerializedName("borders") val borders: List&lt;String&gt;?, @SerializedName("timezones") val timezones: List&lt;String&gt;, @SerializedName("continents") val continents: List&lt;String&gt;, @SerializedName("flag") val flag: String, @SerializedName("cca3") val cca3: String, @SerializedName("population") val population: Int, @SerializedName("flags") val flags: CountryFlagDTO, @SerializedName("languages") val languages: CountryLanguageDTO?, @SerializedName("independent") val independent: Boolean )</ID>
     <ID>LongParameterList:CountryDTO.kt$CountryLanguageDTO$( @SerializedName("ara") val ara: String?, @SerializedName("bre") val bre: String?, @SerializedName("ces") val ces: String?, @SerializedName("cym") val cym: String?, @SerializedName("deu") val deu: String?, @SerializedName("est") val est: String?, @SerializedName("fin") val fin: String?, @SerializedName("fra") val fra: String?, @SerializedName("hrv") val hrv: String?, @SerializedName("hun") val hun: String?, @SerializedName("ita") val ita: String?, @SerializedName("jpn") val jpn: String?, @SerializedName("kor") val kor: String?, @SerializedName("nld") val nld: String?, @SerializedName("per") val per: String?, @SerializedName("pol") val pol: String?, @SerializedName("por") val por: String?, @SerializedName("rus") val rus: String?, @SerializedName("slk") val slk: String?, @SerializedName("spa") val spa: String?, @SerializedName("srp") val srp: String?, @SerializedName("swe") val swe: String?, @SerializedName("tur") val tur: String?, @SerializedName("urd") val urd: String?, @SerializedName("zho") val zho: String? )</ID>
-    <ID>NewLineAtEndOfFile:AppApplication.kt$br.com.rstudio.countries.AppApplication.kt</ID>
-    <ID>NewLineAtEndOfFile:ApplicationModule.kt$br.com.rstudio.countries.di.ApplicationModule.kt</ID>
-    <ID>NewLineAtEndOfFile:BaseActivityView.kt$br.com.rstudio.countries.arch.base.BaseActivityView.kt</ID>
-    <ID>NewLineAtEndOfFile:ContinentVO.kt$br.com.rstudio.countries.presentation.listscreen.model.ContinentVO.kt</ID>
-    <ID>NewLineAtEndOfFile:CountryApi.kt$br.com.rstudio.countries.data.CountryApi.kt</ID>
-    <ID>NewLineAtEndOfFile:CountryDTO.kt$br.com.rstudio.countries.data.model.CountryDTO.kt</ID>
-    <ID>NewLineAtEndOfFile:CountryMapper.kt$br.com.rstudio.countries.data.model.CountryMapper.kt</ID>
-    <ID>NewLineAtEndOfFile:CountryRepository.kt$br.com.rstudio.countries.data.repository.CountryRepository.kt</ID>
-    <ID>NewLineAtEndOfFile:CountryRepositoryImpl.kt$br.com.rstudio.countries.data.repository.CountryRepositoryImpl.kt</ID>
-    <ID>NewLineAtEndOfFile:CountryViewHolder.kt$br.com.rstudio.countries.presentation.listscreen.adapter.country.adapter.CountryViewHolder.kt</ID>
-    <ID>NewLineAtEndOfFile:DetailsContract.kt$br.com.rstudio.countries.presentation.details.screen.DetailsContract.kt</ID>
-    <ID>NewLineAtEndOfFile:DetailsFragment.kt$br.com.rstudio.countries.presentation.details.screen.DetailsFragment.kt</ID>
-    <ID>NewLineAtEndOfFile:DetailsItemListAdapter.kt$br.com.rstudio.countries.presentation.details.screen.adapter.DetailsItemListAdapter.kt</ID>
-    <ID>NewLineAtEndOfFile:DetailsItemListViewHolder.kt$br.com.rstudio.countries.presentation.details.screen.adapter.DetailsItemListViewHolder.kt</ID>
-    <ID>NewLineAtEndOfFile:DetailsItemView.kt$br.com.rstudio.countries.presentation.details.screen.view.DetailsItemView.kt</ID>
-    <ID>NewLineAtEndOfFile:ErrorModel.kt$br.com.rstudio.countries.arch.model.ErrorModel.kt</ID>
-    <ID>NewLineAtEndOfFile:FeedbackView.kt$br.com.rstudio.countries.arch.widget.FeedbackView.kt</ID>
-    <ID>NewLineAtEndOfFile:HeaderViewHolder.kt$br.com.rstudio.countries.presentation.listscreen.adapter.HeaderViewHolder.kt</ID>
-    <ID>NewLineAtEndOfFile:ImageLoader.kt$br.com.rstudio.countries.arch.ImageLoader.kt</ID>
-    <ID>NewLineAtEndOfFile:ListFragment.kt$br.com.rstudio.countries.presentation.listscreen.ListFragment.kt</ID>
-    <ID>NewLineAtEndOfFile:ListViewHolder.kt$br.com.rstudio.countries.presentation.listscreen.adapter.ListViewHolder.kt</ID>
-    <ID>NewLineAtEndOfFile:LoadImageView.kt$br.com.rstudio.countries.arch.widget.LoadImageView.kt</ID>
-    <ID>NewLineAtEndOfFile:MainActivity.kt$br.com.rstudio.countries.presentation.MainActivity.kt</ID>
-    <ID>NewLineAtEndOfFile:NetworkPresenter.kt$br.com.rstudio.countries.arch.network.NetworkPresenter.kt</ID>
-    <ID>NewLineAtEndOfFile:NetworkView.kt$br.com.rstudio.countries.arch.network.NetworkView.kt</ID>
-    <ID>NewLineAtEndOfFile:ObservableExtensions.kt$br.com.rstudio.countries.arch.extension.ObservableExtensions.kt</ID>
-    <ID>NewLineAtEndOfFile:ProgressView.kt$br.com.rstudio.countries.arch.widget.ProgressView.kt</ID>
-    <ID>NewLineAtEndOfFile:RxJavaSchedulerRule.kt$br.com.rstudio.countries.RxJavaSchedulerRule.kt</ID>
-    <ID>NoConsecutiveBlankLines:br.com.rstudio.countries.di.ApplicationModule.kt:58</ID>
-    <ID>NoConsecutiveBlankLines:br.com.rstudio.countries.presentation.listscreen.ListContract.kt:24</ID>
-    <ID>NoUnusedImports:br.com.rstudio.countries.arch.widget.ProgressView.kt:10</ID>
-    <ID>NoUnusedImports:br.com.rstudio.countries.arch.widget.ProgressView.kt:11</ID>
-    <ID>NoUnusedImports:br.com.rstudio.countries.arch.widget.ProgressView.kt:7</ID>
-    <ID>NoUnusedImports:br.com.rstudio.countries.presentation.listscreen.adapter.MainAdapter.kt:7</ID>
-    <ID>NoUnusedImports:br.com.rstudio.countries.presentation.listscreen.adapter.MainAdapter.kt:8</ID>
     <ID>NoWildcardImports:br.com.rstudio.countries.presentation.details.screen.DetailsFragment.kt:16</ID>
     <ID>NoWildcardImports:br.com.rstudio.countries.presentation.listscreen.ListFragment.kt:8</ID>
     <ID>ObjectPropertyNaming:RetrofitClient.kt$RetrofitClient.Companion$private const val _1MB = 1024 * 1024L</ID>
-    <ID>ParameterListWrapping:br.com.rstudio.countries.presentation.listscreen.model.ContinentVO.kt:12</ID>
-    <ID>ParameterListWrapping:br.com.rstudio.countries.presentation.listscreen.model.ContinentVO.kt:13</ID>
-    <ID>ParameterListWrapping:br.com.rstudio.countries.presentation.listscreen.model.ContinentVO.kt:6</ID>
-    <ID>ParameterListWrapping:br.com.rstudio.countries.presentation.listscreen.model.ContinentVO.kt:7</ID>
-    <ID>ParameterListWrapping:br.com.rstudio.countries.presentation.listscreen.model.ContinentVO.kt:8</ID>
-    <ID>SpacingAroundColon:br.com.rstudio.countries.AppApplication.kt:11</ID>
-    <ID>SpacingAroundColon:br.com.rstudio.countries.arch.widget.FeedbackView.kt:48</ID>
-    <ID>SpacingAroundOperators:br.com.rstudio.countries.presentation.listscreen.adapter.MainAdapter.kt:35</ID>
-    <ID>SpacingAroundParens:br.com.rstudio.countries.presentation.listscreen.adapter.country.adapter.CountryViewHolder.kt:22</ID>
     <ID>TooManyFunctions:ListFragment.kt$ListFragment : FragmentView</ID>
     <ID>UnnecessaryAbstractClass:BaseTest.kt$BaseTest</ID>
-    <ID>VariableNaming:ProgressView.kt$ProgressView$private val _TITLE: TextView by lazy { findViewById(R.id .progress_message ) }</ID>
     <ID>WildcardImport:ListFragment.kt$import br.com.rstudio.countries.arch.extension.*</ID>
   </CurrentIssues>
 </SmellBaseline>

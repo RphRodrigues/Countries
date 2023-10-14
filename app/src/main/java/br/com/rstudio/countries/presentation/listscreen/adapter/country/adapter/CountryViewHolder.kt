@@ -19,7 +19,7 @@ class CountryViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     itemView.findViewById(R.id.container_item_linear_layout)
   }
 
-  fun bindCountries(country: Country, onClickListener: (Country) -> Unit, ) {
+  fun bindCountries(country: Country, onClickListener: (Country) -> Unit,) {
     countryName.text = country.name
     image.load(country.flags.pngUrl)
 
