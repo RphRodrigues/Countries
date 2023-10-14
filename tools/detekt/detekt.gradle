@@ -1,0 +1,9 @@
+detekt {
+    autoCorrect = false
+    baseline = file("${project.rootDir}/tools/detekt/detekt-baseline.xml")
+    config = files(file("$project.rootDir/tools/detekt/detekt.yml"))
+}
+
+dependencies {
+    detektPlugins "io.gitlab.arturbosch.detekt:detekt-formatting:1.17.0"
+}
