@@ -1,7 +1,7 @@
 package br.com.rstudio.countries
 
 import android.app.Application
-import br.com.rstudio.countries.arch.quality.CrashlyticsReportingTree
+import br.com.rstudio.countries.arch.observability.CrashlyticsReportingTree
 import br.com.rstudio.countries.di.ApplicationModule
 import org.koin.android.ext.android.inject
 import org.koin.android.ext.koin.androidContext

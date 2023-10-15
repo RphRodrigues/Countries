@@ -1,4 +1,4 @@
-package br.com.rstudio.countries.arch.quality
+package br.com.rstudio.countries.arch.observability
 
 import com.google.firebase.crashlytics.FirebaseCrashlytics
 
