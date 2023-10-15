@@ -3,6 +3,8 @@ plugins {
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-android-extensions'
     id 'io.gitlab.arturbosch.detekt'
+    id 'com.google.gms.google-services'
+    id 'com.google.firebase.crashlytics'
 }
 apply from: "${rootDir}/tools/detekt/detekt.gradle"
 
@@ -88,6 +90,10 @@ dependencies {
 
     // Shimmer
     implementation 'com.facebook.shimmer:shimmer:0.5.0'
+
+    // Firebase
+    implementation 'com.google.firebase:firebase-analytics-ktx:20.1.2'
+    implementation 'com.google.firebase:firebase-crashlytics-ktx:18.2.9'
 
     // Unit test
     testImplementation 'junit:junit:4.+'

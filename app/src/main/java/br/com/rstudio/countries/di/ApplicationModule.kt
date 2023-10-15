@@ -4,6 +4,9 @@ import br.com.rstudio.countries.R
 import br.com.rstudio.countries.arch.GlideImageLoader
 import br.com.rstudio.countries.arch.ImageLoader
 import br.com.rstudio.countries.arch.network.RetrofitClient
+import br.com.rstudio.countries.arch.observability.CrashlyticsReporting
+import br.com.rstudio.countries.arch.observability.CrashlyticsReportingTree
+import br.com.rstudio.countries.arch.observability.FirebaseCrashlyticsReporting
 import br.com.rstudio.countries.data.CountryApi
 import br.com.rstudio.countries.data.model.CountryMapper
 import br.com.rstudio.countries.data.repository.CountryRepository
@@ -15,6 +18,7 @@ import br.com.rstudio.countries.presentation.listscreen.ListPresenter
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.RequestOptions
+import com.google.firebase.crashlytics.FirebaseCrashlytics
 import org.koin.android.ext.koin.androidContext
 import org.koin.dsl.module
 import retrofit2.Retrofit
@@ -28,6 +32,18 @@ val ApplicationModule = module {
 
   single<CountryApi> {
     get<Retrofit>().create()
+  }
+
+  single<FirebaseCrashlytics> {
+    FirebaseCrashlytics.getInstance()
+  }
+
+  single<CrashlyticsReporting> {
+    FirebaseCrashlyticsReporting(firebaseCrashlytics = get())
+  }
+
+  single {
+    CrashlyticsReportingTree(crashlyticsReporting = get())
   }
 
   single {
