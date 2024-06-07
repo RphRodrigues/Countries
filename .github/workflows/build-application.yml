@@ -1,0 +1,70 @@
+name: build application
+
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Environment'
+        required: true
+        default: 'Debug'
+        type: choice
+        options:
+          - Debug
+          - Release
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Run build
+        run: ./gradlew assemble${{ inputs.environment }}
+
+      - name: Upload apk
+        uses: actions/upload-artifact@v4
+        with:
+          name: apk
+          path: ${{ github.workspace }}/app/build/outputs/apk/**/*.apk
+          retention-days: 5
+
+      - name: Upload mapping
+        uses: actions/upload-artifact@v4
+        if: ${{ inputs.environment == 'Release' }}
+        with:
+          name: mapping
+          path: ${{ github.workspace }}/app/build/outputs/mapping
+          retention-days: 5
+
+  linter:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Run Detekt
+        run: ./gradlew detekt
+
+      - name: Upload detekt report
+        uses: actions/upload-artifact@v4
+        with:
+          name: detekt report
+          path: ${{ github.workspace }}/app/build/reports/detekt
+          retention-days: 5
+
+  unit-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Run unit tests
+        run: ./gradlew testDebugUnitTest
+
+      - name: Upload tests report
+        uses: actions/upload-artifact@v4
+        with:
+          name: tests report
+          path: ${{ github.workspace }}/app/build/reports/tests/testDebugUnitTest
+          retention-days: 5
