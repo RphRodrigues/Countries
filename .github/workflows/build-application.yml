@@ -1,4 +1,5 @@
 name: build application
+run-name: ${{ github.actor }} is building App
 
 on:
   workflow_dispatch:
@@ -19,8 +20,22 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
+      - name: Handle keystore
+        if: ${{ inputs.environment == 'Release' }}
+        run: |
+          echo "${{ secrets.KEYSTORE }}" > keystore.asc
+          gpg -d --passphrase ${{ secrets.KEYSTORE_PASSPHRASE }} --batch keystore.asc > keystore
+
+          echo "${{ secrets.KEYSTORE_PROPERTIES }}" > keystore.properties.asc
+          gpg -d --passphrase ${{ secrets.KEYSTORE_PASSPHRASE }} --batch keystore.properties.asc > keystore.properties
+
       - name: Run build
         run: ./gradlew assemble${{ inputs.environment }}
+
+      - name: Remove keystore
+        if: always()
+        run: |
+          rm -f keystore keystore.asc keystore.properties.asc keystore.properties
 
       - name: Upload apk
         uses: actions/upload-artifact@v4
