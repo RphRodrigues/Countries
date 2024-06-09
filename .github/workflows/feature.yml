@@ -4,7 +4,6 @@ on:
   pull_request:
     types: 
       - opened
-      - edited
       - reopened
       - synchronize
       - ready_for_review
@@ -13,25 +12,43 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
       - name: Run build
         run: ./gradlew assembleDebug
 
   linter:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
       - name: Run Detekt
         run: ./gradlew detekt
+
+      - name: Upload detekt report
+        uses: actions/upload-artifact@v4
+        with:
+          name: detekt report
+          path: ${{ github.workspace }}/app/build/reports/detekt
+          retention-days: 5
 
   unit-test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
       - name: Run unit tests
-        run: ./gradlew testDebugUnitTest
-      - uses: actions/upload-artifact@v3
+        run: ./gradlew unitTestCoverage
+
+      - name: Upload tests report
+        if: always()
+        uses: actions/upload-artifact@v4
         with:
-          name: unit-tests-results
-          path: ${{ github.workspace }}/app/build/reports/tests/testDebugUnitTest
+          name: tests report
+          path: |
+            ${{ github.workspace }}/app/build/reports/jacoco
+            ${{ github.workspace }}/app/build/reports/tests/testDebugUnitTest
           retention-days: 5
