@@ -1,3 +1,6 @@
+import java.nio.file.Files
+import java.nio.file.Paths
+
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
@@ -7,6 +10,15 @@ plugins {
     id 'com.google.firebase.crashlytics'
 }
 apply from: "${rootDir}/tools/detekt/detekt.gradle"
+
+def keystorePropertiesFile = rootProject.file("keystore.properties")
+def keystoreProperties = new Properties()
+
+if (!Files.exists(Paths.get(keystorePropertiesFile.getAbsolutePath()))) {
+    keystorePropertiesFile.createNewFile()
+}
+
+keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
 
 android {
     compileSdkVersion 33
@@ -26,6 +38,15 @@ android {
         proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
     }
 
+    signingConfigs {
+        release {
+            storeFile file("$rootDir/keystore")
+            keyAlias keystoreProperties['playStoreAlias']
+            keyPassword keystoreProperties['keyPassword']
+            storePassword keystoreProperties['storePassword']
+        }
+    }
+
     buildTypes {
         debug {
             minifyEnabled false
@@ -33,6 +54,10 @@ android {
         }
 
         release {
+            debuggable false
+
+            signingConfig signingConfigs.release
+
             minifyEnabled true
             shrinkResources true
         }
@@ -50,6 +75,7 @@ android {
     lintOptions {
         checkReleaseBuilds false
     }
+
     buildFeatures {
         viewBinding true
     }
