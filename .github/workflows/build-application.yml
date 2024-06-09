@@ -76,7 +76,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Run unit tests
-        run: ./gradlew unitTestCoverage
+        run: ./gradlew testDebugUnitTestCoverage
 
       - name: Upload tests report
         if: always()

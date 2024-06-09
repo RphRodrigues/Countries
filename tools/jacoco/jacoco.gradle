@@ -25,7 +25,7 @@ task jacocoTestReport(type: JacocoReport) {
     }
 }
 
-task unitTestCoverage() {
+task testDebugUnitTestCoverage() {
     group = "Reporting"
     description = "Generate Jacoco coverage reports after running tests."
 
