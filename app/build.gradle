@@ -10,6 +10,7 @@ plugins {
     id 'com.google.firebase.crashlytics'
 }
 apply from: "${rootDir}/tools/detekt/detekt.gradle"
+apply from: "${rootDir}/tools/jacoco/jacoco.gradle"
 
 def keystorePropertiesFile = rootProject.file("keystore.properties")
 def keystoreProperties = new Properties()
