@@ -8,6 +8,7 @@ plugins {
     id 'io.gitlab.arturbosch.detekt'
     id 'com.google.gms.google-services'
     id 'com.google.firebase.crashlytics'
+    id 'com.google.firebase.appdistribution'
 }
 apply from: "${rootDir}/tools/detekt/detekt.gradle"
 apply from: "${rootDir}/tools/jacoco/jacoco.gradle"
@@ -29,7 +30,7 @@ android {
         minSdk 21
         targetSdkVersion 33
         versionCode 1
-        versionName "1.0"
+        versionName "1.0.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
@@ -40,6 +41,13 @@ android {
     }
 
     signingConfigs {
+        homolog {
+            storeFile file("$rootDir/keystore")
+            keyAlias keystoreProperties['firebaseAlias']
+            keyPassword keystoreProperties['keyPassword']
+            storePassword keystoreProperties['storePassword']
+        }
+
         release {
             storeFile file("$rootDir/keystore")
             keyAlias keystoreProperties['playStoreAlias']
@@ -50,8 +58,24 @@ android {
 
     buildTypes {
         debug {
+            versionNameSuffix '-debug'
+
+            firebaseAppDistribution.artifactPath = "$buildDir/outputs/apk/debug/app-debug.apk"
+
             minifyEnabled false
             shrinkResources false
+        }
+
+        homolog {
+            debuggable false
+            versionNameSuffix '-homolog'
+
+            signingConfig signingConfigs.homolog
+
+            firebaseAppDistribution.artifactPath = "$buildDir/outputs/apk/homolog/app-homolog.apk"
+
+            minifyEnabled true
+            shrinkResources true
         }
 
         release {
@@ -59,9 +83,16 @@ android {
 
             signingConfig signingConfigs.release
 
+            firebaseAppDistribution.artifactPath = "$buildDir/outputs/apk/release/app-release.apk"
+
             minifyEnabled true
             shrinkResources true
         }
+    }
+
+    firebaseAppDistribution {
+        artifactType = "APK"
+        serviceCredentialsFile = "$rootDir/service-account.json"
     }
 
     compileOptions {

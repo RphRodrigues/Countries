@@ -12,7 +12,12 @@ on:
         type: choice
         options:
           - Debug
+          - Homolog
           - Release
+      deploy-firebase:
+        description: 'Deploy to Firebase'
+        required: false
+        type: boolean
 
 jobs:
   build:
@@ -22,7 +27,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Handle keystore
-        if: ${{ inputs.environment == 'Release' }}
+        if: ${{ inputs.environment == 'Release' }} || ${{ inputs.environment == 'Homolog' }}
         run: |
           echo "${{ secrets.KEYSTORE }}" > keystore.asc
           gpg -d --passphrase ${{ secrets.KEYSTORE_PASSPHRASE }} --batch keystore.asc > keystore
@@ -41,13 +46,13 @@ jobs:
       - name: Upload apk
         uses: actions/upload-artifact@v4
         with:
-          name: apk
+          name: Apk ${{ inputs.environment }}
           path: ${{ github.workspace }}/app/build/outputs/apk/**/*.apk
           retention-days: 5
 
       - name: Upload mapping
         uses: actions/upload-artifact@v4
-        if: ${{ inputs.environment == 'Release' }}
+        if: ${{ inputs.environment == 'Release' }} || ${{ inputs.environment == 'Homolog' }}
         with:
           name: mapping
           path: ${{ github.workspace }}/app/build/outputs/mapping
@@ -87,3 +92,32 @@ jobs:
             ${{ github.workspace }}/app/build/reports/jacoco
             ${{ github.workspace }}/app/build/reports/tests/testDebugUnitTest
           retention-days: 5
+
+  deploy-firebase:
+    if: ${{ inputs.deploy-firebase }}
+    needs: [ build ]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Download Apk
+        uses: actions/download-artifact@v4
+        with:
+          name: Apk ${{ inputs.environment }}
+
+      - name: Prepare firebase credential
+        run: |
+          echo "${{ secrets.FIREBASE_CREDENTIAL }}" > service-account.asc
+          gpg -d --passphrase ${{ secrets.FIREBASE_CREDENTIAL_PASSPHRASE }} --batch service-account.asc > service-account.json
+
+      - name: Deploy to firebase
+        run: |
+          build_type=$(echo "${{ inputs.environment }}" | tr '[:upper:]' '[:lower:]')
+
+          ./gradlew app:appDistributionUpload${{ inputs.environment }} --artifactPath="$build_type/app-$build_type.apk" --appId="${{ secrets.FIREBASE_APP_ID }}"
+
+      - name: Remove firebase credential
+        if: always()
+        run: |
+          rm -f service-account.asc service-account.json
