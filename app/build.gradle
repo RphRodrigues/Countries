@@ -111,6 +111,12 @@ android {
     buildFeatures {
         viewBinding true
     }
+
+    testOptions {
+        unitTests {
+            includeAndroidResources = true
+        }
+    }
 }
 
 dependencies {
@@ -157,6 +163,7 @@ dependencies {
     testImplementation 'junit:junit:4.+'
     testImplementation "io.insert-koin:koin-test:2.2.3"
     testImplementation "io.mockk:mockk:1.12.0"
+    testImplementation "org.robolectric:robolectric:4.10.1"
 
     // Android test
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
