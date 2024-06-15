@@ -1,5 +1,6 @@
 package br.com.rstudio.countries.presentation.details.screen
 
+import br.com.rstudio.countries.data.model.Country
 import br.com.rstudio.countries.presentation.CountryModel.countryList
 import io.mockk.mockk
 import io.mockk.verify
@@ -10,11 +11,12 @@ import org.junit.Test
 class DetailsPresenterTest {
 
   private val view: DetailsContract.View = mockk(relaxed = true)
+  private val tracker: DetailsContract.Tracker = mockk(relaxed = true)
   private lateinit var presenter: DetailsContract.Presenter
 
   @Before
   fun setUp() {
-    presenter = DetailsPresenter(view)
+    presenter = DetailsPresenter(view, tracker)
   }
 
   @Test
@@ -44,9 +46,29 @@ class DetailsPresenterTest {
   }
 
   @Test
-  fun `when onDestroy is called then it should clean view's reference`() {
+  fun `when onResume is called then it should track it`() {
+    val country = mockk<Country>()
+    presenter.onInitializer(country = country, borders = null)
+
+    presenter.onResume()
+
+    verify {
+      tracker.trackScreenView(country)
+    }
+  }
+
+  @Test
+  fun `when onBackPressed is called then it should track it`() {
+    presenter.onBackPressed()
+
+    verify { tracker.trackBackPressed() }
+  }
+
+  @Test
+  fun `when onDestroy is called then it should clean view's reference and track it`() {
     presenter.onDestroy()
 
+    verify { tracker.trackFinish() }
     Assert.assertNull(presenter.view)
   }
 }

@@ -8,7 +8,8 @@ import timber.log.Timber
 
 class ListPresenter(
   override var view: ListContract.View?,
-  private val repository: CountryRepository
+  private val repository: CountryRepository,
+  private val tracker: ListContract.Tracker
 ) : ListContract.Presenter {
 
   private var countries: List<Country>? = null
@@ -21,6 +22,10 @@ class ListPresenter(
       call(repository.getAll())
         .doOnSuccess { handleData(it) }
     }
+  }
+
+  override fun onResume() {
+    tracker.trackScreenView()
   }
 
   private fun handleData(countryList: List<Country>) {
@@ -38,15 +43,19 @@ class ListPresenter(
   }
 
   override fun onCountryClickListener(country: Country) {
+    tracker.trackCountryClicked(country)
+
     val borders = countries?.filter { country.borders?.contains(it.code) == true }
     view?.openDetailsScreen(country, borders)
   }
 
   override fun onBackPressed() {
+    tracker.trackBackPressed()
     view?.finish()
   }
 
   override fun onDestroy() {
+    tracker.trackFinish()
     view = null
   }
 }
