@@ -6,6 +6,7 @@ import androidx.appcompat.widget.LinearLayoutCompat
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import br.com.rstudio.countries.R
+import br.com.rstudio.countries.arch.extension.setupBackPressedCallback
 import br.com.rstudio.countries.arch.widget.LoadImageView
 import br.com.rstudio.countries.data.model.Country
 import br.com.rstudio.countries.presentation.details.screen.view.DetailsItemListView
@@ -13,8 +14,9 @@ import br.com.rstudio.countries.presentation.details.screen.view.DetailsItemView
 import org.koin.android.ext.android.inject
 import org.koin.core.parameter.parametersOf
 import java.text.NumberFormat
-import java.util.*
+import java.util.Locale
 
+@Suppress("TooManyFunctions")
 class DetailsFragment : Fragment(R.layout.fragment_details), DetailsContract.View {
 
   private val presenter: DetailsContract.Presenter by inject {
@@ -30,9 +32,14 @@ class DetailsFragment : Fragment(R.layout.fragment_details), DetailsContract.Vie
   private val borders: List<Country>?
     get() = arguments?.getParcelableArrayList(BORDERS_KEY)
 
+  private val callback = {
+    presenter.onBackPressed()
+  }
+
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
     super.onViewCreated(view, savedInstanceState)
     setupView(view)
+    setupBackPressedCallback(callback)
   }
 
   private fun setupView(view: View) {
@@ -43,6 +50,11 @@ class DetailsFragment : Fragment(R.layout.fragment_details), DetailsContract.Vie
   override fun onStart() {
     super.onStart()
     presenter.onInitializer(country, borders)
+  }
+
+  override fun onResume() {
+    super.onResume()
+    presenter.onTrackScreenView()
   }
 
   override fun bindCountry(country: Country, countryBorders: List<String>?) {

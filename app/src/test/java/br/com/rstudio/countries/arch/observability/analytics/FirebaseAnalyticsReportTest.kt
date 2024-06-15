@@ -2,7 +2,6 @@ package br.com.rstudio.countries.arch.observability.analytics
 
 import android.os.Build
 import android.os.Bundle
-import androidx.core.os.bundleOf
 import com.google.firebase.analytics.FirebaseAnalytics
 import io.mockk.every
 import io.mockk.mockk
@@ -56,10 +55,11 @@ class FirebaseAnalyticsReportTest {
 
   @Test
   fun `when log event is called then it should tracker the event`() {
-    val bundle = bundleOf("country" to "Brasil")
+    val bundleSlot = slot<Bundle>()
 
-    analyticsReport.trackEvent("click", bundle)
+    analyticsReport.trackEvent("click", mapOf("country" to "Italian"))
 
-    verify { firebaseAnalytics.logEvent("click", bundle) }
+    verify { firebaseAnalytics.logEvent("click", capture(bundleSlot)) }
+    assertEquals("Italian", bundleSlot.captured.getString("country"))
   }
 }

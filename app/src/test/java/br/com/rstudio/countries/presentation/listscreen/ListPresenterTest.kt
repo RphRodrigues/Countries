@@ -17,6 +17,7 @@ import org.junit.Test
 class ListPresenterTest : BaseTest() {
 
   private val view: ListContract.View = mockk(relaxed = true)
+  private val tracker: ListContract.Tracker = mockk(relaxed = true)
   private val repository: CountryRepository = mockk(relaxed = true)
 
   private lateinit var presenter: ListContract.Presenter
@@ -26,7 +27,7 @@ class ListPresenterTest : BaseTest() {
 
   @Before
   fun setup() {
-    presenter = ListPresenter(view, repository)
+    presenter = ListPresenter(view, repository, tracker)
   }
 
   @Test
@@ -83,25 +84,39 @@ class ListPresenterTest : BaseTest() {
   }
 
   @Test
-  fun `when country is clicked then redirect to details screen`() {
+  fun `when onTrackScreenView is called then it should track it`() {
+    presenter.onTrackScreenView()
+
+    verify { tracker.trackScreenView() }
+  }
+
+  @Test
+  fun `when country is clicked then redirect to details screen and track it`() {
     val country = mockk<Country>()
 
     presenter.onCountryClickListener(country)
 
-    verify { view.openDetailsScreen(any(), any()) }
+    verify {
+      view.openDetailsScreen(any(), any())
+      tracker.trackCountryClicked(country)
+    }
   }
 
   @Test
-  fun `when onBackPressed is called then it should finish screen`() {
+  fun `when onBackPressed is called then it should finish screen and track it`() {
     presenter.onBackPressed()
 
-    verify { view.finish() }
+    verify {
+      view.finish()
+      tracker.trackBackPressed()
+    }
   }
 
   @Test
-  fun `when onDestroy is called then it should clean view's reference`() {
+  fun `when onDestroy is called then it should clean view's reference and track it`() {
     presenter.onDestroy()
 
+    verify { tracker.trackFinish() }
     Assert.assertNull(presenter.view)
   }
 }

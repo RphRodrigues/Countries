@@ -8,7 +8,7 @@ import timber.log.Timber
 
 interface AnalyticsReport {
   fun trackScreenView(screenName: String)
-  fun trackEvent(action: String, params: Bundle? = null)
+  fun trackEvent(action: String, params: Map<String, String?>? = null)
 }
 
 class FirebaseAnalyticsReport(private val analytics: FirebaseAnalytics) : AnalyticsReport {
@@ -39,9 +39,19 @@ class FirebaseAnalyticsReport(private val analytics: FirebaseAnalytics) : Analyt
       }
   }
 
-  override fun trackEvent(action: String, params: Bundle?) {
-    printLog(action, params)
-    analytics.logEvent(action, params)
+  override fun trackEvent(action: String, params: Map<String, String?>?) {
+    val bundle = Bundle()
+
+    params?.keys?.forEach { key ->
+      params[key]?.let { value ->
+        if (value.isNotEmpty()) {
+          bundle.putString(key, value)
+        }
+      }
+    }
+
+    printLog(action, bundle)
+    analytics.logEvent(action, bundle)
   }
 
   private fun printLog(action: String, params: Bundle?) {
