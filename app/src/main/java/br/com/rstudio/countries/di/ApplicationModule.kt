@@ -4,9 +4,9 @@ import br.com.rstudio.countries.R
 import br.com.rstudio.countries.arch.GlideImageLoader
 import br.com.rstudio.countries.arch.ImageLoader
 import br.com.rstudio.countries.arch.network.RetrofitClient
-import br.com.rstudio.countries.arch.observability.CrashlyticsReporting
-import br.com.rstudio.countries.arch.observability.CrashlyticsReportingTree
-import br.com.rstudio.countries.arch.observability.FirebaseCrashlyticsReporting
+import br.com.rstudio.countries.arch.observability.crashlytics.CrashlyticsReport
+import br.com.rstudio.countries.arch.observability.crashlytics.FirebaseCrashlyticsReport
+import br.com.rstudio.countries.arch.observability.crashlytics.FirebaseCrashlyticsReportTree
 import br.com.rstudio.countries.data.CountryApi
 import br.com.rstudio.countries.data.model.CountryMapper
 import br.com.rstudio.countries.data.repository.CountryRepository
@@ -38,12 +38,12 @@ val ApplicationModule = module {
     FirebaseCrashlytics.getInstance()
   }
 
-  single<CrashlyticsReporting> {
-    FirebaseCrashlyticsReporting(firebaseCrashlytics = get())
+  single<CrashlyticsReport> {
+    FirebaseCrashlyticsReport(firebaseCrashlytics = get())
   }
 
   single {
-    CrashlyticsReportingTree(crashlyticsReporting = get())
+    FirebaseCrashlyticsReportTree(crashlyticsReport = get())
   }
 
   single {

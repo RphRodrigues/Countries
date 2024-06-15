@@ -1,4 +1,4 @@
-package br.com.rstudio.countries.arch.observability
+package br.com.rstudio.countries.arch.observability.crashlytics
 
 import io.mockk.Called
 import io.mockk.mockk
@@ -10,16 +10,16 @@ import org.junit.Before
 import org.junit.Test
 import timber.log.Timber
 
-class CrashlyticsReportingTreeTest {
+class FirebaseCrashlyticsReportTreeTest {
 
   private lateinit var tree: Timber.Tree
   private lateinit var crashlyticsReportingTree: Timber.Tree
-  private lateinit var crashlyticsReporting: CrashlyticsReporting
+  private lateinit var crashlyticsReport: CrashlyticsReport
 
   @Before
   fun setUp() {
-    crashlyticsReporting = mockk(relaxed = true)
-    tree = CrashlyticsReportingTree(crashlyticsReporting)
+    crashlyticsReport = mockk(relaxed = true)
+    tree = FirebaseCrashlyticsReportTree(crashlyticsReport)
     Timber.plant(tree)
     crashlyticsReportingTree = Timber.asTree()
   }
@@ -33,42 +33,42 @@ class CrashlyticsReportingTreeTest {
   fun `when debug log then shouldn't reporting it`() {
     Timber.d(MESSAGE)
 
-    verify { crashlyticsReporting wasNot Called }
+    verify { crashlyticsReport wasNot Called }
   }
 
   @Test
   fun `when info log then shouldn't reporting it`() {
     Timber.i(MESSAGE)
 
-    verify { crashlyticsReporting wasNot Called }
+    verify { crashlyticsReport wasNot Called }
   }
 
   @Test
   fun `when verbose log then shouldn't reporting it`() {
     Timber.v(MESSAGE)
 
-    verify { crashlyticsReporting wasNot Called }
+    verify { crashlyticsReport wasNot Called }
   }
 
   @Test
-  fun `when warning log then shouldn't reporting it`() {
+  fun `when warning log then should reporting it`() {
     Timber.w(MESSAGE)
 
-    verify { crashlyticsReporting wasNot Called }
+    verify { crashlyticsReport.sendException(any()) }
   }
 
   @Test
   fun `when wtf log then shouldn't reporting it`() {
     Timber.wtf(MESSAGE)
 
-    verify { crashlyticsReporting wasNot Called }
+    verify { crashlyticsReport wasNot Called }
   }
 
   @Test
   fun `when error log with message then should reporting it`() {
     Timber.e(MESSAGE)
 
-    verify { crashlyticsReporting.sendException(any()) }
+    verify { crashlyticsReport.sendException(any()) }
   }
 
   @Test
@@ -77,7 +77,7 @@ class CrashlyticsReportingTreeTest {
 
     Timber.e(exception)
 
-    verify { crashlyticsReporting.sendException(exception) }
+    verify { crashlyticsReport.sendException(exception) }
   }
 
   @Test
@@ -86,7 +86,7 @@ class CrashlyticsReportingTreeTest {
 
     Timber.tag(TAG).e(MESSAGE)
 
-    verify { crashlyticsReporting.sendException(capture(exception)) }
+    verify { crashlyticsReport.sendException(capture(exception)) }
     Assert.assertEquals("$TAG: $MESSAGE", exception.captured.message)
   }
 
