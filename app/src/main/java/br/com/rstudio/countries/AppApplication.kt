@@ -1,7 +1,7 @@
 package br.com.rstudio.countries
 
 import android.app.Application
-import br.com.rstudio.countries.arch.observability.CrashlyticsReportingTree
+import br.com.rstudio.countries.arch.observability.crashlytics.FirebaseCrashlyticsReportTree
 import br.com.rstudio.countries.di.ApplicationModule
 import org.koin.android.ext.android.inject
 import org.koin.android.ext.koin.androidContext
@@ -12,7 +12,7 @@ import timber.log.Timber
 
 class AppApplication : Application() {
 
-  private val crashlyticsReportingTree: CrashlyticsReportingTree by inject()
+  private val firebaseCrashlyticsReportTree: FirebaseCrashlyticsReportTree by inject()
 
   override fun onCreate() {
     super.onCreate()
@@ -26,7 +26,7 @@ class AppApplication : Application() {
     if (BuildConfig.DEBUG) {
       Timber.plant(Timber.DebugTree())
     } else {
-      Timber.plant(crashlyticsReportingTree)
+      Timber.plant(firebaseCrashlyticsReportTree)
     }
   }
 
