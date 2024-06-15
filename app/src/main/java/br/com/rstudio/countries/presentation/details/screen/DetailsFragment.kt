@@ -6,6 +6,7 @@ import androidx.appcompat.widget.LinearLayoutCompat
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import br.com.rstudio.countries.R
+import br.com.rstudio.countries.arch.extension.popBackStack
 import br.com.rstudio.countries.arch.extension.setupBackPressedCallback
 import br.com.rstudio.countries.arch.widget.LoadImageView
 import br.com.rstudio.countries.data.model.Country
@@ -57,6 +58,10 @@ class DetailsFragment : Fragment(R.layout.fragment_details), DetailsContract.Vie
     presenter.onResume()
   }
 
+  override fun clearViewContent() {
+    containerView.removeAllViews()
+  }
+
   override fun bindCountry(country: Country, countryBorders: List<String>?) {
     bindCountryImage(country)
     bindName(country.name)
@@ -104,6 +109,10 @@ class DetailsFragment : Fragment(R.layout.fragment_details), DetailsContract.Vie
     }.also {
       containerView.addView(it)
     }
+  }
+
+  override fun finish() {
+    activity.popBackStack()
   }
 
   override fun onDestroy() {

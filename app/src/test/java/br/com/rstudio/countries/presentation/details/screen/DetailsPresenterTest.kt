@@ -2,6 +2,7 @@ package br.com.rstudio.countries.presentation.details.screen
 
 import br.com.rstudio.countries.data.model.Country
 import br.com.rstudio.countries.presentation.CountryModel.countryList
+import io.mockk.Ordering
 import io.mockk.mockk
 import io.mockk.verify
 import org.junit.Assert
@@ -30,7 +31,10 @@ class DetailsPresenterTest {
   fun `when presenter initialize with null borders then should call view`() {
     presenter.onInitializer(country = mockk(), borders = null)
 
-    verify(exactly = 1) { view.bindCountry(any(), null) }
+    verify(exactly = 1) {
+      view.clearViewContent()
+      view.bindCountry(any(), null)
+    }
   }
 
   @Test
@@ -38,10 +42,21 @@ class DetailsPresenterTest {
     presenter.onInitializer(country = mockk(), borders = countryList)
 
     verify(exactly = 1) {
+      view.clearViewContent()
       view.bindCountry(
         any(),
         listOf("Country 1   litter flag 1", "Country 2   litter flag 2", "Country 3   litter flag 3")
       )
+    }
+  }
+
+  @Test
+  fun `when presenter initializes then it should clear view contents before binding`() {
+    presenter.onInitializer(country = mockk(), borders = null)
+
+    verify(ordering = Ordering.ORDERED) {
+      view.clearViewContent()
+      view.bindCountry(any(), null)
     }
   }
 
@@ -58,10 +73,13 @@ class DetailsPresenterTest {
   }
 
   @Test
-  fun `when onBackPressed is called then it should track it`() {
+  fun `when onBackPressed is called then it should finish view and track it`() {
     presenter.onBackPressed()
 
-    verify { tracker.trackBackPressed() }
+    verify {
+      tracker.trackBackPressed()
+      view.finish()
+    }
   }
 
   @Test
