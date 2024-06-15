@@ -43,6 +43,11 @@ class ListFragment : Fragment(R.layout.fragment_list), ListContract.View {
     presenter.onInitialize()
   }
 
+  override fun onResume() {
+    super.onResume()
+    presenter.onResume()
+  }
+
   override fun bindContinents(continentList: List<ContinentVO>) {
     (recyclerView.adapter as? MainAdapter)?.addItems(continentList)
   }
