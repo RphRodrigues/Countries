@@ -18,6 +18,7 @@ class DetailsPresenter(
       "${it.name}   ${it.littleFlag}"
     }
 
+    view?.clearViewContent()
     view?.bindCountry(country, bordersList)
   }
 
@@ -27,6 +28,7 @@ class DetailsPresenter(
 
   override fun onBackPressed() {
     tracker.trackBackPressed()
+    view?.finish()
   }
 
   override fun onDestroy() {

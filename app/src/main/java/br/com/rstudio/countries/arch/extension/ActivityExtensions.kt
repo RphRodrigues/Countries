@@ -30,3 +30,7 @@ fun FragmentActivity?.replaceFragment(fragment: Fragment) = this?.run {
     .addToBackStack(fragment.TAG)
     .commit()
 }
+
+fun FragmentActivity?.popBackStack() = this?.run {
+  supportFragmentManager.popBackStack()
+}
