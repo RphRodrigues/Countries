@@ -29,14 +29,28 @@ fun <T> Observable<T>.doOnInternalError(invoke: (ErrorModel) -> Unit): Observabl
 fun <T> Observable<T>.doOnApiError(invoke: (ErrorModel) -> Unit): Observable<T> {
 
   return this.doOnError {
-    if (it is HttpException) {
-      val err = ErrorModel(ErrorType.Api, it.code(), R.string.api_error)
-      Timber.e("ApiError -> message: ${it.message}")
-      Timber.e("ApiError -> code: ${it.code()}")
-      Timber.e("ApiError -> cause: ${it.cause}")
-      Timber.e("ApiError -> response: ${it.response()}")
-      Timber.e("ApiError -> stackTrace: ${it.stackTrace}")
-      invoke(err)
+    val err = when (it) {
+      is HttpException -> handleHttpException(it)
+      else -> handleGenericException(it)
     }
+    invoke(err)
   }
+}
+
+private fun handleHttpException(exception: HttpException): ErrorModel {
+  Timber.tag("ApiError").e("message: ${exception.message}")
+  Timber.tag("ApiError").e("code: ${exception.code()}")
+  Timber.tag("ApiError").e("cause: ${exception.cause}")
+  Timber.tag("ApiError").e("response: ${exception.response()}")
+  Timber.tag("ApiError").e("stackTrace: ${exception.stackTrace}")
+
+  return ErrorModel(ErrorType.Api, exception.code(), R.string.api_error)
+}
+
+private fun handleGenericException(exception: Throwable): ErrorModel {
+  Timber.tag("ApiError").e("message: ${exception.message}")
+  Timber.tag("ApiError").e("cause: ${exception.cause}")
+  Timber.tag("ApiError").e("stackTrace: ${exception.stackTrace}")
+
+  return ErrorModel(ErrorType.Api, -1, R.string.api_error)
 }

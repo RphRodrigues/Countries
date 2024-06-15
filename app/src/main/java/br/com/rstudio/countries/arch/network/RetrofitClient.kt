@@ -11,11 +11,13 @@ import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import timber.log.Timber
+import java.util.concurrent.TimeUnit
 
 class RetrofitClient(private val application: Context) {
 
   companion object {
     private const val _1MB = 1024 * 1024L
+    private const val TIMEOUT = 20L
   }
 
   private val gson: Gson by lazy {
@@ -37,6 +39,9 @@ class RetrofitClient(private val application: Context) {
 
   private val okHttp: OkHttpClient by lazy {
     OkHttpClient.Builder()
+      .connectTimeout(TIMEOUT, TimeUnit.SECONDS)
+      .readTimeout(TIMEOUT, TimeUnit.SECONDS)
+      .writeTimeout(TIMEOUT, TimeUnit.SECONDS)
       .addInterceptor(loggingInterceptor)
       .cache(cacheSize())
       .build()
