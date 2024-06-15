@@ -24,7 +24,7 @@ class ListPresenter(
     }
   }
 
-  override fun onTrackScreenView() {
+  override fun onResume() {
     tracker.trackScreenView()
   }
 

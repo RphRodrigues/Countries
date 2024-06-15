@@ -11,7 +11,7 @@ interface DetailsContract {
   interface Presenter {
     var view: View?
     fun onInitializer(country: Country?, borders: List<Country>?)
-    fun onTrackScreenView()
+    fun onResume()
     fun onBackPressed()
     fun onDestroy()
   }

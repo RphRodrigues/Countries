@@ -18,7 +18,7 @@ interface ListContract {
     fun onCountryClickListener(country: Country)
     fun onBackPressed()
     fun onDestroy()
-    fun onTrackScreenView()
+    fun onResume()
   }
 
   interface Tracker {

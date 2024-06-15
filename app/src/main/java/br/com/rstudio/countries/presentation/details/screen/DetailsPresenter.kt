@@ -21,7 +21,7 @@ class DetailsPresenter(
     view?.bindCountry(country, bordersList)
   }
 
-  override fun onTrackScreenView() {
+  override fun onResume() {
     tracker.trackScreenView(country)
   }
 

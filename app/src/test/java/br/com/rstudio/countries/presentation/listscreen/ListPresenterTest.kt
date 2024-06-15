@@ -84,8 +84,8 @@ class ListPresenterTest : BaseTest() {
   }
 
   @Test
-  fun `when onTrackScreenView is called then it should track it`() {
-    presenter.onTrackScreenView()
+  fun `when onResume is called then it should track it`() {
+    presenter.onResume()
 
     verify { tracker.trackScreenView() }
   }

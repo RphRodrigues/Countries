@@ -54,7 +54,7 @@ class DetailsFragment : Fragment(R.layout.fragment_details), DetailsContract.Vie
 
   override fun onResume() {
     super.onResume()
-    presenter.onTrackScreenView()
+    presenter.onResume()
   }
 
   override fun bindCountry(country: Country, countryBorders: List<String>?) {

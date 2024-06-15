@@ -46,11 +46,11 @@ class DetailsPresenterTest {
   }
 
   @Test
-  fun `when onTrackScreenView is called then it should track it`() {
+  fun `when onResume is called then it should track it`() {
     val country = mockk<Country>()
     presenter.onInitializer(country = country, borders = null)
 
-    presenter.onTrackScreenView()
+    presenter.onResume()
 
     verify {
       tracker.trackScreenView(country)
