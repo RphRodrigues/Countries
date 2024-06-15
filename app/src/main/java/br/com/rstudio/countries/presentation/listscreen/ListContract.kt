@@ -15,10 +15,10 @@ interface ListContract {
 
   interface Presenter : NetworkPresenter<View> {
     fun onInitialize()
+    fun onResume()
     fun onCountryClickListener(country: Country)
     fun onBackPressed()
     fun onDestroy()
-    fun onResume()
   }
 
   interface Tracker {
