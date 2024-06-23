@@ -1,10 +1,10 @@
 package br.com.rstudio.countries.presentation.listscreen
 
-import br.com.rstudio.countries.testUtil.BaseTest
-import br.com.rstudio.countries.testUtil.RxJavaSchedulerRule
 import br.com.rstudio.countries.data.model.Country
 import br.com.rstudio.countries.data.repository.CountryRepository
 import br.com.rstudio.countries.presentation.CountryModel.countryList
+import br.com.rstudio.countries.testUtil.BaseTest
+import br.com.rstudio.countries.testUtil.RxJavaSchedulerRule
 import io.mockk.every
 import io.mockk.mockk
 import io.mockk.verify
