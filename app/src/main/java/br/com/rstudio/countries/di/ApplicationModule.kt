@@ -29,7 +29,7 @@ import org.koin.dsl.module
 import retrofit2.Retrofit
 import retrofit2.create
 
-val ApplicationModule = module {
+val applicationModule = module {
 
   single {
     RetrofitClient(androidContext()).newInstance()

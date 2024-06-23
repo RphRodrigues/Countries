@@ -1,17 +1,14 @@
 package br.com.rstudio.countries.arch.observability.crashlytics
 
-import android.os.Build
+import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.google.firebase.crashlytics.FirebaseCrashlytics
 import io.mockk.mockk
 import io.mockk.verify
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
-import org.robolectric.RobolectricTestRunner
-import org.robolectric.annotation.Config
 
-@RunWith(RobolectricTestRunner::class)
-@Config(sdk = [Build.VERSION_CODES.P])
+@RunWith(AndroidJUnit4::class)
 class FirebaseCrashlyticsReportTest {
 
   private val firebaseCrashlytics = mockk<FirebaseCrashlytics>(relaxed = true)

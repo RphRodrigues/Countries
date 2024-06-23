@@ -4,7 +4,7 @@ import android.app.Application
 import br.com.rstudio.countries.arch.observability.analytics.AnalyticsEvent
 import br.com.rstudio.countries.arch.observability.analytics.AnalyticsReport
 import br.com.rstudio.countries.arch.observability.crashlytics.FirebaseCrashlyticsReportTree
-import br.com.rstudio.countries.di.ApplicationModule
+import br.com.rstudio.countries.di.applicationModule
 import org.koin.android.ext.android.getKoin
 import org.koin.android.ext.android.inject
 import org.koin.android.ext.koin.androidContext
@@ -24,7 +24,7 @@ class AppApplication : Application() {
     startKoin {
       androidLogger()
       androidContext(this@AppApplication)
-      modules(ApplicationModule)
+      modules(applicationModule)
     }
 
     analyticsReport.trackEvent(AnalyticsEvent.OPEN_APP)

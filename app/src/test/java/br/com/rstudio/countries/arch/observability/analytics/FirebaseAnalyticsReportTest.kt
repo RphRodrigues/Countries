@@ -1,7 +1,7 @@
 package br.com.rstudio.countries.arch.observability.analytics
 
-import android.os.Build
 import android.os.Bundle
+import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.google.firebase.analytics.FirebaseAnalytics
 import io.mockk.every
 import io.mockk.mockk
@@ -11,11 +11,8 @@ import junit.framework.TestCase.assertEquals
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
-import org.robolectric.RobolectricTestRunner
-import org.robolectric.annotation.Config
 
-@RunWith(RobolectricTestRunner::class)
-@Config(sdk = [Build.VERSION_CODES.P])
+@RunWith(AndroidJUnit4::class)
 class FirebaseAnalyticsReportTest {
 
   private lateinit var analyticsReport: AnalyticsReport
