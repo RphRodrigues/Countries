@@ -160,13 +160,20 @@ dependencies {
     implementation 'com.google.firebase:firebase-crashlytics-ktx:18.2.9'
 
     // Unit test
-    testImplementation 'junit:junit:4.+'
+    testImplementation "junit:junit:4.12"
     testImplementation "io.insert-koin:koin-test:2.2.3"
     testImplementation "io.mockk:mockk:1.12.0"
     testImplementation "org.robolectric:robolectric:4.10.1"
+    testImplementation "com.squareup.okhttp3:mockwebserver:4.9.0"
+    debugImplementation "androidx.fragment:fragment-testing:1.3.6"
+    testImplementation "androidx.test.ext:junit:1.1.3"
+    testImplementation "androidx.test.espresso:espresso-core:3.4.0"
+    testImplementation "androidx.test.espresso:espresso-contrib:3.4.0"
 
     // Android test
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
-    androidTestImplementation "io.mockk:mockk-android:1.13.4"
+    androidTestImplementation "androidx.test.espresso:espresso-core:3.4.0"
+    androidTestImplementation "com.squareup.okhttp3:mockwebserver:4.9.0"
+    androidTestImplementation "io.mockk:mockk-android:1.12.0"
+    androidTestImplementation "io.insert-koin:koin-test:2.2.3"
 }

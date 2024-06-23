@@ -1,4 +1,4 @@
-package br.com.rstudio.countries
+package br.com.rstudio.countries.testUtil
 
 import io.reactivex.android.plugins.RxAndroidPlugins
 import io.reactivex.plugins.RxJavaPlugins

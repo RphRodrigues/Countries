@@ -1,4 +1,4 @@
-package br.com.rstudio.countries
+package br.com.rstudio.countries.testUtil
 
 import okhttp3.internal.EMPTY_RESPONSE
 import retrofit2.HttpException
