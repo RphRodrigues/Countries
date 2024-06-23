@@ -77,6 +77,7 @@ class DetailsFragment : Fragment(R.layout.fragment_details), DetailsContract.Vie
   private fun bindName(countryName: String) {
     DetailsItemView(requireContext()).apply {
       bindItem(R.drawable.flag_icon, countryName)
+      bindTag("flag_icon")
     }.also {
       containerView.addView(it)
     }
@@ -88,6 +89,7 @@ class DetailsFragment : Fragment(R.layout.fragment_details), DetailsContract.Vie
 
     DetailsItemView(requireContext()).apply {
       bindItem(R.drawable.population_icon, populationFormatted)
+      bindTag("population_icon")
     }.also {
       containerView.addView(it)
     }
@@ -97,6 +99,7 @@ class DetailsFragment : Fragment(R.layout.fragment_details), DetailsContract.Vie
     DetailsItemListView(requireContext()).apply {
       bindItem(R.drawable.capital_icon, "Capital")
       bindListItem(capitals)
+      bindTag("capital_icon")
     }.also {
       containerView.addView(it)
     }
@@ -106,6 +109,7 @@ class DetailsFragment : Fragment(R.layout.fragment_details), DetailsContract.Vie
     DetailsItemListView(requireContext()).apply {
       bindItem(R.drawable.border_icon, "Border")
       bindListItem(countryBorders)
+      bindTag("border_icon")
     }.also {
       containerView.addView(it)
     }

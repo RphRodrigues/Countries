@@ -25,4 +25,27 @@ object CountryModel {
       every { littleFlag } returns "litter flag 3"
     }
   )
+
+  val countryDetail = mockk<Country>(relaxed = true) {
+    every { name } returns "Brazil"
+    every { population } returns 212559409
+    every { capital } returns listOf("Brasília")
+  }
+
+  val countryBorders = arrayListOf<Country>(
+    mockk(relaxed = true) {
+      every { name } returns "Argentina"
+      every { littleFlag } returns "🇦🇷"
+    },
+
+    mockk(relaxed = true) {
+      every { name } returns "Uruguay"
+      every { littleFlag } returns "🇺🇾"
+    },
+
+    mockk(relaxed = true) {
+      every { name } returns "Colombia"
+      every { littleFlag } returns "🇨🇴"
+    }
+  )
 }
