@@ -13,9 +13,13 @@ import retrofit2.converter.gson.GsonConverterFactory
 val testModule = module {
 
   single<Retrofit>(override = true) { (url: HttpUrl) ->
+    val okHttp = OkHttpClient.Builder()
+      .addInterceptor(HttpIdlingResourceInterceptor())
+      .build()
+
     Retrofit.Builder()
       .baseUrl(url)
-      .client(OkHttpClient.Builder().build())
+      .client(okHttp)
       .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
       .addConverterFactory(GsonConverterFactory.create())
       .build()

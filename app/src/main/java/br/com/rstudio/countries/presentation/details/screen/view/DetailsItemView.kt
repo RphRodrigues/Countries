@@ -39,4 +39,8 @@ class DetailsItemView @JvmOverloads constructor(
   private fun bindText(text: String) {
     textView.text = text
   }
+
+  fun bindTag(tag: String) {
+    iconView.tag = tag
+  }
 }

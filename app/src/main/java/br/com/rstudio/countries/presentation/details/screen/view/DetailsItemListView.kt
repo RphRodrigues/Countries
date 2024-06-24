@@ -27,6 +27,10 @@ class DetailsItemListView @JvmOverloads constructor(
     detailsItemView.bindItem(icon, text)
   }
 
+  fun bindTag(tag: String) {
+    detailsItemView.bindTag(tag)
+  }
+
   fun bindListItem(items: List<String>?) {
     if (items.isNullOrEmpty()) {
       detailsItemView.isVisible = false
