@@ -59,6 +59,7 @@ android {
 
     buildTypes {
         debug {
+            FirebasePerformance.instrumentationEnabled = false
             versionNameSuffix '-debug'
 
             firebaseAppDistribution.artifactPath = "$buildDir/outputs/apk/debug/app-debug.apk"
