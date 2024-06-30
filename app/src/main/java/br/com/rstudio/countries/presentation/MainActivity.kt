@@ -1,5 +1,7 @@
 package br.com.rstudio.countries.presentation
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
@@ -71,5 +73,13 @@ class MainActivity : AppCompatActivity(), BaseActivityView {
   override fun hideError() {
     analytics.trackEvent(HIRE_ERROR)
     feedbackView?.isVisible = false
+  }
+
+  companion object {
+    fun createIntent(context: Context): Intent {
+      return Intent(context, MainActivity::class.java).apply {
+        flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+      }
+    }
   }
 }
