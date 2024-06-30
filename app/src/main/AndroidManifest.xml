@@ -21,7 +21,9 @@
             android:value="false" />
 
         <activity
-            android:name=".presentation.MainActivity"
+            android:name=".presentation.splashscreen.SplashScreenActivity"
+            android:theme="@style/Theme.Countries.Splash"
+            android:screenOrientation="portrait"
             android:exported="true">
 
             <intent-filter>
@@ -31,6 +33,11 @@
             </intent-filter>
 
         </activity>
+
+        <activity
+            android:name=".presentation.MainActivity"
+            android:screenOrientation="portrait"
+            android:exported="false" />
 
     </application>
 
