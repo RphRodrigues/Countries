@@ -61,6 +61,7 @@ android {
         debug {
             FirebasePerformance.instrumentationEnabled = false
             versionNameSuffix '-debug'
+            applicationIdSuffix '.dev'
 
             firebaseAppDistribution.artifactPath = "$buildDir/outputs/apk/debug/app-debug.apk"
 
@@ -71,6 +72,7 @@ android {
         homolog {
             debuggable false
             versionNameSuffix '-homolog'
+            applicationIdSuffix '.homolog'
 
             signingConfig signingConfigs.homolog
 
