@@ -36,6 +36,7 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
         buildConfigField "int", "CACHE_IN_MB", "5"
+        buildConfigField "long", "REMOTE_CONFIG_INTERVAL", "3600"
         buildConfigField "String", "BASE_URL", "\"https://restcountries.com/v3.1/\""
 
         proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
@@ -63,6 +64,7 @@ android {
             versionNameSuffix '-debug'
             applicationIdSuffix '.dev'
 
+            buildConfigField "long", "REMOTE_CONFIG_INTERVAL", "60"
             firebaseAppDistribution.artifactPath = "$buildDir/outputs/apk/debug/app-debug.apk"
 
             minifyEnabled false
@@ -163,6 +165,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-perf:20.0.6'
     implementation 'com.google.firebase:firebase-analytics-ktx:20.1.2'
     implementation 'com.google.firebase:firebase-crashlytics-ktx:18.2.9'
+    implementation 'com.google.firebase:firebase-config:21.0.2'
 
     // Unit test
     testImplementation "junit:junit:4.12"

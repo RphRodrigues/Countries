@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<defaultsMap>
+    <entry>
+        <key>splash_screen_timeout</key>
+        <value>2000</value>
+    </entry>
+</defaultsMap>

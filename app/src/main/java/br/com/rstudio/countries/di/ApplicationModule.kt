@@ -3,6 +3,8 @@ package br.com.rstudio.countries.di
 import br.com.rstudio.countries.R
 import br.com.rstudio.countries.arch.GlideImageLoader
 import br.com.rstudio.countries.arch.ImageLoader
+import br.com.rstudio.countries.arch.featuretoggle.FirebaseRemoteConfigImp
+import br.com.rstudio.countries.arch.featuretoggle.RemoteConfig
 import br.com.rstudio.countries.arch.network.RetrofitClient
 import br.com.rstudio.countries.arch.observability.analytics.AnalyticsReport
 import br.com.rstudio.countries.arch.observability.analytics.FirebaseAnalyticsReport
@@ -24,6 +26,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.RequestOptions
 import com.google.firebase.analytics.FirebaseAnalytics
 import com.google.firebase.crashlytics.FirebaseCrashlytics
+import com.google.firebase.remoteconfig.FirebaseRemoteConfig
 import org.koin.android.ext.koin.androidContext
 import org.koin.dsl.module
 import retrofit2.Retrofit
@@ -57,6 +60,14 @@ val applicationModule = module {
 
   single<AnalyticsReport> {
     FirebaseAnalyticsReport(analytics = get())
+  }
+
+  single<FirebaseRemoteConfig> {
+    FirebaseRemoteConfig.getInstance()
+  }
+
+  single<RemoteConfig> {
+    FirebaseRemoteConfigImp(remoteConfig = get())
   }
 
   single {
