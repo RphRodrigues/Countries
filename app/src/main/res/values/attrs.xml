@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="AppBarView">
+        <attr name="title" format="string" />
+        <attr name="titleColor" format="color" />
+        <attr name="showIcon" format="boolean" />
+        <attr name="icon" format="reference" />
+    </declare-styleable>
+
+    <declare-styleable name="WinnerDetailsView">
+        <attr name="tagColor" format="color" />
+        <attr name="showWinnerMedal" format="boolean" />
+    </declare-styleable>
+
+</resources>

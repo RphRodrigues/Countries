@@ -1,18 +1,222 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/color_4099D5">
 
-    <androidx.appcompat.widget.AppCompatTextView
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/ranking_header_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="@string/ranking"
-        android:textSize="@dimen/app_text_size_6"
+        android:paddingBottom="@dimen/app_dimen_8"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <br.com.rstudio.countries.presentation.commonview.AppBarView
+            android:id="@+id/ranking_app_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:title="@string/ranking"
+            app:titleColor="@color/white" />
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/ranking_tab_layout"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/tab_layout_height"
+            android:layout_marginHorizontal="@dimen/app_dimen_8"
+            android:layout_marginTop="@dimen/app_dimen_8"
+            android:background="?android:attr/selectableItemBackgroundBorderless"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ranking_app_bar"
+            app:tabIndicator="@drawable/tab_layout_background"
+            app:tabIndicatorAnimationMode="elastic"
+            app:tabIndicatorColor="@null"
+            app:tabIndicatorGravity="stretch"
+            app:tabMode="fixed"
+            app:tabSelectedTextColor="@color/color_4099D5"
+            app:tabTextColor="@color/white">
+
+            <com.google.android.material.tabs.TabItem
+                android:id="@+id/ranking_tab_weekly"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/weekly" />
+
+            <com.google.android.material.tabs.TabItem
+                android:id="@+id/ranking_tab_all"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/all" />
+
+        </com.google.android.material.tabs.TabLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/ranking_position_message_container"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/app_dimen_8"
+        android:background="@drawable/rounded_corners"
+        android:backgroundTint="@color/color_E6E6E6"
+        android:padding="@dimen/app_dimen_6"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ranking_header_container">
+
+        <LinearLayout
+            android:id="@+id/ranking_position_indicator_container"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/app_dimen_4"
+            android:background="@drawable/rounded_corners"
+            android:backgroundTint="@color/black"
+            android:padding="@dimen/app_dimen_6"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/ranking_position_indicator_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/ranking_position"
+                android:textColor="@color/white"
+                android:textSize="@dimen/app_text_size_7" />
+
+        </LinearLayout>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/ranking_position_message_text_view"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/app_dimen_9"
+            android:text="@string/you_are_better_than_x_percent_of_other_players"
+            android:textColor="@color/color_060101"
+            android:textSize="@dimen/app_text_size_4"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/ranking_position_indicator_container"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/oval_3"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.8" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/oval_2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.8" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/oval_1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.8" />
+
+    <br.com.rstudio.countries.presentation.commonview.WinnerDetailsView
+        android:id="@+id/ranking_winner_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/app_dimen_8"
+        app:layout_constraintBottom_toTopOf="@id/ranking_podium_image"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:showWinnerMedal="true"
+        app:tagColor="@color/color_F16101" />
+
+    <br.com.rstudio.countries.presentation.commonview.WinnerDetailsView
+        android:id="@+id/ranking_winner_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/app_dimen_9"
+        android:layout_marginBottom="@dimen/app_dimen_negative_2"
+        app:layout_constraintBottom_toTopOf="@id/ranking_podium_image"
+        app:layout_constraintEnd_toStartOf="@id/ranking_winner_1"
+        app:showWinnerMedal="false"
+        app:tagColor="@color/color_30426A" />
+
+    <br.com.rstudio.countries.presentation.commonview.WinnerDetailsView
+        android:id="@+id/ranking_winner_3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/app_dimen_9"
+        android:layout_marginBottom="@dimen/ranking_winner_margin_bottom"
+        app:layout_constraintBottom_toTopOf="@id/ranking_podium_image"
+        app:layout_constraintStart_toEndOf="@id/ranking_winner_1"
+        app:showWinnerMedal="false"
+        app:tagColor="@color/color_30426A" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/ranking_podium_image"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/ranking_podium_margin_bottom"
+        android:src="@drawable/podium"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ranking_header_container">
+
+        <FrameLayout
+            android:id="@+id/ranking_bottom_sheet"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginHorizontal="@dimen/app_dimen_5"
+            android:background="@drawable/top_rounded_corners"
+            app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ranking_bottom_view_image_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|top"
+                android:src="@drawable/ellipse_icon" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/ranking_list_recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:overScrollMode="never"
+                android:paddingHorizontal="@dimen/app_dimen_8"
+                android:paddingTop="@dimen/app_dimen_8"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:itemCount="10"
+                tools:listitem="@layout/ranking_list_item" />
+
+        </FrameLayout>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

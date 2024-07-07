@@ -17,4 +17,10 @@
     <style name="Theme.Countries.Splash" parent="Theme.MaterialComponents.Light.NoActionBar.Bridge">
         <item name="android:statusBarColor">#5C96A7</item>
     </style>
+
+    <style name="RoundImageView">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
+
 </resources>

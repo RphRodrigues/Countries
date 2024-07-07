@@ -11,4 +11,19 @@
 
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <color name="color_30426A">#30426A</color>
+    <color name="color_4099D5">#4099D5</color>
+    <color name="color_D8E8F5">#D8E8F5</color>
+    <color name="color_FFFFFF">#FFFFFF</color>
+    <color name="color_F16101">#F16101</color>
+    <color name="color_9CA3AD">#9CA3AD</color>
+    <color name="color_858494">#858494</color>
+    <color name="color_0C092A">#0C092A</color>
+    <color name="color_EFEEFC">#EFEEFC</color>
+    <color name="color_DADADA">#DADADA</color>
+    <color name="color_48BDE2">#48BDE2</color>
+    <color name="color_E6E6E6">#E6E6E6</color>
+    <color name="color_060101">#060101</color>
+
 </resources>
