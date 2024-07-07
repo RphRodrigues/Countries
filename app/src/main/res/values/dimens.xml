@@ -32,4 +32,6 @@
     <dimen name="details_country_card_height">150dp</dimen>
 
     <dimen name="details_country_image_size">85dp</dimen>
+
+    <dimen name="splash_screen_icon_size">256dp</dimen>
 </resources>

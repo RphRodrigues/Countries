@@ -5,12 +5,13 @@
     android:id="@+id/splash_screen_content"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@mipmap/splash_screen_background"
     tools:context=".presentation.splashscreen.SplashScreenActivity">
 
     <androidx.appcompat.widget.AppCompatImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@mipmap/ic_launcher"
+        android:layout_width="@dimen/splash_screen_icon_size"
+        android:layout_height="@dimen/splash_screen_icon_size"
+        android:src="@mipmap/ic_launcher_foreground"
         app:layout_constraintBottom_toBottomOf="@id/splash_screen_content"
         app:layout_constraintEnd_toEndOf="@id/splash_screen_content"
         app:layout_constraintStart_toStartOf="@id/splash_screen_content"
