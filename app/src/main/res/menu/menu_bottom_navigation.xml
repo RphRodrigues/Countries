@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/action_home"
+        android:icon="@drawable/home_icon"
+        android:title="@string/home" />
+
+    <item
+        android:id="@+id/action_ranking"
+        android:icon="@drawable/ranking_icon"
+        android:title="@string/ranking" />
+
+    <item
+        android:id="@+id/action_quiz"
+        android:icon="@drawable/quiz_icon"
+        android:title="@string/quiz" />
+
+    <item
+        android:id="@+id/action_favorite"
+        android:icon="@drawable/favorite_icon"
+        android:title="@string/favorites" />
+
+    <item
+        android:id="@+id/action_profile"
+        android:icon="@drawable/profile_icon"
+        android:title="@string/profile" />
+
+</menu>

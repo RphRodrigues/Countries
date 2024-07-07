@@ -18,13 +18,19 @@ import br.com.rstudio.countries.arch.observability.analytics.AnalyticsEvent.SHOW
 import br.com.rstudio.countries.arch.observability.analytics.AnalyticsReport
 import br.com.rstudio.countries.arch.widget.FeedbackView
 import br.com.rstudio.countries.arch.widget.ProgressView
+import br.com.rstudio.countries.presentation.favoritescreen.FavoriteFragment
 import br.com.rstudio.countries.presentation.listscreen.ListFragment
+import br.com.rstudio.countries.presentation.profilescreen.ProfileFragment
+import br.com.rstudio.countries.presentation.quizscreen.QuizFragment
+import br.com.rstudio.countries.presentation.rankingscreen.RankingFragment
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import org.koin.android.ext.android.inject
 
 class MainActivity : AppCompatActivity(), BaseActivityView {
 
   private var feedbackView: FeedbackView? = null
   private var progressView: ProgressView? = null
+  private var bottomNavigationView: BottomNavigationView? = null
 
   private val analytics: AnalyticsReport by inject()
 
@@ -32,12 +38,48 @@ class MainActivity : AppCompatActivity(), BaseActivityView {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_main)
     setupView()
-    replaceFragment(ListFragment.newInstance())
+    setupBottomNavigation()
   }
 
   private fun setupView() {
     feedbackView = findViewById(R.id.feedback_view)
     progressView = findViewById(R.id.progress_view)
+    bottomNavigationView = findViewById(R.id.bottom_navigation)
+  }
+
+  private fun setupBottomNavigation() {
+    bottomNavigationView?.setOnItemSelectedListener {
+      when (it.itemId) {
+        R.id.action_home -> {
+          replaceFragment(ListFragment.newInstance())
+          true
+        }
+
+        R.id.action_ranking -> {
+          replaceFragment(RankingFragment.newInstance())
+          true
+        }
+
+        R.id.action_quiz -> {
+          replaceFragment(QuizFragment.newInstance())
+          true
+        }
+
+        R.id.action_favorite -> {
+          replaceFragment(FavoriteFragment.newInstance())
+          true
+        }
+
+        R.id.action_profile -> {
+          replaceFragment(ProfileFragment.newInstance())
+          true
+        }
+
+        else -> false
+      }
+    }
+
+    bottomNavigationView?.selectedItemId = R.id.action_home
   }
 
   override fun showLoader() {

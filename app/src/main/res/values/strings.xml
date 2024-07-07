@@ -5,4 +5,9 @@
     <string name="loading">Loading…</string>
     <string name="error">Error!</string>
     <string name="try_again">Try again</string>
+    <string name="home">Home</string>
+    <string name="ranking">Ranking</string>
+    <string name="quiz">Quiz</string>
+    <string name="favorites">Favoritos</string>
+    <string name="profile">Perfil</string>
 </resources>
