@@ -10,4 +10,8 @@
     <string name="quiz">Quiz</string>
     <string name="favorites">Favoritos</string>
     <string name="profile">Perfil</string>
+    <string name="weekly">Semanal</string>
+    <string name="all">Todo</string>
+    <string name="ranking_position">#4</string>
+    <string name="you_are_better_than_x_percent_of_other_players">Você está melhor que 60% dos outros jogadores</string>
 </resources>

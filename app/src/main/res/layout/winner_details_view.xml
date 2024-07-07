@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/winner_medal_image_view"
+        android:layout_width="@dimen/app_dimen_13"
+        android:layout_height="@dimen/app_dimen_13"
+        android:background="@drawable/gold_medal"
+        android:elevation="@dimen/app_dimen_1"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <br.com.rstudio.countries.presentation.commonview.CircularImageView
+        android:id="@+id/winner_avatar_image_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/app_dimen_negative_2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/winner_medal_image_view" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/winner_name_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/app_dimen_4"
+        android:elegantTextHeight="true"
+        android:maxLength="@integer/app_string_name_max_length"
+        android:text="Davis Curtis"
+        android:textColor="@color/white"
+        android:textSize="@dimen/app_text_size_4"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/winner_avatar_image_view" />
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/winner_point_tag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/app_dimen_4"
+        android:background="@drawable/rounded_corners"
+        android:padding="@dimen/app_dimen_6"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/winner_name_text_view"
+        tools:backgroundTint="@color/color_F16101">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/winner_point_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2,569 QP"
+            android:textColor="@color/white"
+            android:textSize="@dimen/app_text_size_4" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

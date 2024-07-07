@@ -16,6 +16,17 @@
     <dimen name="app_dimen_14">40dp</dimen>
     <dimen name="app_dimen_15">44dp</dimen>
     <dimen name="app_dimen_16">48dp</dimen>
+    <dimen name="app_dimen_17">50dp</dimen>
+    <dimen name="app_dimen_18">52dp</dimen>
+    <dimen name="app_dimen_19">56dp</dimen>
+    <dimen name="app_dimen_20">60dp</dimen>
+
+    <dimen name="app_dimen_negative_1">-15dp</dimen>
+    <dimen name="app_dimen_negative_2">-20dp</dimen>
+    <dimen name="app_dimen_negative_3">-25dp</dimen>
+
+    <dimen name="ranking_winner_margin_bottom">-52dp</dimen>
+    <dimen name="ranking_podium_margin_bottom">-60dp</dimen>
 
     <dimen name="app_text_size_1">10sp</dimen>
     <dimen name="app_text_size_2">12sp</dimen>
@@ -25,6 +36,9 @@
     <dimen name="app_text_size_6">20sp</dimen>
     <dimen name="app_text_size_7">22sp</dimen>
     <dimen name="app_text_size_8">24sp</dimen>
+
+    <dimen name="circular_image_view_height">65dp</dimen>
+    <dimen name="tab_layout_height">40dp</dimen>
 
     <dimen name="header_list_view_height">200dp</dimen>
 
