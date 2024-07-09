@@ -25,6 +25,7 @@ import br.com.rstudio.countries.presentation.quizscreen.QuizFragment
 import br.com.rstudio.countries.presentation.rankingscreen.RankingFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import org.koin.android.ext.android.inject
+import timber.log.Timber
 
 class MainActivity : AppCompatActivity(), BaseActivityView {
 
@@ -39,6 +40,7 @@ class MainActivity : AppCompatActivity(), BaseActivityView {
     setContentView(R.layout.activity_main)
     setupView()
     setupBottomNavigation()
+    handleIntent(intent)
   }
 
   private fun setupView() {
@@ -117,7 +119,29 @@ class MainActivity : AppCompatActivity(), BaseActivityView {
     feedbackView?.isVisible = false
   }
 
+  override fun onNewIntent(intent: Intent?) {
+    super.onNewIntent(intent)
+    setIntent(intent)
+    handleIntent(intent)
+  }
+
+  private fun handleIntent(intent: Intent?) {
+    Timber.tag(DEEP_LINK_TAG).d("action ${intent?.action}")
+    Timber.tag(DEEP_LINK_TAG).d("data ${intent?.data}")
+
+    val screen = intent?.data?.getQueryParameter(getString(R.string.deep_link_screen))
+
+    bottomNavigationView?.selectedItemId = when (screen) {
+      getString(R.string.deep_link_screen_ranking) -> R.id.action_ranking
+      getString(R.string.deep_link_screen_quiz) -> R.id.action_quiz
+      getString(R.string.deep_link_screen_favorite) -> R.id.action_favorite
+      getString(R.string.deep_link_screen_profile) -> R.id.action_profile
+      else -> R.id.action_home
+    }
+  }
+
   companion object {
+    const val DEEP_LINK_TAG = "DEEP_LINK"
     fun createIntent(context: Context): Intent {
       return Intent(context, MainActivity::class.java).apply {
         flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
