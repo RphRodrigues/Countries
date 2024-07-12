@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    tools:background="@color/color_4099D5">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/profile_ranking_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:src="@drawable/global_icon" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/profile_ranking_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:textColor="@color/color_E6E6E6"
+        android:textSize="12sp"
+        tools:text="Ranking Global" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/profile_ranking_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        tools:text="#1,438" />
+
+</androidx.appcompat.widget.LinearLayoutCompat>
