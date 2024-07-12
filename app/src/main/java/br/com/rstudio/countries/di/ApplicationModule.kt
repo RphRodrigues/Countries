@@ -11,6 +11,7 @@ import br.com.rstudio.countries.arch.observability.analytics.FirebaseAnalyticsRe
 import br.com.rstudio.countries.arch.observability.crashlytics.CrashlyticsReport
 import br.com.rstudio.countries.arch.observability.crashlytics.FirebaseCrashlyticsReport
 import br.com.rstudio.countries.arch.observability.crashlytics.FirebaseCrashlyticsReportTree
+import br.com.rstudio.countries.arch.widget.imageLoaderShimmerDrawable
 import br.com.rstudio.countries.data.CountryApi
 import br.com.rstudio.countries.data.model.CountryMapper
 import br.com.rstudio.countries.data.repository.CountryRepository
@@ -75,7 +76,7 @@ val applicationModule = module {
       .setDefaultRequestOptions(
         RequestOptions()
           .diskCacheStrategy(DiskCacheStrategy.ALL)
-          .placeholder(android.R.drawable.stat_sys_download)
+          .placeholder(imageLoaderShimmerDrawable())
           .error(R.drawable.ic_error)
           .centerCrop()
       )

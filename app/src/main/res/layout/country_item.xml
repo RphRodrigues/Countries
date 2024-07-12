@@ -16,7 +16,7 @@
         android:layout_marginHorizontal="@dimen/app_dimen_7"
         app:cardCornerRadius="@dimen/app_dimen_5">
 
-        <br.com.rstudio.countries.arch.widget.LoadImageView
+        <br.com.rstudio.countries.arch.widget.ImageLoaderView
             android:id="@+id/country_image_view"
             android:layout_width="@dimen/details_country_image_size"
             android:layout_height="@dimen/details_country_image_size" />
