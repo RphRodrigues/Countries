@@ -8,7 +8,7 @@ import androidx.fragment.app.Fragment
 import br.com.rstudio.countries.R
 import br.com.rstudio.countries.arch.extension.popBackStack
 import br.com.rstudio.countries.arch.extension.setupBackPressedCallback
-import br.com.rstudio.countries.arch.widget.LoadImageView
+import br.com.rstudio.countries.arch.widget.ImageLoaderView
 import br.com.rstudio.countries.data.model.Country
 import br.com.rstudio.countries.presentation.details.screen.view.DetailsItemListView
 import br.com.rstudio.countries.presentation.details.screen.view.DetailsItemView
@@ -24,7 +24,7 @@ class DetailsFragment : Fragment(R.layout.fragment_details), DetailsContract.Vie
     parametersOf(this)
   }
 
-  private lateinit var imageView: LoadImageView
+  private lateinit var imageView: ImageLoaderView
   private lateinit var containerView: LinearLayoutCompat
 
   private val country: Country?

@@ -7,13 +7,13 @@ import androidx.appcompat.widget.LinearLayoutCompat
 import androidx.recyclerview.widget.RecyclerView
 import br.com.rstudio.countries.R
 import br.com.rstudio.countries.arch.extension.inflateView
-import br.com.rstudio.countries.arch.widget.LoadImageView
+import br.com.rstudio.countries.arch.widget.ImageLoaderView
 import br.com.rstudio.countries.data.model.Country
 
 class CountryViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
   private val countryName: AppCompatTextView by lazy { itemView.findViewById(R.id.country_name) }
-  private val image: LoadImageView by lazy { itemView.findViewById(R.id.country_image_view) }
+  private val image: ImageLoaderView by lazy { itemView.findViewById(R.id.country_image_view) }
 
   private val container: LinearLayoutCompat by lazy {
     itemView.findViewById(R.id.container_item_linear_layout)
