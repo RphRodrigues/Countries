@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_4099D5">
+
+    <br.com.rstudio.countries.presentation.commonview.AppBarView
+        android:id="@+id/quiz_feedback_appbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:icon="@drawable/arrow_back"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:showIcon="true" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/quiz_feedback_guide"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.20" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@drawable/top_rounded_corners"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/quiz_feedback_guide">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/quiz_feedback_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_feeckback_correct"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.2" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/quiz_feedback_title_text_view"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/app_dimen_10"
+            android:layout_marginTop="@dimen/app_dimen_10"
+            android:gravity="center"
+            android:text="@string/congratulations"
+            android:textColor="@color/color_F16101"
+            android:textSize="@dimen/app_text_size_8"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/quiz_feedback_icon" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/quiz_feedback_message_text_view"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/app_dimen_10"
+            android:layout_marginTop="@dimen/app_dimen_10"
+            android:gravity="center"
+            android:text="@string/you_got_it_right"
+            android:textColor="@color/color_30426A"
+            android:textSize="@dimen/app_text_size_5"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/quiz_feedback_title_text_view" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

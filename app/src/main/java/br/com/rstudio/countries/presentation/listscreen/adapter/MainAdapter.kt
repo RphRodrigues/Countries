@@ -14,8 +14,10 @@ class MainAdapter : RecyclerView.Adapter<ListViewHolder>() {
 
   @SuppressLint("NotifyDataSetChanged")
   fun addItems(continentList: List<ContinentVO>) {
-    this.continentList = continentList
-    notifyDataSetChanged()
+    if (this.continentList.isEmpty()) {
+      this.continentList = continentList
+      notifyDataSetChanged()
+    }
   }
 
   override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListViewHolder {

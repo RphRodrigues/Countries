@@ -4,12 +4,29 @@ import br.com.rstudio.countries.R
 import br.com.rstudio.countries.arch.model.ErrorModel
 import br.com.rstudio.countries.arch.model.ErrorType
 import io.reactivex.Observable
+import io.reactivex.Single
+import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
+import io.reactivex.schedulers.Schedulers
 import retrofit2.HttpException
 import timber.log.Timber
 import java.net.UnknownHostException
 
+fun <T> Observable<T>.subscribeObserveDefault(): Observable<T> {
+  return this.subscribeOn(Schedulers.io())
+    .observeOn(AndroidSchedulers.mainThread())
+}
+
 fun <T> Observable<T>.doOnSuccess(invoke: (T) -> Unit): Disposable {
+  return this.subscribe({ invoke(it) }, {})
+}
+
+fun <T> Single<T>.subscribeObserveDefault(): Single<T> {
+  return this.subscribeOn(Schedulers.io())
+    .observeOn(AndroidSchedulers.mainThread())
+}
+
+fun <T> Single<T>.doOnSuccessful(invoke: (T) -> Unit): Disposable {
   return this.subscribe({ invoke(it) }, {})
 }
 

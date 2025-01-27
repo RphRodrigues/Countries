@@ -100,21 +100,25 @@
                 app:layout_constraintTop_toBottomOf="@id/quiz_question_text_view">
 
                 <com.google.android.material.radiobutton.MaterialRadioButton
+                    android:id="@+id/quiz_radio_button_1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Mumbai" />
 
                 <com.google.android.material.radiobutton.MaterialRadioButton
+                    android:id="@+id/quiz_radio_button_2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Nova Délhi" />
 
                 <com.google.android.material.radiobutton.MaterialRadioButton
+                    android:id="@+id/quiz_radio_button_3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Calcutá" />
 
                 <com.google.android.material.radiobutton.MaterialRadioButton
+                    android:id="@+id/quiz_radio_button_4"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Bangalore" />
@@ -135,6 +139,16 @@
                 app:layout_constraintVertical_bias="0.8" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <br.com.rstudio.countries.presentation.quizscreen.view.QuizFeedbackView
+            android:id="@+id/quiz_feedback"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

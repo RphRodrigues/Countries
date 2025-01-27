@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">Countries</string>
+    <string name="db_name">countries-db</string>
     <string name="internal_error">Check your internet.</string>
     <string name="api_error">Something went wrong,\n please try again later.</string>
     <string name="loading">Loading…</string>
@@ -14,4 +15,9 @@
     <string name="all">Todo</string>
     <string name="ranking_position">#4</string>
     <string name="you_are_better_than_x_percent_of_other_players">Você está melhor que 60% dos outros jogadores</string>
+    <string name="congratulations">Parabéns! 🎉</string>
+    <string name="you_got_it_right">Você acertou! O nome do país é %1$s.</string>
+    <string name="better_luck_next_time">Que pena! ❌</string>
+    <string name="the_correct_answer_is">A resposta correta é %1$s.\nTente novamente!</string>
+    <string name="select_a_option">Selecione uma opção</string>
 </resources>

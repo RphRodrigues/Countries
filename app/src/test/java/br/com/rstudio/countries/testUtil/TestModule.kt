@@ -12,7 +12,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 val testModule = module {
 
-  single<Retrofit>(override = true) { (url: HttpUrl) ->
+  single<Retrofit> { (url: HttpUrl) ->
     val okHttp = OkHttpClient.Builder()
       .addInterceptor(HttpIdlingResourceInterceptor())
       .build()
@@ -25,7 +25,7 @@ val testModule = module {
       .build()
   }
 
-  single<ImageLoader>(override = true) {
+  single<ImageLoader> {
     mockk(relaxed = true) {
       every { load(any(), any(), any()) } returns mockk()
     }
