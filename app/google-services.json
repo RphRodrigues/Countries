@@ -1,0 +1,67 @@
+{
+  "project_info": {
+    "project_number": "466387488330",
+    "project_id": "countries-dd232",
+    "storage_bucket": "countries-dd232.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:466387488330:android:468c37d0760b8bb709e0b3",
+        "android_client_info": {
+          "package_name": "br.com.rstudio.countries"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDAEwrZLPcs3cj470mGTkD21YFLQRUObuw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:466387488330:android:b63f7e597527011c09e0b3",
+        "android_client_info": {
+          "package_name": "br.com.rstudio.countries.dev"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDAEwrZLPcs3cj470mGTkD21YFLQRUObuw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:466387488330:android:6b197eb73af291e509e0b3",
+        "android_client_info": {
+          "package_name": "br.com.rstudio.countries.homolog"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDAEwrZLPcs3cj470mGTkD21YFLQRUObuw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

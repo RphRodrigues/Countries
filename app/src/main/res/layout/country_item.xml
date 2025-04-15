@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container_item_linear_layout"
+    android:layout_width="@dimen/details_country_card_width"
+    android:layout_height="@dimen/details_country_card_height"
+    android:background="?android:attr/selectableItemBackground"
+    android:orientation="vertical"
+    android:paddingTop="@dimen/app_dimen_7">
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/card_View_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/app_dimen_7"
+        app:cardCornerRadius="@dimen/app_dimen_5">
+
+        <br.com.rstudio.countries.arch.widget.LoadImageView
+            android:id="@+id/country_image_view"
+            android:layout_width="@dimen/details_country_image_size"
+            android:layout_height="@dimen/details_country_image_size" />
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/country_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/app_dimen_7"
+        android:layout_marginTop="@dimen/app_dimen_6"
+        android:ellipsize="end"
+        android:maxLines="2"
+        tools:text="Saint Pierre and Miquelon Miquelon" />
+
+</androidx.appcompat.widget.LinearLayoutCompat>

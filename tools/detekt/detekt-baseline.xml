@@ -1,0 +1,18 @@
+<?xml version="1.0" ?>
+<SmellBaseline>
+  <ManuallySuppressedIssues></ManuallySuppressedIssues>
+  <CurrentIssues>
+    <ID>ClassOrdering:RetrofitClient.kt$RetrofitClient$Companion</ID>
+    <ID>ClassOrdering:RetrofitClient.kt$RetrofitClient$private fun cacheSize(): Cache</ID>
+    <ID>LongParameterList:Country.kt$Country$( val countryName: CountryName, val capital: List&lt;String&gt;?, val borders: List&lt;String&gt;?, val timezones: List&lt;String&gt;, val continents: List&lt;String&gt;, val languages: CountryLanguage?, val littleFlag: String, val code: String, val independent: Boolean, val population: Int, val flags: CountryFlag, )</ID>
+    <ID>LongParameterList:Country.kt$CountryLanguage$( val ara: String? = null, val bre: String? = null, val ces: String? = null, val cym: String? = null, val deu: String? = null, val est: String? = null, val fin: String? = null, val fra: String? = null, val hrv: String? = null, val hun: String? = null, val ita: String? = null, val jpn: String? = null, val kor: String? = null, val nld: String? = null, val per: String? = null, val pol: String? = null, val portuguese: String? = null, val rus: String? = null, val slk: String? = null, val spa: String? = null, val srp: String? = null, val swe: String? = null, val tur: String? = null, val urd: String? = null, val zho: String? = null )</ID>
+    <ID>LongParameterList:CountryDTO.kt$CountryDTO$( @SerializedName("name") val name: CountryNameDTO, @SerializedName("capital") val capital: List&lt;String&gt;?, @SerializedName("borders") val borders: List&lt;String&gt;?, @SerializedName("timezones") val timezones: List&lt;String&gt;, @SerializedName("continents") val continents: List&lt;String&gt;, @SerializedName("flag") val flag: String, @SerializedName("cca3") val cca3: String, @SerializedName("population") val population: Int, @SerializedName("flags") val flags: CountryFlagDTO, @SerializedName("languages") val languages: CountryLanguageDTO?, @SerializedName("independent") val independent: Boolean )</ID>
+    <ID>LongParameterList:CountryDTO.kt$CountryLanguageDTO$( @SerializedName("ara") val ara: String?, @SerializedName("bre") val bre: String?, @SerializedName("ces") val ces: String?, @SerializedName("cym") val cym: String?, @SerializedName("deu") val deu: String?, @SerializedName("est") val est: String?, @SerializedName("fin") val fin: String?, @SerializedName("fra") val fra: String?, @SerializedName("hrv") val hrv: String?, @SerializedName("hun") val hun: String?, @SerializedName("ita") val ita: String?, @SerializedName("jpn") val jpn: String?, @SerializedName("kor") val kor: String?, @SerializedName("nld") val nld: String?, @SerializedName("per") val per: String?, @SerializedName("pol") val pol: String?, @SerializedName("por") val por: String?, @SerializedName("rus") val rus: String?, @SerializedName("slk") val slk: String?, @SerializedName("spa") val spa: String?, @SerializedName("srp") val srp: String?, @SerializedName("swe") val swe: String?, @SerializedName("tur") val tur: String?, @SerializedName("urd") val urd: String?, @SerializedName("zho") val zho: String? )</ID>
+    <ID>NoWildcardImports:br.com.rstudio.countries.presentation.details.screen.DetailsFragment.kt:16</ID>
+    <ID>NoWildcardImports:br.com.rstudio.countries.presentation.listscreen.ListFragment.kt:8</ID>
+    <ID>ObjectPropertyNaming:RetrofitClient.kt$RetrofitClient.Companion$private const val _1MB = 1024 * 1024L</ID>
+    <ID>TooManyFunctions:ListFragment.kt$ListFragment : FragmentView</ID>
+    <ID>UnnecessaryAbstractClass:BaseTest.kt$BaseTest</ID>
+    <ID>WildcardImport:ListFragment.kt$import br.com.rstudio.countries.arch.extension.*</ID>
+  </CurrentIssues>
+</SmellBaseline>

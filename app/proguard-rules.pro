@@ -19,3 +19,11 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
+
+#-printusage build/outputs/r8/usage.txt
+#-printseeds build/outputs/r8/seeds.txt
+
+-keep class br.com.rstudio.countries.data.model.CountryDTO { *; }
+-keep class br.com.rstudio.countries.data.model.CountryNameDTO { *; }
+-keep class br.com.rstudio.countries.data.model.CountryFlagDTO { *; }
+-keep class br.com.rstudio.countries.data.model.CountryLanguageDTO { *; }
