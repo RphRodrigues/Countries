@@ -43,6 +43,7 @@ class RetrofitClient(private val application: Context) {
       .readTimeout(TIMEOUT, TimeUnit.SECONDS)
       .writeTimeout(TIMEOUT, TimeUnit.SECONDS)
       .addInterceptor(loggingInterceptor)
+      .addInterceptor(CountriesInterceptor(application))
       .cache(cacheSize())
       .build()
   }
