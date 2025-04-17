@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- bottom navigation bar -->
+    <string name="show_bottom_navigation_toggle">show_bottom_navigation</string>
+
+    <string name="show_bottom_nav_home_toggle">show_bottom_nav_home</string>
+    <string name="show_bottom_nav_ranking_toggle">show_bottom_nav_ranking</string>
+    <string name="show_bottom_nav_quiz_toggle">show_bottom_nav_quiz</string>
+    <string name="show_bottom_nav_favorite_toggle">show_bottom_nav_favorite</string>
+    <string name="show_bottom_nav_profile_toggle">show_bottom_nav_profile</string>
+</resources>
