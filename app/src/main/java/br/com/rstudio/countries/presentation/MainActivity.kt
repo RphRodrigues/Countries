@@ -3,11 +3,14 @@ package br.com.rstudio.countries.presentation
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.children
 import androidx.core.view.isVisible
 import br.com.rstudio.countries.R
 import br.com.rstudio.countries.arch.base.BaseActivityView
 import br.com.rstudio.countries.arch.extension.replaceFragment
+import br.com.rstudio.countries.arch.featuretoggle.RemoteConfig
 import br.com.rstudio.countries.arch.model.ErrorModel
 import br.com.rstudio.countries.arch.observability.analytics.AnalyticsEvent.BUTTON
 import br.com.rstudio.countries.arch.observability.analytics.AnalyticsEvent.CLICK
@@ -34,12 +37,14 @@ class MainActivity : AppCompatActivity(), BaseActivityView {
   private var bottomNavigationView: BottomNavigationView? = null
 
   private val analytics: AnalyticsReport by inject()
+  private val remoteConfig: RemoteConfig by inject()
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_main)
     setupView()
     setupBottomNavigation()
+    setupBottomNavigationToggles()
     handleIntent(intent)
   }
 
@@ -82,6 +87,20 @@ class MainActivity : AppCompatActivity(), BaseActivityView {
     }
 
     bottomNavigationView?.selectedItemId = R.id.action_home
+  }
+
+  private fun setupBottomNavigationToggles() {
+    bottomNavigationView?.isVisible = remoteConfig.getBoolean(getString(R.string.show_bottom_navigation_toggle))
+
+    bottomNavigationView?.menu?.children?.forEach { menuItem: MenuItem ->
+      when (menuItem.title) {
+        getString(R.string.home) -> remoteConfig.getBoolean(getString(R.string.show_bottom_nav_home_toggle))
+        getString(R.string.ranking) -> remoteConfig.getBoolean(getString(R.string.show_bottom_nav_ranking_toggle))
+        getString(R.string.quiz) -> remoteConfig.getBoolean(getString(R.string.show_bottom_nav_quiz_toggle))
+        getString(R.string.favorites) -> remoteConfig.getBoolean(getString(R.string.show_bottom_nav_favorite_toggle))
+        getString(R.string.profile) -> remoteConfig.getBoolean(getString(R.string.show_bottom_nav_profile_toggle))
+      }
+    }
   }
 
   override fun showLoader() {
