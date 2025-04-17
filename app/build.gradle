@@ -25,13 +25,13 @@ if (!Files.exists(Paths.get(keystorePropertiesFile.getAbsolutePath()))) {
 keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
 
 android {
-    compileSdkVersion 33
+    compileSdkVersion 34
 
     defaultConfig {
         applicationId "br.com.rstudio.countries"
         minSdk 21
-        targetSdkVersion 33
-        versionCode 1
+        targetSdkVersion 34
+        versionCode 2
         versionName "1.0.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
