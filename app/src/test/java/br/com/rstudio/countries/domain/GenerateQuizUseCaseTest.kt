@@ -1,11 +1,14 @@
 package br.com.rstudio.countries.domain
 
 import br.com.rstudio.countries.data.repository.QuizRepository
+import io.mockk.coVerify
 import io.mockk.mockk
-import io.mockk.verify
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.test.runTest
 import org.junit.Before
 import org.junit.Test
 
+@OptIn(ExperimentalCoroutinesApi::class)
 class GenerateQuizUseCaseTest {
 
   private lateinit var generateQuizUseCase: GenerateQuizUseCase
@@ -17,10 +20,10 @@ class GenerateQuizUseCaseTest {
   }
 
   @Test
-  fun `when generate quiz use case is invoked then should call quiz repository`() {
+  fun `when generate quiz use case is invoked then should call quiz repository`() = runTest {
     generateQuizUseCase()
 
-    verify(exactly = 1) {
+    coVerify(exactly = 1) {
       quizRepository.generateQuiz()
     }
   }

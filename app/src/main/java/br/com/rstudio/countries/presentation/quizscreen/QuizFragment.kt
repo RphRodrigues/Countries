@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.RadioButton
 import android.widget.Toast
+import androidx.core.view.isGone
 import androidx.fragment.app.Fragment
 import br.com.rstudio.countries.R
 import br.com.rstudio.countries.arch.extension.getBottomLeftColor
@@ -22,7 +23,7 @@ class QuizFragment : Fragment(R.layout.fragment_quiz) {
   private val viewModel by viewModel<QuizViewModel>()
 
   private val callback = {
-    if (binding.quizFeedback.visibility == View.GONE) {
+    if (binding.quizFeedback.isGone) {
       activity.goToBottomNavigationHome()
     }
     binding.quizFeedback.visibility = View.GONE

@@ -125,7 +125,7 @@ class MainActivity : AppCompatActivity(), BaseActivityView {
     feedbackView?.run {
       setTitle("Error!")
       setMessage(err.message)
-      setupButton("Tentar novamente") {
+      setupButton(getString(R.string.try_again)) {
         analytics.trackEvent(CLICK, mapOf(BUTTON to "try_again"))
         errAction()
       }

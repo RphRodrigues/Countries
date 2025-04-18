@@ -19,9 +19,7 @@ class QuizLocalDataSourceImp(
 
   override suspend fun getAllQuizzes(): List<Quiz> {
     return withContext(dispatcher) {
-      val dao = roomDb.quizDao()
-      val items = dao.getAll()
-
+      val items = roomDb.quizDao().getAll()
       mapper.transform(items)
     }
   }

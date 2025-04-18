@@ -2,8 +2,6 @@ package br.com.rstudio.countries.data.datasource
 
 import br.com.rstudio.countries.data.model.Quiz
 import br.com.rstudio.countries.data.repository.CountryRepository
-import io.reactivex.Observable
-import io.reactivex.Single
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext

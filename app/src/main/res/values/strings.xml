@@ -9,15 +9,15 @@
     <string name="home">Home</string>
     <string name="ranking">Ranking</string>
     <string name="quiz">Quiz</string>
-    <string name="favorites">Favoritos</string>
-    <string name="profile">Perfil</string>
-    <string name="weekly">Semanal</string>
-    <string name="all">Todo</string>
+    <string name="favorites">Favorites</string>
+    <string name="profile">Profile</string>
+    <string name="weekly">Weekly</string>
+    <string name="all">All</string>
     <string name="ranking_position">#4</string>
-    <string name="you_are_better_than_x_percent_of_other_players">Você está melhor que 60% dos outros jogadores</string>
-    <string name="congratulations">Parabéns! 🎉</string>
-    <string name="you_got_it_right">Você acertou! O nome do país é %1$s.</string>
-    <string name="better_luck_next_time">Que pena! ❌</string>
-    <string name="the_correct_answer_is">A resposta correta é %1$s.\nTente novamente!</string>
-    <string name="select_a_option">Selecione uma opção</string>
+    <string name="you_are_better_than_x_percent_of_other_players">You are better than 60% of other players</string>
+    <string name="congratulations">Congratulations! 🎉</string>
+    <string name="you_got_it_right">You got it right! The name of the country is %1$s.</string>
+    <string name="better_luck_next_time">Too bad! ❌</string>
+    <string name="the_correct_answer_is">The correct answer is %1$s.\nTry again!</string>
+    <string name="select_a_option">Select an option</string>
 </resources>

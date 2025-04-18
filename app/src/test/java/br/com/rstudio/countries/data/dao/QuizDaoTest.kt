@@ -1,5 +1,10 @@
+@file:Suppress("ImportOrdering")
 package br.com.rstudio.countries.data.dao
 
+import java.io.IOException
+import kotlin.test.assertEquals
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.test.runTest
 import androidx.room.Room
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
@@ -12,11 +17,10 @@ import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
-import java.io.IOException
-import kotlin.test.assertEquals
 
 @SmallTest
 @RunWith(AndroidJUnit4::class)
+@OptIn(ExperimentalCoroutinesApi::class)
 class QuizDaoTest {
 
   private lateinit var quizDao: QuizDao
@@ -28,8 +32,7 @@ class QuizDaoTest {
   @Before
   fun setup() {
     database = Room.inMemoryDatabaseBuilder(
-      ApplicationProvider.getApplicationContext(),
-      AppDatabase::class.java
+      ApplicationProvider.getApplicationContext(), AppDatabase::class.java
     ).allowMainThreadQueries().build()
 
     quizDao = database.quizDao()
@@ -43,7 +46,7 @@ class QuizDaoTest {
 
   @Test
   @Throws(Exception::class)
-  fun writeQuizAndReadInList() {
+  fun writeQuizAndReadInList() = runTest {
     val quizEntity = genQuizEntity().first()
     quizDao.insert(quizEntity)
 
