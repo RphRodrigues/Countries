@@ -4,7 +4,7 @@ import java.nio.file.Paths
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
-    id 'kotlin-android-extensions'
+    id 'kotlin-parcelize'
     id 'io.gitlab.arturbosch.detekt'
     id 'com.google.gms.google-services'
     id 'com.google.firebase.crashlytics'
