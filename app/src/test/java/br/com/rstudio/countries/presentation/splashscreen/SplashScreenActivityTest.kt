@@ -28,7 +28,7 @@ class SplashScreenActivityTest : KoinTest {
   private lateinit var activity: ActivityScenario<SplashScreenActivity>
 
   private val module = module {
-    single<AnalyticsReport>(override = true) { analytics }
+    single<AnalyticsReport> { analytics }
   }
 
   @Before

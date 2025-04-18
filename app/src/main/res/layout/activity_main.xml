@@ -44,6 +44,7 @@
         app:layout_constraintEnd_toEndOf="@id/container"
         app:layout_constraintStart_toStartOf="@id/container"
         app:menu="@menu/menu_bottom_navigation"
+        app:itemHorizontalTranslationEnabled="true"
         app:labelVisibilityMode="labeled" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

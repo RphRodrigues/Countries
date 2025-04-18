@@ -12,7 +12,7 @@ import org.junit.runner.RunWith
 class FirebaseCrashlyticsReportTest {
 
   private val firebaseCrashlytics = mockk<FirebaseCrashlytics>(relaxed = true)
-  private lateinit var crashlyticsReport: FirebaseCrashlyticsReport
+  private lateinit var crashlyticsReport: CrashlyticsReport
 
   @Before
   fun setUp() {
