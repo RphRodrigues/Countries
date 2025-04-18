@@ -13,11 +13,11 @@ import br.com.rstudio.countries.R
 class AppBarView @JvmOverloads constructor(
   context: Context,
   attrs: AttributeSet? = null,
-  defStyleAttr: Int = 0
+  defStyleAttr: Int = 0,
 ) : ConstraintLayout(context, attrs, defStyleAttr) {
 
-  private val iconView: AppCompatImageButton by lazy { findViewById(R.id.app_bar_image_button) }
-  private val titleView: AppCompatTextView by lazy { findViewById(R.id.app_bar_title_text_view) }
+  val iconView: AppCompatImageButton by lazy { findViewById(R.id.app_bar_image_button) }
+  val titleView: AppCompatTextView by lazy { findViewById(R.id.app_bar_title_text_view) }
 
   init {
     LayoutInflater.from(context).inflate(R.layout.app_bar_view, this, true)

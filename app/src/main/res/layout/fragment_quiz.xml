@@ -1,18 +1,155 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:overScrollMode="never">
 
-    <androidx.appcompat.widget.AppCompatTextView
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/quiz_container"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="@string/quiz"
-        android:textSize="@dimen/app_text_size_6"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_height="wrap_content">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <br.com.rstudio.countries.arch.widget.ImageLoaderView
+            android:id="@+id/quiz_flag_image_view"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@color/color_4099D5"
+            app:layout_constraintBottom_toTopOf="@id/quiz_guideline"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/quiz_guideline"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent=".30" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/quiz_vertical_guideline_left"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent=".12" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/quiz_vertical_guideline_right"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent=".88" />
+
+        <View
+            android:id="@+id/quiz_flag_details_view_left"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/quiz_vertical_guideline_left"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/quiz_guideline"
+            tools:background="@color/color_060101" />
+
+        <View
+            android:id="@+id/quiz_flag_details_view_right"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/quiz_vertical_guideline_right"
+            app:layout_constraintTop_toBottomOf="@id/quiz_guideline"
+            tools:background="@color/color_060101" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/quiz_question_container"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginHorizontal="@dimen/app_dimen_6"
+            android:background="@drawable/top_rounded_corners"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/quiz_guideline"
+            app:layout_constraintVertical_bias="0">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/quiz_question_text_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/app_dimen_11"
+                android:layout_marginTop="@dimen/app_dimen_17"
+                android:text="Qual a capital da Índia?"
+                android:textColor="@color/black"
+                android:textSize="@dimen/app_text_size_6"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <RadioGroup
+                android:id="@+id/quiz_radio_group"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/app_dimen_10"
+                android:paddingHorizontal="@dimen/app_dimen_10"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/quiz_question_text_view">
+
+                <com.google.android.material.radiobutton.MaterialRadioButton
+                    android:id="@+id/quiz_radio_button_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Mumbai" />
+
+                <com.google.android.material.radiobutton.MaterialRadioButton
+                    android:id="@+id/quiz_radio_button_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Nova Délhi" />
+
+                <com.google.android.material.radiobutton.MaterialRadioButton
+                    android:id="@+id/quiz_radio_button_3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Calcutá" />
+
+                <com.google.android.material.radiobutton.MaterialRadioButton
+                    android:id="@+id/quiz_radio_button_4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Bangalore" />
+
+            </RadioGroup>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/quiz_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/app_dimen_10"
+                android:layout_marginVertical="@dimen/app_dimen_10"
+                android:text="Responder"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/quiz_radio_group"
+                app:layout_constraintVertical_bias="0.8" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <br.com.rstudio.countries.presentation.quizscreen.view.QuizFeedbackView
+            android:id="@+id/quiz_feedback"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>
