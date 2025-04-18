@@ -21,8 +21,4 @@ import br.com.rstudio.countries.data.entity.QuizEntity
 )
 abstract class AppDatabase : RoomDatabase() {
   abstract fun quizDao(): QuizDao
-
-  companion object {
-    const val TAG = "Room DB"
-  }
 }

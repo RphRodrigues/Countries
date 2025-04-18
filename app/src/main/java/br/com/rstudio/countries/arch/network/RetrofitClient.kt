@@ -2,6 +2,7 @@ package br.com.rstudio.countries.arch.network
 
 import android.content.Context
 import br.com.rstudio.countries.BuildConfig
+import br.com.rstudio.countries.arch.util.Constants
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import okhttp3.Cache
@@ -32,7 +33,7 @@ class RetrofitClient(private val application: Context) {
   }
 
   private val loggingInterceptor = HttpLoggingInterceptor { message ->
-    Timber.tag("OkHttp").d(message)
+    Timber.tag(Constants.HTTP).d(message)
   }.apply {
     level = HttpLoggingInterceptor.Level.BODY
   }

@@ -3,6 +3,7 @@ package br.com.rstudio.countries.arch.extension
 import br.com.rstudio.countries.R
 import br.com.rstudio.countries.arch.model.ErrorModel
 import br.com.rstudio.countries.arch.model.ErrorType
+import br.com.rstudio.countries.arch.util.Constants
 import io.reactivex.Observable
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -55,19 +56,19 @@ fun <T> Observable<T>.doOnApiError(invoke: (ErrorModel) -> Unit): Observable<T> 
 }
 
 private fun handleHttpException(exception: HttpException): ErrorModel {
-  Timber.tag("ApiError").e("message: ${exception.message}")
-  Timber.tag("ApiError").e("code: ${exception.code()}")
-  Timber.tag("ApiError").e("cause: ${exception.cause}")
-  Timber.tag("ApiError").e("response: ${exception.response()}")
-  Timber.tag("ApiError").e("stackTrace: ${exception.stackTrace}")
+  Timber.tag(Constants.HTTP_ERROR).e("message: ${exception.message}")
+  Timber.tag(Constants.HTTP_ERROR).e("code: ${exception.code()}")
+  Timber.tag(Constants.HTTP_ERROR).e("cause: ${exception.cause}")
+  Timber.tag(Constants.HTTP_ERROR).e("response: ${exception.response()}")
+  Timber.tag(Constants.HTTP_ERROR).e("stackTrace: ${exception.stackTrace}")
 
   return ErrorModel(ErrorType.Api, exception.code(), R.string.api_error)
 }
 
 private fun handleGenericException(exception: Throwable): ErrorModel {
-  Timber.tag("ApiError").e("message: ${exception.message}")
-  Timber.tag("ApiError").e("cause: ${exception.cause}")
-  Timber.tag("ApiError").e("stackTrace: ${exception.stackTrace}")
+  Timber.tag(Constants.HTTP_ERROR).e("message: ${exception.message}")
+  Timber.tag(Constants.HTTP_ERROR).e("cause: ${exception.cause}")
+  Timber.tag(Constants.HTTP_ERROR).e("stackTrace: ${exception.stackTrace}")
 
   return ErrorModel(ErrorType.Api, -1, R.string.api_error)
 }

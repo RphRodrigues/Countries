@@ -19,6 +19,7 @@ import br.com.rstudio.countries.arch.observability.analytics.AnalyticsEvent.HIRE
 import br.com.rstudio.countries.arch.observability.analytics.AnalyticsEvent.SHOW_ERROR
 import br.com.rstudio.countries.arch.observability.analytics.AnalyticsEvent.SHOW_LOADER
 import br.com.rstudio.countries.arch.observability.analytics.AnalyticsReport
+import br.com.rstudio.countries.arch.util.Constants
 import br.com.rstudio.countries.arch.widget.FeedbackView
 import br.com.rstudio.countries.arch.widget.ProgressView
 import br.com.rstudio.countries.presentation.favoritescreen.FavoriteFragment
@@ -145,8 +146,8 @@ class MainActivity : AppCompatActivity(), BaseActivityView {
   }
 
   private fun handleIntent(intent: Intent?) {
-    Timber.tag(DEEP_LINK_TAG).d("action ${intent?.action}")
-    Timber.tag(DEEP_LINK_TAG).d("data ${intent?.data}")
+    Timber.tag(Constants.DEEP_LINK).d("action ${intent?.action}")
+    Timber.tag(Constants.DEEP_LINK).d("data ${intent?.data}")
 
     val screen = intent?.data?.getQueryParameter(getString(R.string.deep_link_screen))
 
@@ -160,7 +161,6 @@ class MainActivity : AppCompatActivity(), BaseActivityView {
   }
 
   companion object {
-    const val DEEP_LINK_TAG = "DEEP_LINK"
     fun createIntent(context: Context): Intent {
       return Intent(context, MainActivity::class.java).apply {
         flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
