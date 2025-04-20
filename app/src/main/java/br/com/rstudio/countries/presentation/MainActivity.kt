@@ -93,12 +93,13 @@ class MainActivity : AppCompatActivity(), BaseActivityView {
     bottomNavigationView?.isVisible = remoteConfig.getBoolean(getString(R.string.show_bottom_navigation_toggle))
 
     bottomNavigationView?.menu?.children?.forEach { menuItem: MenuItem ->
-      when (menuItem.title) {
+      menuItem.isVisible = when (menuItem.title) {
         getString(R.string.home) -> remoteConfig.getBoolean(getString(R.string.show_bottom_nav_home_toggle))
         getString(R.string.ranking) -> remoteConfig.getBoolean(getString(R.string.show_bottom_nav_ranking_toggle))
         getString(R.string.quiz) -> remoteConfig.getBoolean(getString(R.string.show_bottom_nav_quiz_toggle))
         getString(R.string.favorites) -> remoteConfig.getBoolean(getString(R.string.show_bottom_nav_favorite_toggle))
         getString(R.string.profile) -> remoteConfig.getBoolean(getString(R.string.show_bottom_nav_profile_toggle))
+        else -> false
       }
     }
   }
