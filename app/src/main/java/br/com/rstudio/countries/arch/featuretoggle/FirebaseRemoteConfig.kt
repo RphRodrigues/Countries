@@ -2,7 +2,7 @@ package br.com.rstudio.countries.arch.featuretoggle
 
 import br.com.rstudio.countries.BuildConfig
 import br.com.rstudio.countries.R
-import br.com.rstudio.countries.arch.featuretoggle.RemoteConfig.Companion.TAG
+import br.com.rstudio.countries.arch.util.Constants
 import com.google.firebase.remoteconfig.FirebaseRemoteConfig
 import com.google.firebase.remoteconfig.FirebaseRemoteConfigSettings
 import timber.log.Timber
@@ -13,10 +13,6 @@ interface RemoteConfig {
   fun getString(key: String): String
   fun getLong(key: String): Long
   fun getDouble(key: String): Double
-
-  companion object {
-    const val TAG = "REMOTE_CONFIG"
-  }
 }
 
 class FirebaseRemoteConfigImp(private val remoteConfig: FirebaseRemoteConfig) : RemoteConfig {
@@ -34,30 +30,30 @@ class FirebaseRemoteConfigImp(private val remoteConfig: FirebaseRemoteConfig) : 
     remoteConfig.fetchAndActivate()
       .addOnCompleteListener { task ->
         if (task.isSuccessful) {
-          Timber.tag(TAG).d("Remote config updated: ${task.result}")
+          Timber.tag(Constants.REMOTE_CONFIG).d("Remote config updated: ${task.result}")
         } else {
-          Timber.tag(TAG).w("Remote config not updated")
+          Timber.tag(Constants.REMOTE_CONFIG).w("Remote config not updated")
         }
       }
   }
 
   override fun getBoolean(key: String) =
     remoteConfig.getBoolean(key).also { value ->
-      Timber.tag(TAG).d("key: $key | value: $value")
+      Timber.tag(Constants.REMOTE_CONFIG).d("key: $key | value: $value")
     }
 
   override fun getString(key: String) =
     remoteConfig.getString(key).also { value ->
-      Timber.tag(TAG).d("key: $key | value: $value")
+      Timber.tag(Constants.REMOTE_CONFIG).d("key: $key | value: $value")
     }
 
   override fun getLong(key: String) =
     remoteConfig.getLong(key).also { value ->
-      Timber.tag(TAG).d("key: $key | value: $value")
+      Timber.tag(Constants.REMOTE_CONFIG).d("key: $key | value: $value")
     }
 
   override fun getDouble(key: String) =
     remoteConfig.getDouble(key).also { value ->
-      Timber.tag(TAG).d("key: $key | value: $value")
+      Timber.tag(Constants.REMOTE_CONFIG).d("key: $key | value: $value")
     }
 }

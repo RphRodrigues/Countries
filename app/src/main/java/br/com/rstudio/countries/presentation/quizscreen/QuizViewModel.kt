@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import br.com.rstudio.countries.arch.database.AppDatabase
+import br.com.rstudio.countries.arch.util.Constants
 import br.com.rstudio.countries.data.model.Quiz
 import br.com.rstudio.countries.domain.GenerateQuizUseCase
 import br.com.rstudio.countries.domain.SaveQuizAnsweredUseCase
@@ -44,9 +44,9 @@ class QuizViewModel(
 
       try {
         val id = saveQuizAnsweredUseCase(quiz, isCorrect, selectedAnswer)
-        Timber.tag(AppDatabase.TAG).d("Saved -> uuid $id")
+        Timber.tag(Constants.ROOM).d("Saved -> uuid $id")
       } catch (e: Exception) {
-        Timber.tag(AppDatabase.TAG).w("Error: $e")
+        Timber.tag(Constants.ROOM).w("Error: $e")
       }
     }
   }
