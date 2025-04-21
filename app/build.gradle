@@ -10,8 +10,11 @@ plugins {
     id 'com.google.firebase.crashlytics'
     id 'com.google.firebase.appdistribution'
     id 'com.google.firebase.firebase-perf'
+    id 'com.datadoghq.dd-sdk-android-gradle-plugin'
     id 'kotlin-kapt'
 }
+
+apply from: "${rootDir}/tools/secrets.gradle"
 apply from: "${rootDir}/tools/detekt/detekt.gradle"
 apply from: "${rootDir}/tools/jacoco/jacoco.gradle"
 
@@ -39,6 +42,8 @@ android {
         buildConfigField "int", "CACHE_IN_MB", "5"
         buildConfigField "long", "REMOTE_CONFIG_INTERVAL", "3600"
         buildConfigField "String", "BASE_URL", "\"https://restcountries.com/v3.1/\""
+        buildConfigField "String", "DATADOG_CLIENT_TOKEN", "\"$DATADOG_CLIENT_TOKEN\""
+        buildConfigField "String", "DATADOG_APPLICATION_ID", "\"$DATADOG_APPLICATION_ID\""
 
         proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
     }
@@ -66,7 +71,10 @@ android {
             applicationIdSuffix '.dev'
 
             buildConfigField "long", "REMOTE_CONFIG_INTERVAL", "60"
-            firebaseAppDistribution.artifactPath = "$buildDir/outputs/apk/debug/app-debug.apk"
+            firebaseAppDistribution {
+                appId = "1:466387488330:android:b63f7e597527011c09e0b3"
+                artifactPath = "$buildDir/outputs/apk/debug/app-debug.apk"
+            }
 
             minifyEnabled false
             shrinkResources false
@@ -79,7 +87,10 @@ android {
 
             signingConfig signingConfigs.homolog
 
-            firebaseAppDistribution.artifactPath = "$buildDir/outputs/apk/homolog/app-homolog.apk"
+            firebaseAppDistribution {
+                appId = "1:466387488330:android:6b197eb73af291e509e0b3"
+                artifactPath = "$buildDir/outputs/apk/homolog/app-homolog.apk"
+            }
 
             minifyEnabled true
             shrinkResources true
@@ -90,7 +101,10 @@ android {
 
             signingConfig signingConfigs.release
 
-            firebaseAppDistribution.artifactPath = "$buildDir/outputs/apk/release/app-release.apk"
+            firebaseAppDistribution {
+                appId = "1:466387488330:android:468c37d0760b8bb709e0b3"
+                artifactPath = "$buildDir/outputs/apk/release/app-release.apk"
+            }
 
             minifyEnabled true
             shrinkResources true
@@ -126,6 +140,10 @@ android {
     }
 }
 
+datadog {
+    site = "US5"
+}
+
 dependencies {
 
     // Android
@@ -152,6 +170,7 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
 
+    // Room
     def room_version = "2.5.0"
     implementation "androidx.room:room-ktx:$room_version"
     implementation "androidx.room:room-runtime:$room_version"
@@ -178,6 +197,14 @@ dependencies {
 
     // Shimmer
     implementation 'com.facebook.shimmer:shimmer:0.5.0'
+
+    // Datadog
+    def datadog_version = "2.18.0"
+    implementation "com.datadoghq:dd-sdk-android-rum:$datadog_version"
+    implementation "com.datadoghq:dd-sdk-android-logs:$datadog_version"
+    implementation "com.datadoghq:dd-sdk-android-timber:$datadog_version"
+    implementation "com.datadoghq:dd-sdk-android-okhttp:$datadog_version"
+    implementation "com.datadoghq:dd-sdk-android-trace:$datadog_version"
 
     // Firebase
     implementation 'com.google.firebase:firebase-perf:20.0.6'

@@ -5,6 +5,7 @@ import br.com.rstudio.countries.arch.featuretoggle.RemoteConfig
 import br.com.rstudio.countries.arch.observability.analytics.AnalyticsEvent
 import br.com.rstudio.countries.arch.observability.analytics.AnalyticsReport
 import br.com.rstudio.countries.arch.observability.crashlytics.FirebaseCrashlyticsReportTree
+import br.com.rstudio.countries.arch.observability.datadog.DatadogInitializer
 import br.com.rstudio.countries.di.applicationModule
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.ktx.initialize
@@ -24,6 +25,7 @@ class AppApplication : Application() {
 
   override fun onCreate() {
     super.onCreate()
+    DatadogInitializer().initialize(applicationContext)
 
     startKoin {
       androidLogger()

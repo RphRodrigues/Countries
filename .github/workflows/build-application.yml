@@ -1,6 +1,6 @@
 name: build application
 
-run-name: ${{ github.actor }} is building App
+run-name: ${{ github.actor }} is building ${{ inputs.environment }} App
 
 on:
   workflow_dispatch:
@@ -19,6 +19,11 @@ on:
         required: false
         type: boolean
 
+env:
+  DATADOG_API_KEY: ${{ secrets.DATADOG_API_KEY }}
+  DATADOG_CLIENT_TOKEN: ${{ secrets.DATADOG_CLIENT_TOKEN }}
+  DATADOG_APPLICATION_ID: ${{ secrets.DATADOG_APPLICATION_ID }}
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -33,7 +38,7 @@ jobs:
           distribution: 'zulu'
 
       - name: Handle keystore
-        if: ${{ inputs.environment == 'Release' }} || ${{ inputs.environment == 'Homolog' }}
+        if: ${{ inputs.environment == 'Release' || inputs.environment == 'Homolog' }}
         run: |
           echo "${{ secrets.KEYSTORE }}" > keystore.asc
           gpg -d --passphrase ${{ secrets.KEYSTORE_PASSPHRASE }} --batch keystore.asc > keystore
@@ -49,20 +54,25 @@ jobs:
         run: |
           rm -f keystore keystore.asc keystore.properties.asc keystore.properties
 
-      - name: Upload apk
+      - name: Upload Apk
         uses: actions/upload-artifact@v4
         with:
           name: Apk ${{ inputs.environment }}
           path: ${{ github.workspace }}/app/build/outputs/apk/**/*.apk
           retention-days: 5
 
-      - name: Upload mapping
+      - name: Upload mapping file
+        if: ${{ inputs.environment == 'Release' || inputs.environment == 'Homolog' }}
         uses: actions/upload-artifact@v4
-        if: ${{ inputs.environment == 'Release' }} || ${{ inputs.environment == 'Homolog' }}
         with:
           name: mapping
           path: ${{ github.workspace }}/app/build/outputs/mapping
           retention-days: 5
+
+      - name: Update mapping to datadog
+        if: ${{ inputs.environment == 'Release' || inputs.environment == 'Homolog' }}
+        run: |
+          ./gradlew uploadMapping${{ inputs.environment }}
 
   linter:
     runs-on: ubuntu-latest
@@ -139,7 +149,9 @@ jobs:
         run: |
           build_type=$(echo "${{ inputs.environment }}" | tr '[:upper:]' '[:lower:]')
 
-          ./gradlew app:appDistributionUpload${{ inputs.environment }} --artifactPath="$build_type/app-$build_type.apk" --appId="${{ secrets.FIREBASE_APP_ID }}"
+          ./gradlew app:appDistributionUpload${{ inputs.environment }} \
+            --artifactPath="$build_type/app-$build_type.apk" \
+            --groups="Release"
 
       - name: Remove firebase credential
         if: always()
