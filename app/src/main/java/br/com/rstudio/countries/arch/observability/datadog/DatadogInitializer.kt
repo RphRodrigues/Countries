@@ -2,8 +2,9 @@ package br.com.rstudio.countries.arch.observability.datadog
 
 import android.content.Context
 import android.util.Log
-import android.view.View
 import br.com.rstudio.countries.BuildConfig
+import br.com.rstudio.countries.BuildConfig.DATADOG_APPLICATION_ID
+import br.com.rstudio.countries.BuildConfig.DATADOG_CLIENT_TOKEN
 import br.com.rstudio.countries.arch.util.Constants
 import com.datadog.android.Datadog
 import com.datadog.android.DatadogSite
@@ -14,21 +15,22 @@ import com.datadog.android.privacy.TrackingConsent
 import com.datadog.android.rum.Rum
 import com.datadog.android.rum.RumConfiguration
 import com.datadog.android.rum.tracking.MixedViewTrackingStrategy
-import com.datadog.android.rum.tracking.ViewAttributesProvider
 import com.datadog.android.trace.AndroidTracer
 import com.datadog.android.trace.Trace
 import com.datadog.android.trace.TraceConfiguration
 import io.opentracing.util.GlobalTracer
 import timber.log.Timber
 
+@Suppress("KotlinConstantConditions")
 class DatadogInitializer {
 
   fun initialize(context: Context) {
     if (Datadog.isInitialized()) return
+    if (DATADOG_CLIENT_TOKEN == "null" || DATADOG_APPLICATION_ID == "null") return
 
     val configuration =
       Configuration.Builder(
-        clientToken = BuildConfig.DATADOG_CLIENT_TOKEN,
+        clientToken = DATADOG_CLIENT_TOKEN,
         env = BuildConfig.BUILD_TYPE,
         variant = ""
       )
@@ -42,16 +44,9 @@ class DatadogInitializer {
       Datadog.setVerbosity(Log.WARN)
     }
 
-    val provider = object : ViewAttributesProvider {
-      override fun extractAttributes(view: View, attributes: MutableMap<String, Any?>) {
-        Timber.tag(Constants.DATADOG).d("view $view")
-        Timber.tag(Constants.DATADOG).d("attributes $attributes")
-      }
-    }
-
     Rum.enable(
-      RumConfiguration.Builder(BuildConfig.DATADOG_APPLICATION_ID)
-        .trackUserInteractions(arrayOf(provider))
+      RumConfiguration.Builder(DATADOG_APPLICATION_ID)
+        .trackUserInteractions()
         .trackNonFatalAnrs(true)
         .trackBackgroundEvents(true)
         // Sample rate is a percentage number of sessions that will be send to datadog.
