@@ -8,4 +8,6 @@
     <string name="show_bottom_nav_quiz_toggle">show_bottom_nav_quiz</string>
     <string name="show_bottom_nav_favorite_toggle">show_bottom_nav_favorite</string>
     <string name="show_bottom_nav_profile_toggle">show_bottom_nav_profile</string>
+
+    <string name="show_home_screen_v2_toggle">show_home_screen_v2</string>
 </resources>
