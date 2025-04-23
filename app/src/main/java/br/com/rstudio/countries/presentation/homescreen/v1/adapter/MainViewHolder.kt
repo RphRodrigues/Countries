@@ -1,4 +1,4 @@
-package br.com.rstudio.countries.presentation.listscreen.adapter
+package br.com.rstudio.countries.presentation.homescreen.v1.adapter
 
 import android.view.View
 import android.view.ViewGroup
@@ -6,8 +6,8 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import br.com.rstudio.countries.R
 import br.com.rstudio.countries.arch.extension.inflateView
-import br.com.rstudio.countries.presentation.listscreen.adapter.country.adapter.CountryAdapter
-import br.com.rstudio.countries.presentation.listscreen.model.ContinentVO
+import br.com.rstudio.countries.presentation.homescreen.v1.adapter.country.adapter.CountryAdapter
+import br.com.rstudio.countries.presentation.homescreen.v1.model.ContinentVO
 import org.koin.core.component.KoinComponent
 
 class MainViewHolder(itemView: View) : ListViewHolder(itemView), KoinComponent {

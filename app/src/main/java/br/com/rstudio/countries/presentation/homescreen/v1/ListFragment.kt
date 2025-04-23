@@ -1,16 +1,21 @@
-package br.com.rstudio.countries.presentation.listscreen
+package br.com.rstudio.countries.presentation.homescreen.v1
 
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import br.com.rstudio.countries.R
-import br.com.rstudio.countries.arch.extension.*
+import br.com.rstudio.countries.arch.extension.hideError
+import br.com.rstudio.countries.arch.extension.hideLoader
+import br.com.rstudio.countries.arch.extension.replaceFragment
+import br.com.rstudio.countries.arch.extension.setupBackPressedCallback
+import br.com.rstudio.countries.arch.extension.showError
+import br.com.rstudio.countries.arch.extension.showLoader
 import br.com.rstudio.countries.arch.model.ErrorModel
 import br.com.rstudio.countries.data.model.Country
 import br.com.rstudio.countries.presentation.details.screen.DetailsFragment
-import br.com.rstudio.countries.presentation.listscreen.adapter.MainAdapter
-import br.com.rstudio.countries.presentation.listscreen.model.ContinentVO
+import br.com.rstudio.countries.presentation.homescreen.v1.adapter.MainAdapter
+import br.com.rstudio.countries.presentation.homescreen.v1.model.ContinentVO
 import org.koin.android.ext.android.inject
 import org.koin.core.parameter.parametersOf
 

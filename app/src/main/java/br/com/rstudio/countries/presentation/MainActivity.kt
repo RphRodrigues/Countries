@@ -23,7 +23,7 @@ import br.com.rstudio.countries.arch.util.Constants
 import br.com.rstudio.countries.arch.widget.FeedbackView
 import br.com.rstudio.countries.arch.widget.ProgressView
 import br.com.rstudio.countries.presentation.favoritescreen.FavoriteFragment
-import br.com.rstudio.countries.presentation.listscreen.ListFragment
+import br.com.rstudio.countries.presentation.homescreen.v1.ListFragment
 import br.com.rstudio.countries.presentation.profilescreen.ProfileFragment
 import br.com.rstudio.countries.presentation.quizscreen.QuizFragment
 import br.com.rstudio.countries.presentation.rankingscreen.RankingFragment

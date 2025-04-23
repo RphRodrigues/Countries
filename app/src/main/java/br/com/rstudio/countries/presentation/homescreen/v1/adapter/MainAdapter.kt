@@ -1,9 +1,9 @@
-package br.com.rstudio.countries.presentation.listscreen.adapter
+package br.com.rstudio.countries.presentation.homescreen.v1.adapter
 
 import android.annotation.SuppressLint
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import br.com.rstudio.countries.presentation.listscreen.model.ContinentVO
+import br.com.rstudio.countries.presentation.homescreen.v1.model.ContinentVO
 
 private const val VIEW_TYPE_1 = 1
 private const val VIEW_TYPE_2 = 2

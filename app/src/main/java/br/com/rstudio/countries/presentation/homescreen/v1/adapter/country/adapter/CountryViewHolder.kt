@@ -1,4 +1,4 @@
-package br.com.rstudio.countries.presentation.listscreen.adapter.country.adapter
+package br.com.rstudio.countries.presentation.homescreen.v1.adapter.country.adapter
 
 import android.view.View
 import android.view.ViewGroup

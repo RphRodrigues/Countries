@@ -1,9 +1,9 @@
-package br.com.rstudio.countries.presentation.listscreen
+package br.com.rstudio.countries.presentation.homescreen.v1
 
 import br.com.rstudio.countries.arch.extension.doOnSuccess
 import br.com.rstudio.countries.data.model.Country
 import br.com.rstudio.countries.data.repository.CountryRepository
-import br.com.rstudio.countries.presentation.listscreen.model.ContinentVO
+import br.com.rstudio.countries.presentation.homescreen.v1.model.ContinentVO
 import timber.log.Timber
 
 class ListPresenter(

@@ -30,9 +30,9 @@ import br.com.rstudio.countries.domain.SaveQuizAnsweredUseCase
 import br.com.rstudio.countries.presentation.details.screen.DetailsContract
 import br.com.rstudio.countries.presentation.details.screen.DetailsPresenter
 import br.com.rstudio.countries.presentation.details.screen.DetailsTracker
-import br.com.rstudio.countries.presentation.listscreen.ListContract
-import br.com.rstudio.countries.presentation.listscreen.ListPresenter
-import br.com.rstudio.countries.presentation.listscreen.ListTracker
+import br.com.rstudio.countries.presentation.homescreen.v1.ListContract
+import br.com.rstudio.countries.presentation.homescreen.v1.ListPresenter
+import br.com.rstudio.countries.presentation.homescreen.v1.ListTracker
 import br.com.rstudio.countries.presentation.quizscreen.QuizViewModel
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy

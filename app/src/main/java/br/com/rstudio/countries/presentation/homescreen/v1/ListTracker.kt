@@ -1,4 +1,4 @@
-package br.com.rstudio.countries.presentation.listscreen
+package br.com.rstudio.countries.presentation.homescreen.v1
 
 import br.com.rstudio.countries.arch.observability.analytics.AnalyticsEvent.BUTTON
 import br.com.rstudio.countries.arch.observability.analytics.AnalyticsEvent.CLICK

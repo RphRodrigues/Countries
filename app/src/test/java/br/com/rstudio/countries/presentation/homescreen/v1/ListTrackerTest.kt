@@ -1,4 +1,4 @@
-package br.com.rstudio.countries.presentation.listscreen
+package br.com.rstudio.countries.presentation.homescreen.v1
 
 import br.com.rstudio.countries.arch.observability.analytics.FirebaseAnalyticsReport
 import br.com.rstudio.countries.data.model.Country
