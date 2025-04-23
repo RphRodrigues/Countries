@@ -20,4 +20,8 @@
     <string name="better_luck_next_time">Too bad! ❌</string>
     <string name="the_correct_answer_is">The correct answer is %1$s.\nTry again!</string>
     <string name="select_a_option">Select an option</string>
+    <string name="greeting">Hi</string>
+    <string name="invitation">Ready to explore the world?</string>
+    <string name="notification_icon_description">notification icon</string>
+    <string name="most_popular">Most Popular</string>
 </resources>

@@ -24,6 +24,7 @@ import br.com.rstudio.countries.arch.widget.FeedbackView
 import br.com.rstudio.countries.arch.widget.ProgressView
 import br.com.rstudio.countries.presentation.favoritescreen.FavoriteFragment
 import br.com.rstudio.countries.presentation.homescreen.v1.ListFragment
+import br.com.rstudio.countries.presentation.homescreen.v2.HomeFragment
 import br.com.rstudio.countries.presentation.profilescreen.ProfileFragment
 import br.com.rstudio.countries.presentation.quizscreen.QuizFragment
 import br.com.rstudio.countries.presentation.rankingscreen.RankingFragment
@@ -59,7 +60,11 @@ class MainActivity : AppCompatActivity(), BaseActivityView {
     bottomNavigationView?.setOnItemSelectedListener {
       when (it.itemId) {
         R.id.action_home -> {
-          replaceFragment(ListFragment.newInstance())
+          if (remoteConfig.getBoolean(getString(R.string.show_home_screen_v2_toggle))) {
+            replaceFragment(HomeFragment.newInstance())
+          } else {
+            replaceFragment(ListFragment.newInstance())
+          }
           true
         }
 
