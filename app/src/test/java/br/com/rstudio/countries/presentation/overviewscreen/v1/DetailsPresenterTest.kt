@@ -1,4 +1,4 @@
-package br.com.rstudio.countries.presentation.details.screen
+package br.com.rstudio.countries.presentation.overviewscreen.v1
 
 import br.com.rstudio.countries.data.model.Country
 import br.com.rstudio.countries.presentation.CountryModel.countryList

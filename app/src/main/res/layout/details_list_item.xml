@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <br.com.rstudio.countries.presentation.details.screen.view.DetailsItemView
+    <br.com.rstudio.countries.presentation.overviewscreen.v1.view.DetailsItemView
         android:id="@+id/details_item_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

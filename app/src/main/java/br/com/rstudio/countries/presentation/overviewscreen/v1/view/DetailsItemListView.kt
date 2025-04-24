@@ -1,4 +1,4 @@
-package br.com.rstudio.countries.presentation.details.screen.view
+package br.com.rstudio.countries.presentation.overviewscreen.v1.view
 
 import android.content.Context
 import android.util.AttributeSet
@@ -8,7 +8,7 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import br.com.rstudio.countries.R
-import br.com.rstudio.countries.presentation.details.screen.adapter.DetailsItemListAdapter
+import br.com.rstudio.countries.presentation.overviewscreen.v1.adapter.DetailsItemListAdapter
 
 class DetailsItemListView @JvmOverloads constructor(
   context: Context,

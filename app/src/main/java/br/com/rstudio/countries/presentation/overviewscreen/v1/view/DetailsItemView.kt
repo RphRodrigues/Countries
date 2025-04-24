@@ -1,4 +1,4 @@
-package br.com.rstudio.countries.presentation.details.screen.view
+package br.com.rstudio.countries.presentation.overviewscreen.v1.view
 
 import android.content.Context
 import android.util.AttributeSet

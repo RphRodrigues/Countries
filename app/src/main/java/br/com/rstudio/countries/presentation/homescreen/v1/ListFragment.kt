@@ -13,7 +13,7 @@ import br.com.rstudio.countries.arch.extension.showError
 import br.com.rstudio.countries.arch.extension.showLoader
 import br.com.rstudio.countries.arch.model.ErrorModel
 import br.com.rstudio.countries.data.model.Country
-import br.com.rstudio.countries.presentation.details.screen.DetailsFragment
+import br.com.rstudio.countries.presentation.overviewscreen.v1.DetailsFragment
 import br.com.rstudio.countries.presentation.homescreen.v1.adapter.MainAdapter
 import br.com.rstudio.countries.presentation.homescreen.v1.model.ContinentVO
 import org.koin.android.ext.android.inject

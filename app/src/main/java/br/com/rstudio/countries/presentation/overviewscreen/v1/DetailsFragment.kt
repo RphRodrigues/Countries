@@ -1,4 +1,4 @@
-package br.com.rstudio.countries.presentation.details.screen
+package br.com.rstudio.countries.presentation.overviewscreen.v1
 
 import android.os.Bundle
 import android.view.View
@@ -10,8 +10,8 @@ import br.com.rstudio.countries.arch.extension.popBackStack
 import br.com.rstudio.countries.arch.extension.setupBackPressedCallback
 import br.com.rstudio.countries.arch.widget.ImageLoaderView
 import br.com.rstudio.countries.data.model.Country
-import br.com.rstudio.countries.presentation.details.screen.view.DetailsItemListView
-import br.com.rstudio.countries.presentation.details.screen.view.DetailsItemView
+import br.com.rstudio.countries.presentation.overviewscreen.v1.view.DetailsItemListView
+import br.com.rstudio.countries.presentation.overviewscreen.v1.view.DetailsItemView
 import org.koin.android.ext.android.inject
 import org.koin.core.parameter.parametersOf
 import java.text.NumberFormat
