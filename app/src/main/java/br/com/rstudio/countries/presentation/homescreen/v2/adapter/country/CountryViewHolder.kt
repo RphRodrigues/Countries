@@ -33,7 +33,7 @@ class CountryViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     }
   }
 
-  fun bindCountries(country: Country, onClickListener: (Country) -> Unit,) {
+  fun bindCountries(country: Country, onClickListener: (Country) -> Unit) {
     countryName.text = country.name
     image.load(country.flags.pngUrl)
 

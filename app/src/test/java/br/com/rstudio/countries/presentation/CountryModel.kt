@@ -30,6 +30,8 @@ object CountryModel {
     every { name } returns "Brazil"
     every { population } returns 212559409
     every { capital } returns listOf("Brasília")
+    every { continent } returns "South America"
+    every { borders } returns listOf("Ar, Ur, Co")
   }
 
   val countryBorders = arrayListOf<Country>(

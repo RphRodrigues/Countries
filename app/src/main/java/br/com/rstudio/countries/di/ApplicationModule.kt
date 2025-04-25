@@ -36,6 +36,9 @@ import br.com.rstudio.countries.presentation.homescreen.v2.HomeTracker
 import br.com.rstudio.countries.presentation.overviewscreen.v1.DetailsContract
 import br.com.rstudio.countries.presentation.overviewscreen.v1.DetailsPresenter
 import br.com.rstudio.countries.presentation.overviewscreen.v1.DetailsTracker
+import br.com.rstudio.countries.presentation.overviewscreen.v2.CountryOverviewContract
+import br.com.rstudio.countries.presentation.overviewscreen.v2.CountryOverviewPresenter
+import br.com.rstudio.countries.presentation.overviewscreen.v2.CountryOverviewTracker
 import br.com.rstudio.countries.presentation.quizscreen.QuizViewModel
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
@@ -142,6 +145,14 @@ val applicationModule = module {
 
   factory<DetailsContract.Presenter> { (view: DetailsContract.View) ->
     DetailsPresenter(view = view, tracker = get())
+  }
+
+  factory<CountryOverviewContract.Tracker> {
+    CountryOverviewTracker(analyticsReport = get())
+  }
+
+  factory<CountryOverviewContract.Presenter> { (view: CountryOverviewContract.View) ->
+    CountryOverviewPresenter(view = view, tracker = get())
   }
 
   single<QuizDataSource>(named("local")) {
