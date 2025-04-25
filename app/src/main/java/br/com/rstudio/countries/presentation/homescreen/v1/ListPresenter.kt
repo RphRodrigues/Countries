@@ -48,11 +48,10 @@ class ListPresenter(
   override fun onCountryClickListener(country: Country) {
     tracker.trackCountryClicked(country)
 
-    val borders = countries?.filter { country.borders?.contains(it.code) == true }
-
     if (remoteConfig.getBoolean(FeatureToggles.SHOW_COUNTRY_OVERVIEW_V2)) {
-      view?.openCountryOverviewScreen(country, borders)
+      view?.openCountryOverviewScreen(country)
     } else {
+      val borders = countries?.filter { country.borders?.contains(it.code) == true }
       view?.openDetailsScreen(country, borders)
     }
   }

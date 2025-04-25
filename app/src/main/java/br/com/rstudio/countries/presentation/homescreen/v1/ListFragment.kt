@@ -63,8 +63,8 @@ class ListFragment : Fragment(R.layout.fragment_list), ListContract.View {
     activity.replaceFragment(fragment)
   }
 
-  override fun openCountryOverviewScreen(country: Country, borders: List<Country>?) {
-    val fragment = CountryOverviewFragment.newInstance(country, borders)
+  override fun openCountryOverviewScreen(country: Country) {
+    val fragment = CountryOverviewFragment.newInstance(country)
     activity.replaceFragment(fragment)
   }
 

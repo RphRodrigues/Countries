@@ -39,9 +39,6 @@ class CountryOverviewFragment : Fragment(R.layout.fragment_shared), CountryOverv
   private val country: Country?
     get() = arguments?.getParcelable(COUNTRY_KEY)
 
-  private val borders: List<Country>?
-    get() = arguments?.getParcelableArrayList(BORDERS_KEY)
-
   private val callback = {
     presenter.onBackPressed()
   }
@@ -72,7 +69,7 @@ class CountryOverviewFragment : Fragment(R.layout.fragment_shared), CountryOverv
 
   override fun onStart() {
     super.onStart()
-    presenter.onInitializer(country, borders)
+    presenter.onInitializer(country)
   }
 
   override fun onResume() {
@@ -139,7 +136,7 @@ class CountryOverviewFragment : Fragment(R.layout.fragment_shared), CountryOverv
   }
 
   private fun bindNumberBorders(countryBorders: List<Country>?) {
-    if (countryBorders == null) return
+    if (countryBorders.isNullOrEmpty()) return
 
     CountryOverviewItemView(requireContext()).apply {
       bindItem(context.getString(R.string.number_of_borders), countryBorders.size.toString())
@@ -149,7 +146,7 @@ class CountryOverviewFragment : Fragment(R.layout.fragment_shared), CountryOverv
   }
 
   private fun bindBorders(countryBorders: List<Country>?) {
-    if (countryBorders == null) return
+    if (countryBorders.isNullOrEmpty()) return
 
     CountryOverviewItemListView(requireContext()).apply {
       bindListItem(countryBorders, presenter::onCountryClicked)
@@ -158,8 +155,8 @@ class CountryOverviewFragment : Fragment(R.layout.fragment_shared), CountryOverv
     }
   }
 
-  override fun openCountryOverviewScreen(country: Country, borders: List<Country>?) {
-    val fragment = CountryOverviewFragment.newInstance(country, borders)
+  override fun openCountryOverviewScreen(country: Country) {
+    val fragment = CountryOverviewFragment.newInstance(country)
     activity.replaceFragment(fragment)
   }
 
@@ -174,10 +171,9 @@ class CountryOverviewFragment : Fragment(R.layout.fragment_shared), CountryOverv
 
   companion object {
     private const val COUNTRY_KEY = "country"
-    private const val BORDERS_KEY = "borders"
 
-    fun newInstance(country: Country, borders: List<Country>?) = CountryOverviewFragment().apply {
-      arguments = bundleOf(COUNTRY_KEY to country, BORDERS_KEY to borders)
+    fun newInstance(country: Country) = CountryOverviewFragment().apply {
+      arguments = bundleOf(COUNTRY_KEY to country)
     }
   }
 }

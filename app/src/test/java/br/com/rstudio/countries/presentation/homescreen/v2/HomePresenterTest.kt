@@ -2,13 +2,17 @@ package br.com.rstudio.countries.presentation.homescreen.v2
 
 import br.com.rstudio.countries.arch.featuretoggle.FeatureToggles
 import br.com.rstudio.countries.arch.featuretoggle.RemoteConfig
+import br.com.rstudio.countries.data.model.CountriesHolder
 import br.com.rstudio.countries.data.model.Country
 import br.com.rstudio.countries.data.repository.CountryRepository
 import br.com.rstudio.countries.presentation.CountryModel.countryList
 import br.com.rstudio.countries.testUtil.BaseTest
 import br.com.rstudio.countries.testUtil.RxJavaSchedulerRule
+import io.mockk.Runs
 import io.mockk.every
+import io.mockk.just
 import io.mockk.mockk
+import io.mockk.slot
 import io.mockk.verify
 import io.reactivex.Observable
 import org.junit.Assert
@@ -22,6 +26,7 @@ class HomePresenterTest : BaseTest() {
   private val remoteConfig: RemoteConfig = mockk(relaxed = true)
   private val tracker: HomeContract.Tracker = mockk(relaxed = true)
   private val repository: CountryRepository = mockk(relaxed = true)
+  private val countriesHolder: CountriesHolder = mockk(relaxed = true)
 
   private lateinit var presenter: HomeContract.Presenter
 
@@ -30,7 +35,7 @@ class HomePresenterTest : BaseTest() {
 
   @Before
   fun setup() {
-    presenter = HomePresenter(view, repository, tracker, remoteConfig)
+    presenter = HomePresenter(view, repository, countriesHolder, tracker, remoteConfig)
   }
 
   @Test
@@ -62,6 +67,9 @@ class HomePresenterTest : BaseTest() {
 
   @Test
   fun `when repository request is successful then it should update view`() {
+    val slot = slot<List<Country>>()
+    every { countriesHolder.countries = capture(slot) } just Runs
+
     every { repository.getAll() } returns Observable.just(countryList)
 
     presenter.onInitialize()
@@ -73,6 +81,7 @@ class HomePresenterTest : BaseTest() {
       view.hideLoader()
       view.bindData(any(), any())
     }
+    assert(slot.captured == countryList)
   }
 
   @Test
@@ -109,12 +118,13 @@ class HomePresenterTest : BaseTest() {
   @Test
   fun `when country clicked and show country overview toggle true then redirect to overview screen and track it`() {
     val country = mockk<Country>()
+    every { countriesHolder.countries } returns countryList
     every { remoteConfig.getBoolean(FeatureToggles.SHOW_COUNTRY_OVERVIEW_V2) } returns true
 
     presenter.onCountryClickListener(country)
 
     verify {
-      view.openCountryOverviewScreen(any(), any())
+      view.openCountryOverviewScreen(any())
       tracker.trackCountryClicked(country)
     }
   }

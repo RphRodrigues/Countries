@@ -7,13 +7,13 @@ interface CountryOverviewContract {
   interface View {
     fun clearViewContent()
     fun bindCountry(country: Country, countryBorders: List<Country>? = null)
+    fun openCountryOverviewScreen(country: Country)
     fun finish()
-    fun openCountryOverviewScreen(country: Country, borders: List<Country>?)
   }
 
   interface Presenter {
     var view: View?
-    fun onInitializer(country: Country?, borders: List<Country>?)
+    fun onInitializer(country: Country?)
     fun onResume()
     fun onBackPressed()
     fun onDestroy()

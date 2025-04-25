@@ -10,7 +10,7 @@ interface ListContract {
   interface View : NetworkView {
     fun bindContinents(continentList: List<ContinentVO>)
     fun openDetailsScreen(country: Country, borders: List<Country>?)
-    fun openCountryOverviewScreen(country: Country, borders: List<Country>?)
+    fun openCountryOverviewScreen(country: Country)
     fun finish()
   }
 

@@ -3,6 +3,7 @@ package br.com.rstudio.countries.presentation.homescreen.v2
 import br.com.rstudio.countries.arch.extension.doOnSuccess
 import br.com.rstudio.countries.arch.featuretoggle.FeatureToggles
 import br.com.rstudio.countries.arch.featuretoggle.RemoteConfig
+import br.com.rstudio.countries.data.model.CountriesHolder
 import br.com.rstudio.countries.data.model.Country
 import br.com.rstudio.countries.data.repository.CountryRepository
 import br.com.rstudio.countries.presentation.homescreen.v1.model.ContinentVO
@@ -11,11 +12,11 @@ import timber.log.Timber
 class HomePresenter(
   override var view: HomeContract.View?,
   private val repository: CountryRepository,
+  private val countriesHolder: CountriesHolder,
   private val tracker: HomeContract.Tracker,
   private val remoteConfig: RemoteConfig
 ) : HomeContract.Presenter {
 
-  private var countries: List<Country>? = null
   private var continents: List<ContinentVO>? = null
   private lateinit var mostPopularCountries: List<Country>
 
@@ -41,7 +42,7 @@ class HomePresenter(
         ContinentVO(map.key, map.value, ::onCountryClickListener)
       }
 
-    this.countries = countryList
+    countriesHolder.countries = countryList
     this.continents = continents
 
     if (!::mostPopularCountries.isInitialized) {
@@ -54,11 +55,10 @@ class HomePresenter(
   override fun onCountryClickListener(country: Country) {
     tracker.trackCountryClicked(country)
 
-    val borders = countries?.filter { country.borders?.contains(it.code) == true }
-
     if (remoteConfig.getBoolean(FeatureToggles.SHOW_COUNTRY_OVERVIEW_V2)) {
-      view?.openCountryOverviewScreen(country, borders)
+      view?.openCountryOverviewScreen(country)
     } else {
+      val borders = countriesHolder.countries?.filter { country.borders?.contains(it.code) == true }
       view?.openDetailsScreen(country, borders)
     }
   }

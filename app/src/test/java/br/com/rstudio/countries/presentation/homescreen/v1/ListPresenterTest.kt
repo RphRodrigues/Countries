@@ -114,7 +114,7 @@ class ListPresenterTest : BaseTest() {
     presenter.onCountryClickListener(country)
 
     verify {
-      view.openCountryOverviewScreen(any(), any())
+      view.openCountryOverviewScreen(any())
       tracker.trackCountryClicked(country)
     }
   }

@@ -20,6 +20,7 @@ import br.com.rstudio.countries.data.datasource.CountryRemoteDataSourceImp
 import br.com.rstudio.countries.data.datasource.QuizDataSource
 import br.com.rstudio.countries.data.datasource.QuizLocalDataSourceImp
 import br.com.rstudio.countries.data.datasource.QuizRemoteDataSourceImp
+import br.com.rstudio.countries.data.model.CountriesHolder
 import br.com.rstudio.countries.data.model.CountryMapper
 import br.com.rstudio.countries.data.repository.CountryRepository
 import br.com.rstudio.countries.data.repository.CountryRepositoryImpl
@@ -136,7 +137,7 @@ val applicationModule = module {
   }
 
   factory<HomeContract.Presenter> { (view: HomeContract.View) ->
-    HomePresenter(view = view, repository = get(), remoteConfig = get(), tracker = get())
+    HomePresenter(view = view, repository = get(), remoteConfig = get(), countriesHolder = get(), tracker = get())
   }
 
   factory<DetailsContract.Tracker> {
@@ -152,7 +153,11 @@ val applicationModule = module {
   }
 
   factory<CountryOverviewContract.Presenter> { (view: CountryOverviewContract.View) ->
-    CountryOverviewPresenter(view = view, tracker = get())
+    CountryOverviewPresenter(view = view, countriesHolder = get(), tracker = get())
+  }
+
+  single<CountriesHolder> {
+    CountriesHolder()
   }
 
   single<QuizDataSource>(named("local")) {
