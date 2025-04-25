@@ -14,10 +14,10 @@ private const val MAX_PROGRESS = 100
 
 class ProfileFragment : Fragment(R.layout.fragment_profile) {
 
-  private lateinit var progressView: ProgressBar
-  private lateinit var starView: ProfileRankingView
-  private lateinit var globalView: ProfileRankingView
-  private lateinit var localView: ProfileRankingView
+  private var progressView: ProgressBar? = null
+  private var starView: ProfileRankingView? = null
+  private var globalView: ProfileRankingView? = null
+  private var localView: ProfileRankingView? = null
 
   private val callback = {
     activity.goToBottomNavigationHome()
@@ -39,22 +39,30 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
 
   override fun onResume() {
     super.onResume()
-    progressView.progress = CURRENT_PROGRESS
-    progressView.max = MAX_PROGRESS
+    progressView?.progress = CURRENT_PROGRESS
+    progressView?.max = MAX_PROGRESS
   }
 
   private fun bindView() {
-    starView.bindIcon(R.drawable.star_icon)
-    starView.bindTitle("Pontos")
-    starView.bindValue("590")
+    starView?.bindIcon(R.drawable.star_icon)
+    starView?.bindTitle("Pontos")
+    starView?.bindValue("590")
 
-    globalView.bindIcon(R.drawable.global_icon)
-    globalView.bindTitle("Ranking Global")
-    globalView.bindValue("#1,438")
+    globalView?.bindIcon(R.drawable.global_icon)
+    globalView?.bindTitle("Ranking Global")
+    globalView?.bindValue("#1,438")
 
-    localView.bindIcon(R.drawable.local_icon)
-    localView.bindTitle("Ranking Brasil")
-    localView.bindValue("#56")
+    localView?.bindIcon(R.drawable.local_icon)
+    localView?.bindTitle("Ranking Brasil")
+    localView?.bindValue("#56")
+  }
+
+  override fun onDestroyView() {
+    super.onDestroyView()
+    globalView = null
+    localView = null
+    progressView = null
+    starView = null
   }
 
   companion object {
