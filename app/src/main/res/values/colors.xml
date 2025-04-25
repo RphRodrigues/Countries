@@ -11,6 +11,7 @@
 
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="app_background_color">#FBFBFB</color>
 
     <color name="color_30426A">#30426A</color>
     <color name="color_4099D5">#4099D5</color>
@@ -25,6 +26,6 @@
     <color name="color_48BDE2">#48BDE2</color>
     <color name="color_E6E6E6">#E6E6E6</color>
     <color name="color_060101">#060101</color>
-    <color name="app_background_color">#FBFBFB</color>
+    <color name="color_313131">#313131</color>
 
 </resources>

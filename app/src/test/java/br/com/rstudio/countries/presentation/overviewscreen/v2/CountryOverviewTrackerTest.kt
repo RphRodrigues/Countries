@@ -1,4 +1,4 @@
-package br.com.rstudio.countries.presentation.details.screen
+package br.com.rstudio.countries.presentation.overviewscreen.v2
 
 import br.com.rstudio.countries.arch.observability.analytics.FirebaseAnalyticsReport
 import br.com.rstudio.countries.data.model.Country
@@ -8,9 +8,9 @@ import io.mockk.verify
 import org.junit.Before
 import org.junit.Test
 
-class DetailsTrackerTest {
+class CountryOverviewTrackerTest {
 
-  private lateinit var tracker: DetailsContract.Tracker
+  private lateinit var tracker: CountryOverviewContract.Tracker
   private val analytics = mockk<FirebaseAnalyticsReport>(relaxed = true)
 
   private val country = mockk<Country> {
@@ -19,7 +19,7 @@ class DetailsTrackerTest {
 
   @Before
   fun setup() {
-    tracker = DetailsTracker(analytics)
+    tracker = CountryOverviewTracker(analytics)
   }
 
   @Test
@@ -27,8 +27,17 @@ class DetailsTrackerTest {
     tracker.trackScreenView(country)
 
     verify {
-      analytics.trackScreenView("DetailsFragment")
+      analytics.trackScreenView("CountryOverviewFragment")
       analytics.trackEvent("item_viewed", mapOf("country" to "Portugal"))
+    }
+  }
+
+  @Test
+  fun `when country clicked is called then it should track it`() {
+    tracker.trackCountryClicked(country)
+
+    verify {
+      analytics.trackEvent("click", mapOf("country" to "Portugal"))
     }
   }
 
@@ -46,7 +55,7 @@ class DetailsTrackerTest {
     tracker.trackFinish()
 
     verify {
-      analytics.trackEvent("finish", mapOf("screen_name" to "DetailsFragment"))
+      analytics.trackEvent("finish", mapOf("screen_name" to "CountryOverviewFragment"))
     }
   }
 }

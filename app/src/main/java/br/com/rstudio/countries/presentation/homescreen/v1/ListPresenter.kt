@@ -1,6 +1,8 @@
 package br.com.rstudio.countries.presentation.homescreen.v1
 
 import br.com.rstudio.countries.arch.extension.doOnSuccess
+import br.com.rstudio.countries.arch.featuretoggle.FeatureToggles
+import br.com.rstudio.countries.arch.featuretoggle.RemoteConfig
 import br.com.rstudio.countries.data.model.Country
 import br.com.rstudio.countries.data.repository.CountryRepository
 import br.com.rstudio.countries.presentation.homescreen.v1.model.ContinentVO
@@ -9,7 +11,8 @@ import timber.log.Timber
 class ListPresenter(
   override var view: ListContract.View?,
   private val repository: CountryRepository,
-  private val tracker: ListContract.Tracker
+  private val tracker: ListContract.Tracker,
+  private val remoteConfig: RemoteConfig
 ) : ListContract.Presenter {
 
   private var countries: List<Country>? = null
@@ -45,8 +48,12 @@ class ListPresenter(
   override fun onCountryClickListener(country: Country) {
     tracker.trackCountryClicked(country)
 
-    val borders = countries?.filter { country.borders?.contains(it.code) == true }
-    view?.openDetailsScreen(country, borders)
+    if (remoteConfig.getBoolean(FeatureToggles.SHOW_COUNTRY_OVERVIEW_V2)) {
+      view?.openCountryOverviewScreen(country)
+    } else {
+      val borders = countries?.filter { country.borders?.contains(it.code) == true }
+      view?.openDetailsScreen(country, borders)
+    }
   }
 
   override fun onBackPressed() {

@@ -24,4 +24,9 @@
     <string name="invitation">Ready to explore the world?</string>
     <string name="notification_icon_description">notification icon</string>
     <string name="most_popular">Most Popular</string>
+    <string name="bordering_countries">Countries that share a border</string>
+    <string name="capital">Capital</string>
+    <string name="continent">Continent</string>
+    <string name="population">Population</string>
+    <string name="number_of_borders">Number of bordering countries</string>
 </resources>

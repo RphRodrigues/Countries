@@ -20,6 +20,7 @@ import br.com.rstudio.countries.data.datasource.CountryRemoteDataSourceImp
 import br.com.rstudio.countries.data.datasource.QuizDataSource
 import br.com.rstudio.countries.data.datasource.QuizLocalDataSourceImp
 import br.com.rstudio.countries.data.datasource.QuizRemoteDataSourceImp
+import br.com.rstudio.countries.data.model.CountriesHolder
 import br.com.rstudio.countries.data.model.CountryMapper
 import br.com.rstudio.countries.data.repository.CountryRepository
 import br.com.rstudio.countries.data.repository.CountryRepositoryImpl
@@ -27,15 +28,18 @@ import br.com.rstudio.countries.data.repository.QuizRepository
 import br.com.rstudio.countries.data.repository.QuizRepositoryImp
 import br.com.rstudio.countries.domain.GenerateQuizUseCase
 import br.com.rstudio.countries.domain.SaveQuizAnsweredUseCase
-import br.com.rstudio.countries.presentation.details.screen.DetailsContract
-import br.com.rstudio.countries.presentation.details.screen.DetailsPresenter
-import br.com.rstudio.countries.presentation.details.screen.DetailsTracker
 import br.com.rstudio.countries.presentation.homescreen.v1.ListContract
 import br.com.rstudio.countries.presentation.homescreen.v1.ListPresenter
 import br.com.rstudio.countries.presentation.homescreen.v1.ListTracker
 import br.com.rstudio.countries.presentation.homescreen.v2.HomeContract
 import br.com.rstudio.countries.presentation.homescreen.v2.HomePresenter
 import br.com.rstudio.countries.presentation.homescreen.v2.HomeTracker
+import br.com.rstudio.countries.presentation.overviewscreen.v1.DetailsContract
+import br.com.rstudio.countries.presentation.overviewscreen.v1.DetailsPresenter
+import br.com.rstudio.countries.presentation.overviewscreen.v1.DetailsTracker
+import br.com.rstudio.countries.presentation.overviewscreen.v2.CountryOverviewContract
+import br.com.rstudio.countries.presentation.overviewscreen.v2.CountryOverviewPresenter
+import br.com.rstudio.countries.presentation.overviewscreen.v2.CountryOverviewTracker
 import br.com.rstudio.countries.presentation.quizscreen.QuizViewModel
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
@@ -125,7 +129,7 @@ val applicationModule = module {
   }
 
   factory<ListContract.Presenter> { (view: ListContract.View) ->
-    ListPresenter(view = view, repository = get(), tracker = get())
+    ListPresenter(view = view, repository = get(), remoteConfig = get(), tracker = get())
   }
 
   factory<HomeContract.Tracker> {
@@ -133,7 +137,7 @@ val applicationModule = module {
   }
 
   factory<HomeContract.Presenter> { (view: HomeContract.View) ->
-    HomePresenter(view = view, repository = get(), tracker = get())
+    HomePresenter(view = view, repository = get(), remoteConfig = get(), countriesHolder = get(), tracker = get())
   }
 
   factory<DetailsContract.Tracker> {
@@ -142,6 +146,18 @@ val applicationModule = module {
 
   factory<DetailsContract.Presenter> { (view: DetailsContract.View) ->
     DetailsPresenter(view = view, tracker = get())
+  }
+
+  factory<CountryOverviewContract.Tracker> {
+    CountryOverviewTracker(analyticsReport = get())
+  }
+
+  factory<CountryOverviewContract.Presenter> { (view: CountryOverviewContract.View) ->
+    CountryOverviewPresenter(view = view, countriesHolder = get(), tracker = get())
+  }
+
+  single<CountriesHolder> {
+    CountriesHolder()
   }
 
   single<QuizDataSource>(named("local")) {

@@ -10,6 +10,7 @@ import androidx.core.view.isVisible
 import br.com.rstudio.countries.R
 import br.com.rstudio.countries.arch.base.BaseActivityView
 import br.com.rstudio.countries.arch.extension.replaceFragment
+import br.com.rstudio.countries.arch.featuretoggle.FeatureToggles
 import br.com.rstudio.countries.arch.featuretoggle.RemoteConfig
 import br.com.rstudio.countries.arch.model.ErrorModel
 import br.com.rstudio.countries.arch.observability.analytics.AnalyticsEvent.BUTTON
@@ -60,7 +61,7 @@ class MainActivity : AppCompatActivity(), BaseActivityView {
     bottomNavigationView?.setOnItemSelectedListener {
       when (it.itemId) {
         R.id.action_home -> {
-          if (remoteConfig.getBoolean(getString(R.string.show_home_screen_v2_toggle))) {
+          if (remoteConfig.getBoolean(FeatureToggles.SHOW_HOME_SCREEN_V2)) {
             replaceFragment(HomeFragment.newInstance())
           } else {
             replaceFragment(ListFragment.newInstance())
@@ -96,15 +97,16 @@ class MainActivity : AppCompatActivity(), BaseActivityView {
   }
 
   private fun setupBottomNavigationToggles() {
-    bottomNavigationView?.isVisible = remoteConfig.getBoolean(getString(R.string.show_bottom_navigation_toggle))
+    bottomNavigationView?.isVisible = remoteConfig.getBoolean(FeatureToggles.SHOW_BOTTOM_NAVIGATION)
 
     bottomNavigationView?.menu?.children?.forEach { menuItem: MenuItem ->
-      when (menuItem.title) {
-        getString(R.string.home) -> remoteConfig.getBoolean(getString(R.string.show_bottom_nav_home_toggle))
-        getString(R.string.ranking) -> remoteConfig.getBoolean(getString(R.string.show_bottom_nav_ranking_toggle))
-        getString(R.string.quiz) -> remoteConfig.getBoolean(getString(R.string.show_bottom_nav_quiz_toggle))
-        getString(R.string.favorites) -> remoteConfig.getBoolean(getString(R.string.show_bottom_nav_favorite_toggle))
-        getString(R.string.profile) -> remoteConfig.getBoolean(getString(R.string.show_bottom_nav_profile_toggle))
+      menuItem.isVisible = when (menuItem.title) {
+        getString(R.string.home) -> remoteConfig.getBoolean(FeatureToggles.SHOW_BOTTOM_NAV_HOME)
+        getString(R.string.ranking) -> remoteConfig.getBoolean(FeatureToggles.SHOW_BOTTOM_NAV_RANKING)
+        getString(R.string.quiz) -> remoteConfig.getBoolean(FeatureToggles.SHOW_BOTTOM_NAV_QUIZ)
+        getString(R.string.favorites) -> remoteConfig.getBoolean(FeatureToggles.SHOW_BOTTOM_NAV_FAVORITE)
+        getString(R.string.profile) -> remoteConfig.getBoolean(FeatureToggles.SHOW_BOTTOM_NAV_PROFILE)
+        else -> false
       }
     }
   }

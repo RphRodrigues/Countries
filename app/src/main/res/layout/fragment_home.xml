@@ -49,6 +49,7 @@
             android:layout_height="wrap_content"
             android:contentDescription="@string/notification_icon_description"
             android:src="@drawable/notification_icon"
+            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/main_greeting"

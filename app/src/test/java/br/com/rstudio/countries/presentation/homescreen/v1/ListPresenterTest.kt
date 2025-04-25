@@ -1,5 +1,7 @@
 package br.com.rstudio.countries.presentation.homescreen.v1
 
+import br.com.rstudio.countries.arch.featuretoggle.FeatureToggles
+import br.com.rstudio.countries.arch.featuretoggle.RemoteConfig
 import br.com.rstudio.countries.data.model.Country
 import br.com.rstudio.countries.data.repository.CountryRepository
 import br.com.rstudio.countries.presentation.CountryModel.countryList
@@ -17,6 +19,7 @@ import org.junit.Test
 class ListPresenterTest : BaseTest() {
 
   private val view: ListContract.View = mockk(relaxed = true)
+  private val remoteConfig: RemoteConfig = mockk(relaxed = true)
   private val tracker: ListContract.Tracker = mockk(relaxed = true)
   private val repository: CountryRepository = mockk(relaxed = true)
 
@@ -27,7 +30,7 @@ class ListPresenterTest : BaseTest() {
 
   @Before
   fun setup() {
-    presenter = ListPresenter(view, repository, tracker)
+    presenter = ListPresenter(view, repository, tracker, remoteConfig)
   }
 
   @Test
@@ -91,13 +94,27 @@ class ListPresenterTest : BaseTest() {
   }
 
   @Test
-  fun `when country is clicked then redirect to details screen and track it`() {
+  fun `when country clicked and show country overview toggle is false then redirect to details screen and track it`() {
     val country = mockk<Country>()
+    every { remoteConfig.getBoolean(FeatureToggles.SHOW_COUNTRY_OVERVIEW_V2) } returns false
 
     presenter.onCountryClickListener(country)
 
     verify {
       view.openDetailsScreen(any(), any())
+      tracker.trackCountryClicked(country)
+    }
+  }
+
+  @Test
+  fun `when country clicked and show country overview toggle true then redirect to overview screen and track it`() {
+    val country = mockk<Country>()
+    every { remoteConfig.getBoolean(FeatureToggles.SHOW_COUNTRY_OVERVIEW_V2) } returns true
+
+    presenter.onCountryClickListener(country)
+
+    verify {
+      view.openCountryOverviewScreen(any())
       tracker.trackCountryClicked(country)
     }
   }

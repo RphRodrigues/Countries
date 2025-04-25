@@ -1,4 +1,4 @@
-package br.com.rstudio.countries.presentation.details.screen.adapter
+package br.com.rstudio.countries.presentation.overviewscreen.v1.adapter
 
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView

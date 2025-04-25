@@ -10,6 +10,7 @@ interface HomeContract {
   interface View : NetworkView {
     fun bindData(mostPopularCountries: List<Country>, continentList: List<ContinentVO>)
     fun openDetailsScreen(country: Country, borders: List<Country>?)
+    fun openCountryOverviewScreen(country: Country)
     fun finish()
   }
 

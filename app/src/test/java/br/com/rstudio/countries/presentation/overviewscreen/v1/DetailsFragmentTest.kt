@@ -1,4 +1,4 @@
-package br.com.rstudio.countries.presentation.details.screen
+package br.com.rstudio.countries.presentation.overviewscreen.v1
 
 import android.os.Bundle
 import androidx.core.os.bundleOf
