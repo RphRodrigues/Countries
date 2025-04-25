@@ -19,6 +19,7 @@ import br.com.rstudio.countries.data.model.Country
 import br.com.rstudio.countries.presentation.overviewscreen.v2.CountryOverviewFragment
 import br.com.rstudio.countries.presentation.homescreen.v1.model.ContinentVO
 import br.com.rstudio.countries.presentation.homescreen.v2.adapter.MainAdapter
+import br.com.rstudio.countries.presentation.overviewscreen.v1.DetailsFragment
 import org.koin.android.ext.android.inject
 import org.koin.core.parameter.parametersOf
 
@@ -76,6 +77,11 @@ class HomeFragment : Fragment(R.layout.fragment_home), HomeContract.View {
   }
 
   override fun openDetailsScreen(country: Country, borders: List<Country>?) {
+    val fragment = DetailsFragment.newInstance(country, borders)
+    activity.replaceFragment(fragment)
+  }
+
+  override fun openCountryOverviewScreen(country: Country, borders: List<Country>?) {
     val fragment = CountryOverviewFragment.newInstance(country, borders)
     activity.replaceFragment(fragment)
   }

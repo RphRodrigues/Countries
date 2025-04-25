@@ -128,7 +128,7 @@ val applicationModule = module {
   }
 
   factory<ListContract.Presenter> { (view: ListContract.View) ->
-    ListPresenter(view = view, repository = get(), tracker = get())
+    ListPresenter(view = view, repository = get(), remoteConfig = get(), tracker = get())
   }
 
   factory<HomeContract.Tracker> {
@@ -136,7 +136,7 @@ val applicationModule = module {
   }
 
   factory<HomeContract.Presenter> { (view: HomeContract.View) ->
-    HomePresenter(view = view, repository = get(), tracker = get())
+    HomePresenter(view = view, repository = get(), remoteConfig = get(), tracker = get())
   }
 
   factory<DetailsContract.Tracker> {
