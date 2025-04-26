@@ -4,4 +4,16 @@
         <key>splash_screen_timeout</key>
         <value>2000</value>
     </entry>
+    <entry>
+        <key>show_home_screen_v2</key>
+        <value>true</value>
+    </entry>
+    <entry>
+        <key>show_country_overview_v2</key>
+        <value>true</value>
+    </entry>
+    <entry>
+        <key>show_bottom_navigation</key>
+        <value>false</value>
+    </entry>
 </defaultsMap>
