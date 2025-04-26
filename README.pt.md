@@ -64,4 +64,6 @@ O projeto foi **intencionalmente iniciado com versões antigas**, com o objetivo
 
 ## 🔗 Disponível na Google Play
 
-[![Disponível no Google Play](https://play.google.com/intl/pt-br/badges/static/images/badges/pt-br_badge_web_generic.png)](https://play.google.com/store/apps/details?id=br.com.rstudio.countries)
+<a href="https://play.google.com/store/apps/details?id=br.com.rstudio.countries" target="_blank">
+  <img src="https://play.google.com/intl/pt-br/badges/static/images/badges/pt-br_badge_web_generic.png" alt="Disponível no Google Play">
+</a>
