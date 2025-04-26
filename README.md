@@ -1,6 +1,6 @@
-<p style="text-align: right;">
-  🇧🇷 <a href="README.pt.md">Versão em Português</a>
-</p>
+> <p style="text-align: right;">
+>   🇧🇷 <a href="README.pt.md">Versão em Português</a>
+> </p>
 
 # Countries
 
