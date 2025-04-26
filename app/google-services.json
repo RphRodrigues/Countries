@@ -2,7 +2,7 @@
   "project_info": {
     "project_number": "466387488330",
     "project_id": "countries-dd232",
-    "storage_bucket": "countries-dd232.appspot.com"
+    "storage_bucket": "countries-dd232.firebasestorage.app"
   },
   "client": [
     {

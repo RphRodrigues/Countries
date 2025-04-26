@@ -2,6 +2,7 @@ package br.com.rstudio.countries.arch.observability.analytics
 
 import android.os.Bundle
 import androidx.core.os.bundleOf
+import br.com.rstudio.countries.arch.util.Constants
 import br.com.rstudio.countries.arch.util.DeviceInfo
 import com.google.firebase.analytics.FirebaseAnalytics
 import timber.log.Timber
@@ -55,17 +56,17 @@ class FirebaseAnalyticsReport(private val analytics: FirebaseAnalytics) : Analyt
   }
 
   private fun printLog(action: String, params: Bundle?) {
-    Timber.tag("APP_ANALYTICS").d("############ APP ANALYTICS ############")
-    Timber.tag("APP_ANALYTICS").d(" ")
-    Timber.tag("APP_ANALYTICS").d("action -> $action")
+    Timber.tag(Constants.ANALYTICS).d("############ APP ANALYTICS ############")
+    Timber.tag(Constants.ANALYTICS).d(" ")
+    Timber.tag(Constants.ANALYTICS).d("action -> $action")
 
     params?.keySet()?.forEach { key ->
       params.getString(key)?.let { value ->
-        Timber.tag("APP_ANALYTICS").d("param -> $key: $value")
+        Timber.tag(Constants.ANALYTICS).d("param -> $key: $value")
       }
     }
 
-    Timber.tag("APP_ANALYTICS").d(" ")
-    Timber.tag("APP_ANALYTICS").d("#######################################")
+    Timber.tag(Constants.ANALYTICS).d(" ")
+    Timber.tag(Constants.ANALYTICS).d("#######################################")
   }
 }

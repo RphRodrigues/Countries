@@ -1,7 +1,7 @@
 package br.com.rstudio.countries.data.model
 
 import android.os.Parcelable
-import kotlinx.android.parcel.Parcelize
+import kotlinx.parcelize.Parcelize
 
 @Parcelize
 class Country(

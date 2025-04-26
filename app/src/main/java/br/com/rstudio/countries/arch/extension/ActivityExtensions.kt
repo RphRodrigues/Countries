@@ -6,6 +6,7 @@ import androidx.fragment.app.FragmentActivity
 import br.com.rstudio.countries.R
 import br.com.rstudio.countries.arch.base.BaseActivityView
 import br.com.rstudio.countries.arch.model.ErrorModel
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 fun Activity?.showError(err: ErrorModel, errAction: () -> Unit) {
   (this as? BaseActivityView)?.showError(err, errAction)
@@ -33,4 +34,10 @@ fun FragmentActivity?.replaceFragment(fragment: Fragment) = this?.run {
 
 fun FragmentActivity?.popBackStack() = this?.run {
   supportFragmentManager.popBackStack()
+}
+
+fun Activity?.goToBottomNavigationHome() {
+  if (this == null) return
+
+  findViewById<BottomNavigationView>(R.id.bottom_navigation)?.selectedItemId = R.id.action_home
 }

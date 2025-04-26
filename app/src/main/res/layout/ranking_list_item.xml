@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/app_dimen_6"
+    android:background="@drawable/rounded_border"
+    android:padding="@dimen/app_dimen_6">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/ranking_item_position_container"
+        android:layout_width="@dimen/app_dimen_12"
+        android:layout_height="@dimen/app_dimen_12"
+        android:layout_marginStart="@dimen/app_dimen_4"
+        android:background="@drawable/circular_border"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/ranking_item_position_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/color_858494"
+            android:textSize="@dimen/app_text_size_4"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="1" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <br.com.rstudio.countries.presentation.commonview.CircularImageView
+        android:id="@+id/ranking_item_avatar_image_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/app_dimen_5"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/ranking_item_position_container"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/ranking_item_name_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/app_dimen_6"
+        android:maxLength="@integer/app_string_name_max_length"
+        android:text="Madelyn Dias"
+        android:textColor="@color/color_0C092A"
+        android:textSize="@dimen/app_text_size_4"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@id/ranking_item_points_text_view"
+        app:layout_constraintEnd_toStartOf="@id/ranking_item_medal_icon_image_view"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintStart_toEndOf="@id/ranking_item_avatar_image_view"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/ranking_item_points_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/app_dimen_6"
+        android:text="2,569 points"
+        android:textColor="@color/color_858494"
+        android:textSize="@dimen/app_text_size_3"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/ranking_item_avatar_image_view"
+        app:layout_constraintTop_toBottomOf="@id/ranking_item_name_text_view" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/ranking_item_medal_icon_image_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/gold_medal"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="visible" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

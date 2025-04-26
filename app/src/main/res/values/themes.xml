@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.Countries" parent="Theme.MaterialComponents.Light.DarkActionBar">
+    <style name="Theme.Countries" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/purple_500</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
@@ -11,6 +11,30 @@
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+
         <!-- Customize your theme here. -->
+        <item name="materialButtonStyle">@style/AppButton</item>
+        <item name="radioButtonStyle">@style/AppRadioButton</item>
     </style>
+
+    <style name="Theme.Countries.Splash" parent="Theme.MaterialComponents.Light.NoActionBar.Bridge">
+        <item name="android:statusBarColor">#5C96A7</item>
+    </style>
+
+    <style name="RoundImageView">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
+
+    <style name="AppButton" parent="Widget.MaterialComponents.Button">
+        <item name="android:textSize">@dimen/app_text_size_3</item>
+        <item name="android:height">60dp</item>
+        <item name="cornerRadius">25dp</item>
+        <item name="backgroundTint">@color/color_F16101</item>
+    </style>
+
+    <style name="AppRadioButton" parent="Widget.AppCompat.CompoundButton.RadioButton">
+        <item name="buttonTint">@color/black</item>
+    </style>
+
 </resources>

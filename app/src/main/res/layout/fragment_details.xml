@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <br.com.rstudio.countries.arch.widget.LoadImageView
+        <br.com.rstudio.countries.arch.widget.ImageLoaderView
             android:id="@+id/details_image_view"
             android:layout_width="match_parent"
             android:layout_height="0dp"

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingBottom="@dimen/app_dimen_10">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/overview_headers_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/app_dimen_7"
+        android:layout_marginTop="@dimen/app_dimen_11"
+        android:textSize="@dimen/app_text_size_9"
+        android:textStyle="bold"
+        android:textColor="@color/color_313131"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Brazil" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/overview_headers_subtitle_view"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/app_dimen_9"
+        android:layout_marginTop="@dimen/app_dimen_8"
+        android:textSize="@dimen/app_text_size_4"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/overview_headers_title"
+        app:lineHeight="@dimen/app_text_size_7"
+        tools:text="O Brasil, um vasto país sul-americano, estende-se da Bacia Amazônica, no norte, até os vinhedos e as
+        gigantescas Cataratas do Iguaçu, no sul. O Rio de Janeiro, simbolizado pela sua estátua de 38 metros de altura do
+        Cristo Redentor, situada no topo do Corcovado, é famoso pelas movimentadas praias de Copacabana e Ipanema, bem como
+        pelo imenso e animado Carnaval, com desfiles de carros alegóricos, fantasias extravagantes e samba." />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

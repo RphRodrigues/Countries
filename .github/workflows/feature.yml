@@ -8,6 +8,11 @@ on:
       - synchronize
       - ready_for_review
 
+env:
+  DATADOG_API_KEY: ${{ secrets.DATADOG_API_KEY }}
+  DATADOG_CLIENT_TOKEN: ${{ secrets.DATADOG_CLIENT_TOKEN }}
+  DATADOG_APPLICATION_ID: ${{ secrets.DATADOG_APPLICATION_ID }}
+
 jobs:
   build:
     runs-on: ubuntu-latest

@@ -13,15 +13,12 @@ import timber.log.Timber
 class FirebaseCrashlyticsReportTreeTest {
 
   private lateinit var tree: Timber.Tree
-  private lateinit var crashlyticsReportingTree: Timber.Tree
-  private lateinit var crashlyticsReport: CrashlyticsReport
+  private val crashlyticsReport = mockk<CrashlyticsReport>(relaxed = true)
 
   @Before
   fun setUp() {
-    crashlyticsReport = mockk(relaxed = true)
     tree = FirebaseCrashlyticsReportTree(crashlyticsReport)
     Timber.plant(tree)
-    crashlyticsReportingTree = Timber.asTree()
   }
 
   @After

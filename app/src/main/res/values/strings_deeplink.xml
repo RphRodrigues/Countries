@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="deep_link_scheme">rstudio</string>
+    <string name="deep_link_host">countries</string>
+
+    <string name="deep_link_screen">screen</string>
+    <string name="deep_link_screen_ranking">ranking</string>
+    <string name="deep_link_screen_quiz">quiz</string>
+    <string name="deep_link_screen_favorite">favorite</string>
+    <string name="deep_link_screen_profile">profile</string>
+</resources>
