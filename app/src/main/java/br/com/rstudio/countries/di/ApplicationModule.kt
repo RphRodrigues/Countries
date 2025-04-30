@@ -1,5 +1,6 @@
 package br.com.rstudio.countries.di
 
+import android.content.Context
 import androidx.room.Room
 import br.com.rstudio.countries.R
 import br.com.rstudio.countries.arch.GlideImageLoader
@@ -8,11 +9,14 @@ import br.com.rstudio.countries.arch.database.AppDatabase
 import br.com.rstudio.countries.arch.featuretoggle.FirebaseRemoteConfigImp
 import br.com.rstudio.countries.arch.featuretoggle.RemoteConfig
 import br.com.rstudio.countries.arch.network.RetrofitClient
+import br.com.rstudio.countries.arch.notification.NotificationHelper
+import br.com.rstudio.countries.arch.notification.NotificationPermissionUtil
 import br.com.rstudio.countries.arch.observability.analytics.AnalyticsReport
 import br.com.rstudio.countries.arch.observability.analytics.FirebaseAnalyticsReport
 import br.com.rstudio.countries.arch.observability.crashlytics.CrashlyticsReport
 import br.com.rstudio.countries.arch.observability.crashlytics.FirebaseCrashlyticsReport
 import br.com.rstudio.countries.arch.observability.crashlytics.FirebaseCrashlyticsReportTree
+import br.com.rstudio.countries.arch.prefs.AppPrefs
 import br.com.rstudio.countries.arch.widget.imageLoaderShimmerDrawable
 import br.com.rstudio.countries.data.CountryApi
 import br.com.rstudio.countries.data.datasource.CountryDataSource
@@ -65,6 +69,18 @@ val applicationModule = module {
 
   single {
     RetrofitClient(androidContext()).newInstance()
+  }
+
+  single {
+    NotificationHelper(androidContext())
+  }
+
+  single {
+    AppPrefs(androidContext().getSharedPreferences(AppPrefs.PREF_NAME, Context.MODE_PRIVATE))
+  }
+
+  single {
+    NotificationPermissionUtil(get())
   }
 
   single<CountryApi> {
@@ -153,7 +169,9 @@ val applicationModule = module {
   }
 
   factory<CountryOverviewContract.Presenter> { (view: CountryOverviewContract.View) ->
-    CountryOverviewPresenter(view = view, countriesHolder = get(), tracker = get())
+    CountryOverviewPresenter(
+      view = view, countriesHolder = get(), tracker = get(), appPrefs = get(), repository = get()
+    )
   }
 
   single<CountriesHolder> {

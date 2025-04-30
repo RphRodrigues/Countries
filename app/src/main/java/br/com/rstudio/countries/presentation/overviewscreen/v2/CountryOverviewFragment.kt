@@ -11,9 +11,14 @@ import br.com.rstudio.countries.R
 import br.com.rstudio.countries.arch.extension.dpToPx
 import br.com.rstudio.countries.arch.extension.getBottomLeftColor
 import br.com.rstudio.countries.arch.extension.getBottomRightColor
+import br.com.rstudio.countries.arch.extension.hideError
+import br.com.rstudio.countries.arch.extension.hideLoader
 import br.com.rstudio.countries.arch.extension.popBackStack
 import br.com.rstudio.countries.arch.extension.replaceFragment
 import br.com.rstudio.countries.arch.extension.setupBackPressedCallback
+import br.com.rstudio.countries.arch.extension.showError
+import br.com.rstudio.countries.arch.extension.showLoader
+import br.com.rstudio.countries.arch.model.ErrorModel
 import br.com.rstudio.countries.arch.widget.ImageLoaderView
 import br.com.rstudio.countries.data.model.Country
 import br.com.rstudio.countries.presentation.overviewscreen.v2.view.CountryOverviewHeaderView
@@ -38,6 +43,11 @@ class CountryOverviewFragment : Fragment(R.layout.fragment_shared), CountryOverv
 
   private val country: Country?
     get() = arguments?.getParcelable(COUNTRY_KEY)
+
+  private val countryCode: String?
+    get() = arguments?.getString(CODE_KEY)
+
+  var onResumeCallback: (() -> Unit)? = null
 
   private val callback = {
     presenter.onBackPressed()
@@ -69,12 +79,17 @@ class CountryOverviewFragment : Fragment(R.layout.fragment_shared), CountryOverv
 
   override fun onStart() {
     super.onStart()
-    presenter.onInitializer(country)
+    if (countryCode != null) {
+      presenter.onFetchData(countryCode)
+    } else {
+      presenter.onInitializer(country)
+    }
   }
 
   override fun onResume() {
     super.onResume()
     presenter.onResume()
+    onResumeCallback?.invoke()
   }
 
   override fun clearViewContent() {
@@ -169,11 +184,34 @@ class CountryOverviewFragment : Fragment(R.layout.fragment_shared), CountryOverv
     presenter.onDestroy()
   }
 
+  override fun showError(err: ErrorModel) {
+    activity.showError(err) {
+      presenter.onFetchData(countryCode)
+    }
+  }
+
+  override fun hideError() {
+    activity.hideError()
+  }
+
+  override fun showLoader() {
+    activity.showLoader()
+  }
+
+  override fun hideLoader() {
+    activity.hideLoader()
+  }
+
   companion object {
+    private const val CODE_KEY = "code"
     private const val COUNTRY_KEY = "country"
 
     fun newInstance(country: Country) = CountryOverviewFragment().apply {
       arguments = bundleOf(COUNTRY_KEY to country)
+    }
+
+    fun newInstance(countryCode: String) = CountryOverviewFragment().apply {
+      arguments = bundleOf(CODE_KEY to countryCode)
     }
   }
 }
