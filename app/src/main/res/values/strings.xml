@@ -29,4 +29,13 @@
     <string name="continent">Continent</string>
     <string name="population">Population</string>
     <string name="number_of_borders">Number of bordering countries</string>
+    <string name="notification_channel_name">General Notifications</string>>
+    <string name="notification_channel_description">Stay informed with important updates, news, and alerts.</string>
+    <string name="discover_new_curiosities">🌍 Discover New Curiosities!</string>
+    <string name="notification_explain_description">Allow notifications to receive interesting facts, and special content about countries around the world.</string>
+    <string name="notification_explain_benefits">📚  Fascinating facts about countries.\n🧠  Challenge yourself with quizzes.\n🚀  Updates about new app features.</string>
+    <string name="notification_explain_allow_button">Allow notifications</string>
+    <string name="notification_explain_deny_button">Maybe later</string>
+    <string name="open_settings">Open settings</string>
+    <string name="firebase_topic">countries-curiosities</string>
 </resources>

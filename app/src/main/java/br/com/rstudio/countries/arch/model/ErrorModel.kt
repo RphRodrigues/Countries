@@ -12,4 +12,7 @@ class ErrorModel(
 sealed class ErrorType {
   object Api : ErrorType()
   object Internal : ErrorType()
+  object DeepLink : ErrorType() {
+    const val CODE: Int = 1001
+  }
 }
