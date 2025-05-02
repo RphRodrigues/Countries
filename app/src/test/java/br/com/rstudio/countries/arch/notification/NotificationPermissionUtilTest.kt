@@ -16,7 +16,7 @@ class NotificationPermissionUtilTest {
   @Before
   fun setup() {
     appPrefs = mockk()
-    notificationUtil = NotificationPermissionUtil(appPrefs)
+    notificationUtil = NotificationPermissionUtil(context = mockk(relaxed = true), appPrefs)
   }
 
   @Test

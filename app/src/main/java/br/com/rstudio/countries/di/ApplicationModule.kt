@@ -80,7 +80,7 @@ val applicationModule = module {
   }
 
   single {
-    NotificationPermissionUtil(get())
+    NotificationPermissionUtil(androidContext(), get())
   }
 
   single<CountryApi> {

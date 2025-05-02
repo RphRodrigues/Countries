@@ -4,14 +4,10 @@ import android.Manifest
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
-import android.content.pm.PackageManager
-import android.os.Build
 import android.os.Bundle
-import android.provider.Settings
 import android.view.MenuItem
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
 import androidx.core.net.toUri
 import androidx.core.view.children
 import androidx.core.view.isVisible
@@ -111,11 +107,16 @@ class MainActivity : AppCompatActivity(), BaseActivityView {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_main)
     setupView()
-
-    bottomNavigationView?.setOnItemSelectedListener(onItemSelectedListener)
     handleIntent(intent)
     setupBottomNavigationToggles()
-    askNotificationPermission()
+    notificationUtil.askNotificationPermission(this, ::showNotificationJustification)
+  }
+
+  private fun setupView() {
+    feedbackView = findViewById(R.id.feedback_view)
+    progressView = findViewById(R.id.progress_view)
+    bottomNavigationView = findViewById(R.id.bottom_navigation)
+    bottomNavigationView?.setOnItemSelectedListener(onItemSelectedListener)
 
     // When the back stack is empty and the back button is clicked,
     // select the Home fragment
@@ -124,12 +125,6 @@ class MainActivity : AppCompatActivity(), BaseActivityView {
         bottomNavigationView?.selectedItemId = R.id.action_home
       }
     }
-  }
-
-  private fun setupView() {
-    feedbackView = findViewById(R.id.feedback_view)
-    progressView = findViewById(R.id.progress_view)
-    bottomNavigationView = findViewById(R.id.bottom_navigation)
   }
 
   private fun redirectToHomeScreen() {
@@ -156,59 +151,14 @@ class MainActivity : AppCompatActivity(), BaseActivityView {
   }
 
   @SuppressLint("InlinedApi")
-  private fun shouldAskedNotificationPermission() =
-    ContextCompat.checkSelfPermission(
-      this,
-      Manifest.permission.POST_NOTIFICATIONS
-    ) != PackageManager.PERMISSION_GRANTED && notificationUtil.shouldAskNotificationPermissionAgain()
-
-  private fun askNotificationPermission() {
-    if (Build.VERSION.SDK_INT < Build.VERSION_CODES.TIRAMISU) return
-    if (!shouldAskedNotificationPermission()) return
-
-    when {
-      shouldShowRequestPermissionRationale(Manifest.permission.POST_NOTIFICATIONS) -> {
-        Timber.tag(Constants.PERMISSION).d("User denied once — show a custom dialog explaining why you need it")
-        showNotificationJustification(redirectToSettings = true)
-      }
-
-      ContextCompat.checkSelfPermission(
-        this,
-        Manifest.permission.POST_NOTIFICATIONS
-      ) != PackageManager.PERMISSION_GRANTED -> {
-        Timber.tag(Constants.PERMISSION).d("First time asking, or user chose \"Don't ask again\"")
-        showNotificationJustification()
-      }
-    }
-  }
-
-  @SuppressLint("InlinedApi")
   private fun showNotificationJustification(redirectToSettings: Boolean = false) {
-    with(NotificationJustificationBottomSheet.create()) {
-      onAllowClick = {
-        if (redirectToSettings) {
-          analytics.trackEvent(CLICK, mapOf(BUTTON to "open_app_settings"))
+    with(NotificationJustificationBottomSheet.create(redirectToSettings)) {
+      onAllowPermissionListener = {
+        requestPermissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)
+      }
 
-          startActivity(
-            Intent(Settings.ACTION_APP_NOTIFICATION_SETTINGS).apply {
-              putExtra(Settings.EXTRA_APP_PACKAGE, context?.packageName)
-            }
-          )
-        } else {
-          analytics.trackEvent(CLICK, mapOf(BUTTON to "allow_notification"))
-          requestPermissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)
-        }
-      }
-      onDismissClick = {
-        analytics.trackEvent(CLICK, mapOf(BUTTON to "maybe_later"))
-        Timber.tag(Constants.PERMISSION).d("User declined notification permission")
-      }
-      onViewCreate = {
-        if (redirectToSettings) updateBottomSheet()
-      }
       show(supportFragmentManager, ScreenName)
     }
-    appPrefs.setLastAskedTimeNotificationPermission()
   }
 
   override fun showLoader() {
