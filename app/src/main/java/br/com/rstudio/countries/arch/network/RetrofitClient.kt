@@ -2,6 +2,7 @@ package br.com.rstudio.countries.arch.network
 
 import android.content.Context
 import br.com.rstudio.countries.BuildConfig
+import br.com.rstudio.countries.arch.extension.addTrustedCertForOldAndroid
 import br.com.rstudio.countries.arch.util.Constants
 import com.datadog.android.core.sampling.RateBasedSampler
 import com.datadog.android.okhttp.DatadogEventListener
@@ -9,6 +10,7 @@ import com.datadog.android.okhttp.DatadogInterceptor
 import com.datadog.android.okhttp.trace.TracingInterceptor
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
+import java.util.concurrent.TimeUnit
 import okhttp3.Cache
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -16,7 +18,6 @@ import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import timber.log.Timber
-import java.util.concurrent.TimeUnit
 
 class RetrofitClient(private val application: Context) {
 
@@ -51,6 +52,7 @@ class RetrofitClient(private val application: Context) {
 
   private val okHttp: OkHttpClient by lazy {
     OkHttpClient.Builder()
+      .addTrustedCertForOldAndroid(application)
       .connectTimeout(TIMEOUT, TimeUnit.SECONDS)
       .readTimeout(TIMEOUT, TimeUnit.SECONDS)
       .writeTimeout(TIMEOUT, TimeUnit.SECONDS)
