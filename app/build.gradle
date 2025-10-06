@@ -28,12 +28,13 @@ if (!Files.exists(Paths.get(keystorePropertiesFile.getAbsolutePath()))) {
 keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
 
 android {
-    compileSdkVersion 34
+    compileSdk 35
+    namespace 'br.com.rstudio.countries'
 
     defaultConfig {
         applicationId "br.com.rstudio.countries"
         minSdk 21
-        targetSdkVersion 34
+        targetSdk 35
         versionCode 3
         versionName "1.1.0"
 
@@ -117,20 +118,21 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_11
-        targetCompatibility JavaVersion.VERSION_11
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
 
     kotlinOptions {
-        jvmTarget = '11'
+        jvmTarget = '17'
     }
 
-    lintOptions {
+    lint {
         checkReleaseBuilds false
     }
 
     buildFeatures {
         viewBinding true
+        buildConfig = true
     }
 
     testOptions {
@@ -171,7 +173,7 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
 
     // Room
-    def room_version = "2.5.0"
+    def room_version = "2.7.0"
     implementation "androidx.room:room-ktx:$room_version"
     implementation "androidx.room:room-runtime:$room_version"
     implementation "androidx.room:room-rxjava2:$room_version"
