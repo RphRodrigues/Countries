@@ -8,7 +8,7 @@ import retrofit2.http.Query
 interface CountryApi {
 
   @GET("all")
-  fun getAll(): Observable<List<CountryDTO>>
+  fun getAll(@Query("fields") fields: List<String>): Observable<List<CountryDTO>>
 
   @GET("alpha")
   fun getCountryByCode(@Query("codes") codes: List<String>): Observable<List<CountryDTO>>
