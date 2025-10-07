@@ -10,8 +10,21 @@ class CountryRemoteDataSourceImp(
   private val mapper: CountryMapper
 ) : CountryDataSource {
 
+  private val fields = listOf(
+    "name",
+    "capital",
+    "borders",
+    "continents",
+    "flag",
+    "population",
+    "cca3",
+    "flags",
+    "languages",
+    "timezones"
+  )
+
   override fun getAll(): Observable<List<Country>> =
-    api.getAll().map { mapper.transform(it) }
+    api.getAll(fields).map { mapper.transform(it) }
 
   override fun getCountryByCode(codes: List<String>): Observable<List<Country>> =
     api.getCountryByCode(codes).map { mapper.transform(it) }
