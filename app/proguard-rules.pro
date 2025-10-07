@@ -23,6 +23,10 @@
 #-printusage build/outputs/r8/usage.txt
 #-printseeds build/outputs/r8/seeds.txt
 
+# --- RxJava ---
+-keep class io.reactivex.** { *; }
+-dontwarn io.reactivex.**
+
 -keep class br.com.rstudio.countries.data.model.CountryDTO { *; }
 -keep class br.com.rstudio.countries.data.model.CountryNameDTO { *; }
 -keep class br.com.rstudio.countries.data.model.CountryFlagDTO { *; }
