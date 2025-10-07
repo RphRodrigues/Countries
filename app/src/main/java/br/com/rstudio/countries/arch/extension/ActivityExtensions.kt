@@ -8,6 +8,9 @@ import br.com.rstudio.countries.arch.base.BaseActivityView
 import br.com.rstudio.countries.arch.model.ErrorModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
+val Activity.ScreenName: String
+  get() = this.javaClass.simpleName
+
 fun Activity?.showError(err: ErrorModel, errAction: () -> Unit) {
   (this as? BaseActivityView)?.showError(err, errAction)
 }
@@ -28,7 +31,7 @@ fun FragmentActivity?.replaceFragment(fragment: Fragment) = this?.run {
   supportFragmentManager
     .beginTransaction()
     .replace(R.id.frame_layout, fragment)
-    .addToBackStack(fragment.TAG)
+    .addToBackStack(fragment.ScreenName)
     .commit()
 }
 

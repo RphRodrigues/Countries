@@ -54,7 +54,7 @@ class SplashScreenActivityTest : KoinTest {
   fun `when splash screen is opened it should tracker it`() {
 
     verify(exactly = 1) {
-      analytics.trackScreenView("SplashScreen")
+      analytics.trackScreenView("SplashScreenActivity")
     }
   }
 }

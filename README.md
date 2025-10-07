@@ -49,7 +49,9 @@ The project was **intentionally started with older versions** to experience the 
 
 - **Firebase Crashlytics** – Real-time crash reporting
 - **Firebase Analytics** – Event and user behavior tracking
+- **Firebase Messaging** – Allows sending push notifications
 - **Firebase Remote Config** – Remote configuration management
+- **Firebase App Distribution** – Configured in the CI/CD to make testing easier
 - **Datadog** – Observability, tracing, and performance monitoring
 
 ---

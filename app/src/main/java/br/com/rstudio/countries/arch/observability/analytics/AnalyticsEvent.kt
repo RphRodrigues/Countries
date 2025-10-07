@@ -12,4 +12,7 @@ object AnalyticsEvent {
   const val ITEM_VIEWED = "item_viewed"
   const val COUNTRY = "country"
   const val BUTTON = "button"
+  const val ERROR_CODE = "error_code"
+  const val ERROR_MESSAGE = "error_message"
+  const val OPENING_DEEPLINK = "opening_deeplink"
 }

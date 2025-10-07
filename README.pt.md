@@ -49,7 +49,9 @@ O projeto foi **intencionalmente iniciado com versões antigas**, com o objetivo
 
 - **Firebase Crashlytics** – Monitoramento de falhas em tempo real
 - **Firebase Analytics** – Coleta de eventos e comportamento do usuário
+- **Firebase Messaging** – Permite o envio de Push Notification
 - **Firebase Remote Config** – Feature toggle para configurações dinâmicas controladas remotamente
+- **Firebase App Distribution** – Configurado no CI/CD para facilitar os testes.
 - **Datadog** – Observabilidade, rastreamento e monitoramento de performance
 
 ---

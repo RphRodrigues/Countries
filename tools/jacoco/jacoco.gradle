@@ -5,8 +5,11 @@ task jacocoTestReport(type: JacocoReport) {
     description = "Generate Jacoco coverage reports"
 
     reports {
-        xml.enabled = true
-        html.enabled = true
+        xml.required = true
+        xml.outputLocation.set(layout.buildDirectory.file("reports/jacoco/jacoco.xml"))
+
+        html.required = true
+        html.outputLocation.set(layout.buildDirectory.dir("reports/jacoco/jacocoHtml"))
     }
 
     classDirectories.setFrom(fileTree(
@@ -21,7 +24,7 @@ task jacocoTestReport(type: JacocoReport) {
     executionData.setFrom(files("$buildDir/jacoco/testDebugUnitTest.exec"))
 
     doLast {
-        println "Jacoco resport has been genereted to file://${reports.html.destination}/index.html"
+        println "Jacoco resport has been genereted to file:/${buildDir}/reports/jacoco/jacocoHtml/index.html"
     }
 }
 

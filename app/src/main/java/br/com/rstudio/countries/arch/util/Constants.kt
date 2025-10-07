@@ -9,4 +9,7 @@ object Constants {
   const val ANALYTICS = "LOG_APP_ANALYTICS"
   const val HTTP_ERROR = "LOG_APP_HTTP_ERROR"
   const val REMOTE_CONFIG = "LOG_APP_REMOTE_CONFIG"
+  const val PERMISSION = "LOG_APP_PERMISSION"
+  const val NOTIFICATION = "LOG_APP_NOTIFICATION"
+  const val APP_PREFS = "LOG_APP_APP_PREFS"
 }

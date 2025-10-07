@@ -24,7 +24,7 @@ import timber.log.Timber
 @Suppress("KotlinConstantConditions")
 class DatadogInitializer {
 
-  fun initialize(context: Context) {
+  fun run(context: Context) {
     if (Datadog.isInitialized()) return
     if (DATADOG_CLIENT_TOKEN == "null" || DATADOG_APPLICATION_ID == "null") return
 
